@@ -15,53 +15,60 @@ import { arrayMove, SortableContext, rectSortingStrategy } from '@dnd-kit/sortab
 import Grid from './components/Grid';
 import SortableItem from './components/SortableItem';
 import Item from './components/Item';
+import critHit from "./assets/sounds/crit_hit.wav";
 
 const Example: FC = () => {
-    const [items, setItems] = useState(Array.from({ length: 20 }, (_, i) => (i + 1).toString()));
-    const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
-    const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor));
+  const [items, setItems] = useState(
+    Array.from({ length: 20 }, (_, i) => (i + 1).toString())
+  );
+  const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
+  const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor));
 
-    const handleDragStart = useCallback((event: DragStartEvent) => {
-        setActiveId(event.active.id);
-    }, []);
-    const handleDragEnd = useCallback((event: DragEndEvent) => {
-        const { active, over } = event;
+  const audio = new Audio(critHit);
 
-        if (active.id !== over?.id) {
-            setItems((items) => {
-                const oldIndex = items.indexOf(active.id.toString());
-                const newIndex = items.indexOf(over!.id.toString());
+  const handleDragStart = useCallback((event: DragStartEvent) => {
+    setActiveId(event.active.id);
+  }, []);
+  const handleDragEnd = useCallback((event: DragEndEvent) => {
+    audio.play();
+    const { active, over } = event;
+    console.log("xdsaasdds");
 
-                return arrayMove(items, oldIndex, newIndex);
-            });
-        }
+    if (active.id !== over?.id) {
+      setItems((items) => {
+        const oldIndex = items.indexOf(active.id.toString());
+        const newIndex = items.indexOf(over!.id.toString());
 
-        setActiveId(null);
-    }, []);
-    const handleDragCancel = useCallback(() => {
-        setActiveId(null);
-    }, []);
+        return arrayMove(items, oldIndex, newIndex);
+      });
+    }
 
-    return (
-        <DndContext
-            sensors={sensors}
-            collisionDetection={closestCenter}
-            onDragStart={handleDragStart}
-            onDragEnd={handleDragEnd}
-            onDragCancel={handleDragCancel}
-        >
-            <SortableContext items={items} strategy={rectSortingStrategy}>
-                <Grid columns={5}>
-                    {items.map((id) => (
-                        <SortableItem key={id} id={id} />
-                    ))}
-                </Grid>
-            </SortableContext>
-            <DragOverlay adjustScale style={{ transformOrigin: '0 0 ' }}>
-                {activeId ? <Item id={activeId.toString()} isDragging /> : null}
-            </DragOverlay>
-        </DndContext>
-    );
+    setActiveId(null);
+  }, []);
+  const handleDragCancel = useCallback(() => {
+    setActiveId(null);
+  }, []);
+
+  return (
+    <DndContext
+      sensors={sensors}
+      collisionDetection={closestCenter}
+      onDragStart={handleDragStart}
+      onDragEnd={handleDragEnd}
+      onDragCancel={handleDragCancel}
+    >
+      <SortableContext items={items} strategy={rectSortingStrategy}>
+        <Grid columns={8}>
+          {items.map((id) => (
+            <SortableItem key={id} id={id} />
+          ))}
+        </Grid>
+      </SortableContext>
+      <DragOverlay adjustScale style={{ transformOrigin: "0 0 " }}>
+        {activeId ? <Item id={activeId.toString()} isDragging /> : null}
+      </DragOverlay>
+    </DndContext>
+  );
 };
 
 export default Example;

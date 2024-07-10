@@ -14,7 +14,7 @@ const Item = forwardRef<HTMLDivElement, ItemProps>(({ id, withOpacity, isDraggin
         width: '140px',
         borderRadius: '10px',
         cursor: isDragging ? 'grabbing' : 'grab',
-        backgroundColor: '#ffffff',
+        // backgroundColor: '#ffffff',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -23,7 +23,7 @@ const Item = forwardRef<HTMLDivElement, ItemProps>(({ id, withOpacity, isDraggin
         ...style,
     };
 
-    return <div ref={ref} style={inlineStyles} {...props}>{id}</div>;
+    return <div className='bg-amber-300' ref={ref} style={inlineStyles} {...props}>{id}</div>;
 });
 
 export default Item;
