@@ -4,14 +4,16 @@
 import "./App.css";
 
 import Example from "./example";
+import MainMenu from "./levels/mainMenu";
 
 function App() {
   // const [count, setCount] = useState(0)
 
   return (
     <>
-      <h1 className="text-xl font-bold underline bg-amber-100">Hello world!</h1>
-      <Example></Example>
+      {/* <h1 className="text-xl font-bold underline bg-amber-100">Hello world!</h1>
+      <Example></Example> */}
+      <MainMenu></MainMenu>
 
       {/* <div>
         <a href="https://vitejs.dev" target="_blank">
