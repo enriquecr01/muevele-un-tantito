@@ -1,9 +1,13 @@
 import React from "react";
 import "./../App.css";
+import { Helmet } from "react-helmet";
 
 const MainMenu = () => {
   return (
     <>
+      <Helmet>
+        <title>¡Muévele Un Tantito! | Menu</title>
+      </Helmet>
       <div className="w-full">
         <section className="flex flex-col items-center justify-center gap-12 h-screen">
           <h1 className="font-avocado text-6xl font-extrabold">
