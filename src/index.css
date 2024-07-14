@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  @font-face {
+    font-family: "AvocadoTaco";
+    src: url(./assets/fonts/AvocadoTaco.otf) format("woff2");
+  }
+
+  @font-face {
+    font-family: "ComicZine";
+    src: url(./assets/fonts/ComicZine.otf) format("woff2");
+  }
+
+  @font-face {
+    font-family: "LaffRiot";
+    src: url(./assets/fonts/LaffRiot.ttf) format("woff2");
+  }
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
