@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "baseUrl": "./src",
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@images/*": ["assets/images/*"]
+    }
+  }
+}

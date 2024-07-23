@@ -3,7 +3,7 @@
 // import viteLogo from '/vite.svg'
 import "./App.css";
 
-import Example from "./example";
+import { Example } from "./levels/levelBakery";
 import MainMenu from "./levels/mainMenu";
 
 function App() {
@@ -13,7 +13,8 @@ function App() {
     <>
       {/* <h1 className="text-xl font-bold underline bg-amber-100">Hello world!</h1>
       <Example></Example> */}
-      <MainMenu></MainMenu>
+      {/* <MainMenu></MainMenu> */}
+      <Example></Example>
 
       {/* <div>
         <a href="https://vitejs.dev" target="_blank">
