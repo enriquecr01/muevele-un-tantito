@@ -1,43 +1,56 @@
-import React, { useCallback, useState } from "react";
+import React, { CSSProperties, useState } from "react";
 import {
-  closestCorners,
   DndContext,
-  DragOverEvent,
   DragOverlay,
+  closestCorners,
   KeyboardSensor,
   PointerSensor,
   useSensor,
   useSensors,
+  DragOverEvent,
 } from "@dnd-kit/core";
-import { Draggable } from "./Draggable";
-import { Droppable } from "./Droppable";
-import chocolate from "@images/chocolate.png";
-import vainilla from "@images/vainilla.png";
-import fresa from "@images/fresa.png";
 import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
-// import Grid from "components/Grid";
-// import SortableConcha from "components/SortableConcha";
-import Container from "@components/levelBakery/Container";
-import { Item } from "@components/levelBakery/SortableConcha";
 
-// https://codesandbox.io/s/react-dndkit-multiple-containers-6wydy9?file=/src/examples/Sortable/MultipleContainers.tsx
-// https://github.com/clauderic/dnd-kit/blob/master/stories/2%20-%20Presets/Sortable/MultipleContainers.tsx
+import Container from "@components/containers";
+import { Item } from "@components/sortable_item";
 
-export function LevelBakery() {
+const wrapperStyle: CSSProperties = {
+  display: "flex",
+  flexDirection: "row",
+};
+
+export default function Wachar() {
   const [items, setItems] = useState({
-    root: ["chocolate-1", "chocolate-2", "chocolate-3"],
+    root: ["1", "2", "3"],
     container1: ["4", "5", "6"],
     container2: ["7", "8", "9"],
     container3: [],
   });
   const [activeId, setActiveId] = useState();
-  const [activeColor, setActiveColor] = useState();
 
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
     })
+  );
+
+  return (
+    <div style={wrapperStyle}>
+      <DndContext
+        sensors={sensors}
+        collisionDetection={closestCorners}
+        onDragStart={handleDragStart}
+        onDragOver={handleDragOver}
+        onDragEnd={handleDragEnd}
+      >
+        <Container id="root" items={items.root} />
+        <Container id="container1" items={items.container1} />
+        <Container id="container2" items={items.container2} />
+        <Container id="container3" items={items.container3} />
+        <DragOverlay>{activeId ? <Item id={activeId} /> : null}</DragOverlay>
+      </DndContext>
+    </div>
   );
 
   function findContainer(id) {
@@ -52,18 +65,14 @@ export function LevelBakery() {
     const { active } = event;
     const { id } = active;
 
-    const splitedId = id.split("-");
-    const color = splitedId[0];
-    console.log("jotot", color);
-
     setActiveId(id);
-    setActiveColor(color);
   }
 
   function handleDragOver(event: DragOverEvent) {
     const { active, over } = event;
     const { id } = active;
     const { id: overId } = over;
+    console.log(event);
 
     // Find the containers
     const activeContainer = findContainer(id);
@@ -78,6 +87,7 @@ export function LevelBakery() {
     }
 
     setItems((prev) => {
+      console.log(prev);
       const activeItems = prev[activeContainer];
       const overItems = prev[overContainer];
 
@@ -90,6 +100,7 @@ export function LevelBakery() {
         // We're at the root droppable of a container
         newIndex = overItems.length + 1;
       } else {
+        // console.log(event);
         const isBelowOverItem =
           over &&
           active.rect.current.translated &&
@@ -145,26 +156,4 @@ export function LevelBakery() {
 
     setActiveId(null);
   }
-
-  return (
-    <div className="flex flex-row">
-      <DndContext
-        sensors={sensors}
-        collisionDetection={closestCorners}
-        onDragStart={handleDragStart}
-        onDragOver={handleDragOver}
-        onDragEnd={handleDragEnd}
-      >
-        <Container id="root" items={items.root} color="chocolate" />
-        <Container id="container1" items={items.container1} color="fresa" />
-        <Container id="container2" items={items.container2} color="vainilla" />
-        <Container id="container3" items={items.container3} color="fresa" />
-        <DragOverlay>
-          {activeId ? (
-            <Item id={activeId} color={activeColor} isDragging />
-          ) : null}
-        </DragOverlay>
-      </DndContext>
-    </div>
-  );
 }

@@ -4,7 +4,9 @@
     "baseUrl": "./src",
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "@images/*": ["assets/images/*"]
+      "@images/*": ["assets/images/*"],
+      "@sounds/*": ["assets/sounds/*"],
+      "@components/*": ["components/*"]
     }
   }
 }

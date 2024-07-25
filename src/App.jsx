@@ -3,18 +3,21 @@
 // import viteLogo from '/vite.svg'
 import "./App.css";
 
-import { Example } from "./levels/levelBakery";
+import { LevelBakery } from "./levels/LevelBakery";
 import MainMenu from "./levels/mainMenu";
+import Example from "./example";
+import Wachar from "./components/wachar";
 
 function App() {
   // const [count, setCount] = useState(0)
 
   return (
     <>
-      {/* <h1 className="text-xl font-bold underline bg-amber-100">Hello world!</h1>
-      <Example></Example> */}
+      {/* <h1 className="text-xl font-bold underline bg-amber-100">Hello world!</h1> */}
+      {/* <Example></Example> */}
       {/* <MainMenu></MainMenu> */}
-      <Example></Example>
+      <LevelBakery></LevelBakery>
+      {/* <Wachar></Wachar> */}
 
       {/* <div>
         <a href="https://vitejs.dev" target="_blank">
