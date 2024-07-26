@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import {
   closestCorners,
   DndContext,
@@ -9,25 +9,15 @@ import {
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
-import { Draggable } from "./Draggable";
-import { Droppable } from "./Droppable";
-import chocolate from "@images/chocolate.png";
-import vainilla from "@images/vainilla.png";
-import fresa from "@images/fresa.png";
 import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
-// import Grid from "components/Grid";
-// import SortableConcha from "components/SortableConcha";
 import Container from "@components/levelBakery/Container";
 import { Item } from "@components/levelBakery/SortableConcha";
-
-// https://codesandbox.io/s/react-dndkit-multiple-containers-6wydy9?file=/src/examples/Sortable/MultipleContainers.tsx
-// https://github.com/clauderic/dnd-kit/blob/master/stories/2%20-%20Presets/Sortable/MultipleContainers.tsx
 
 export function LevelBakery() {
   const [items, setItems] = useState({
     root: ["chocolate-1", "chocolate-2", "chocolate-3"],
-    container1: ["4", "5", "6"],
-    container2: ["7", "8", "9"],
+    container1: ["vainilla-1", "vainilla-2", "vainilla-3"],
+    container2: ["fresa-1", "fresa-2", "fresa-3"],
     container3: [],
   });
   const [activeId, setActiveId] = useState();
@@ -54,7 +44,6 @@ export function LevelBakery() {
 
     const splitedId = id.split("-");
     const color = splitedId[0];
-    console.log("jotot", color);
 
     setActiveId(id);
     setActiveColor(color);
@@ -155,10 +144,10 @@ export function LevelBakery() {
         onDragOver={handleDragOver}
         onDragEnd={handleDragEnd}
       >
-        <Container id="root" items={items.root} color="chocolate" />
-        <Container id="container1" items={items.container1} color="fresa" />
-        <Container id="container2" items={items.container2} color="vainilla" />
-        <Container id="container3" items={items.container3} color="fresa" />
+        <Container id="root" items={items.root} />
+        <Container id="container1" items={items.container1} />
+        <Container id="container2" items={items.container2} />
+        <Container id="container3" items={items.container3} />
         <DragOverlay>
           {activeId ? (
             <Item id={activeId} color={activeColor} isDragging />

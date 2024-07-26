@@ -6,14 +6,9 @@ import vainilla from "@images/vainilla.png";
 import fresa from "@images/fresa.png";
 
 export function Item(props) {
-  const { id, color, isDragging } = props;
+  const { color, isDragging } = props;
 
   const style = {
-    width: "100%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    margin: "10px 0",
     boxShadow: isDragging
       ? "rgb(63 63 68 / 5%) 0px 2px 0px 2px, rgb(34 33 81 / 15%) 0px 2px 3px 2px"
       : "rgb(63 63 68 / 5%) 0px 0px 0px 1px, rgb(34 33 81 / 15%) 0px 1px 3px 0px",
@@ -36,8 +31,15 @@ export function Item(props) {
   };
 
   return (
-    <div style={style}>
-      <img src={getColor(color)} alt="chocolate" />
+    <div
+      className={`w-full flex items-center justify-center my-2`}
+      style={style}
+    >
+      <img
+        src={getColor(color)}
+        alt="chocolate"
+        className="pointer-events-none"
+      />
     </div>
   );
 }

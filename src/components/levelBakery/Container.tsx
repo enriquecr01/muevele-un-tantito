@@ -1,11 +1,11 @@
 import React from "react";
-import { DragOverlay, useDroppable } from "@dnd-kit/core";
+import { useDroppable } from "@dnd-kit/core";
 import {
   SortableContext,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 
-import SortableConcha, { Item } from "./SortableConcha";
+import SortableConcha from "./SortableConcha";
 
 const containerStyle = {
   background: "#dadada",
@@ -15,11 +15,17 @@ const containerStyle = {
 };
 
 export default function Container(props) {
-  const { id, items, color } = props;
+  const { id, items } = props;
 
   const { setNodeRef } = useDroppable({
     id,
   });
+
+  function getColor(id: string) {
+    const splitedId = id.split("-");
+    const color = splitedId[0];
+    return color;
+  }
 
   return (
     <SortableContext
@@ -29,7 +35,7 @@ export default function Container(props) {
     >
       <div ref={setNodeRef} style={containerStyle}>
         {items.map((id) => (
-          <SortableConcha key={id} id={id} color={color} />
+          <SortableConcha key={id} id={id} color={getColor(id)} />
         ))}
       </div>
     </SortableContext>
