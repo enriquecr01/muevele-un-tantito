@@ -12,6 +12,7 @@ import {
 import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import Container from "@components/levelBakery/Container";
 import { Item } from "@components/levelBakery/SortableConcha";
+import putItem from "@sounds/putitem.mp3";
 
 export function LevelBakery() {
   const [items, setItems] = useState({
@@ -22,6 +23,8 @@ export function LevelBakery() {
   });
   const [activeId, setActiveId] = useState();
   const [activeColor, setActiveColor] = useState();
+
+  const putItemSound = new Audio(putItem);
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -133,6 +136,7 @@ export function LevelBakery() {
     }
 
     setActiveId(null);
+    putItemSound.play();
   }
 
   return (

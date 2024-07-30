@@ -9,9 +9,7 @@ export function Item(props) {
   const { color, isDragging } = props;
 
   const style = {
-    boxShadow: isDragging
-      ? "rgb(63 63 68 / 5%) 0px 2px 0px 2px, rgb(34 33 81 / 15%) 0px 2px 3px 2px"
-      : "rgb(63 63 68 / 5%) 0px 0px 0px 1px, rgb(34 33 81 / 15%) 0px 1px 3px 0px",
+    opacity: isDragging ? "0.5" : "1",
     transform: isDragging ? "scale(1.05)" : "scale(1)",
     cursor: isDragging ? "grabbing" : "grab",
   };
