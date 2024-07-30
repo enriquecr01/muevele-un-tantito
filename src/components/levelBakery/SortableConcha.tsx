@@ -4,6 +4,7 @@ import { CSS } from "@dnd-kit/utilities";
 import chocolate from "@images/chocolate.png";
 import vainilla from "@images/vainilla.png";
 import fresa from "@images/fresa.png";
+import "animate.css";
 
 export function Item(props) {
   const { color, isDragging } = props;
@@ -36,7 +37,9 @@ export function Item(props) {
       <img
         src={getColor(color)}
         alt="chocolate"
-        className="pointer-events-none"
+        className={`pointer-events-none ${
+          isDragging ? "animate__animated animate__swing" : ""
+        }`}
       />
     </div>
   );
