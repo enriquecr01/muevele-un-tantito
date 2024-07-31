@@ -16,10 +16,30 @@ import putItem from "@sounds/putitem.mp3";
 
 export function LevelBakery() {
   const [items, setItems] = useState({
-    root: ["chocolate-1", "chocolate-2", "chocolate-3"],
-    container1: ["vainilla-1", "vainilla-2", "vainilla-3"],
-    container2: ["fresa-1", "fresa-2", "fresa-3"],
-    container3: [],
+    chocolate: [
+      "chocolate-1",
+      "vainilla-3",
+      "fresa-1",
+      "fresa-5",
+      "vainilla-5",
+      "chocolate-4",
+    ],
+    vainilla: [
+      "chocolate-2",
+      "fresa-3",
+      "vainilla-2",
+      "fresa-4",
+      "vainilla-6",
+      "chocolate-5",
+    ],
+    fresa: [
+      "vainilla-1",
+      "fresa-2",
+      "chocolate-3",
+      "fresa-6",
+      "vainilla-4",
+      "chocolate-6",
+    ],
   });
   const [activeId, setActiveId] = useState();
   const [activeColor, setActiveColor] = useState();
@@ -148,10 +168,9 @@ export function LevelBakery() {
         onDragOver={handleDragOver}
         onDragEnd={handleDragEnd}
       >
-        <Container id="root" items={items.root} />
-        <Container id="container1" items={items.container1} />
-        <Container id="container2" items={items.container2} />
-        <Container id="container3" items={items.container3} />
+        <Container id="chocolate" items={items.chocolate} />
+        <Container id="vainilla" items={items.vainilla} />
+        <Container id="fresa" items={items.fresa} />
         <DragOverlay>
           {activeId ? (
             <Item id={activeId} color={activeColor} isDragging />

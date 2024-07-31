@@ -12,6 +12,8 @@ const containerStyle = {
   padding: 10,
   margin: 10,
   flex: 1,
+  display: "grid",
+  gridTemplateColumns: `repeat(2, 1fr)`,
 };
 
 export default function Container(props) {
