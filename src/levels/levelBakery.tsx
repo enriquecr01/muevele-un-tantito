@@ -6,6 +6,7 @@ import {
   DragOverlay,
   KeyboardSensor,
   PointerSensor,
+  TouchSensor,
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
@@ -13,6 +14,9 @@ import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import Container from "@components/levelBakery/Container";
 import { Item } from "@components/levelBakery/SortableConcha";
 import putItem from "@sounds/putitem.mp3";
+
+// https://stackoverflow.com/questions/76746110/dnd-kit-sortable-animation-is-triggering-twice-on-dragend
+// https://codesandbox.io/p/devbox/dnd-kit-twice-animation-qc6h52?file=%2Fsrc%2Fcomponents%2FItemSlot.tsx%3A54%2C18-54%2C28
 
 export function LevelBakery() {
   const [items, setItems] = useState({
@@ -47,6 +51,7 @@ export function LevelBakery() {
   const putItemSound = new Audio(putItem);
 
   const sensors = useSensors(
+    useSensor(TouchSensor),
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,

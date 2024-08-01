@@ -8,12 +8,13 @@ import {
 import SortableConcha from "./SortableConcha";
 
 const containerStyle = {
-  background: "#dadada",
   padding: 10,
   margin: 10,
   flex: 1,
   display: "grid",
   gridTemplateColumns: `repeat(2, 1fr)`,
+  minHeight: "700px",
+  minWidth: "430px",
 };
 
 export default function Container(props) {
@@ -35,10 +36,19 @@ export default function Container(props) {
       items={items}
       strategy={verticalListSortingStrategy}
     >
-      <div ref={setNodeRef} style={containerStyle}>
-        {items.map((id) => (
-          <SortableConcha key={id} id={id} color={getColor(id)} />
-        ))}
+      <div
+        className="bg-slate-500 rounded-xl border-black border-2 m-2 p-2"
+        style={{ minHeight: "700px", minWidth: "430px" }}
+      >
+        <div
+          className="bg-slate-300 rounded-xl border-black border-2"
+          ref={setNodeRef}
+          style={containerStyle}
+        >
+          {items.map((id) => (
+            <SortableConcha key={id} id={id} color={getColor(id)} />
+          ))}
+        </div>
       </div>
     </SortableContext>
   );
