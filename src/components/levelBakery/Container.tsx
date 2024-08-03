@@ -15,7 +15,7 @@ const containerStyle = {
   margin: 10,
   flex: 1,
   display: "grid",
-  gridTemplateColumns: `repeat(2, 1fr)`,
+  gridTemplateColumns: `repeat(6, 1fr)`,
   minHeight: "700px",
   minWidth: "430px",
 };
