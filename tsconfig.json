@@ -6,7 +6,9 @@
     "paths": {
       "@images/*": ["assets/images/*"],
       "@sounds/*": ["assets/sounds/*"],
-      "@components/*": ["components/*"]
+      "@components/*": ["components/*"],
+      "@utils/*": ["utils/*"],
+      "@win-conditions/*": ["utils/win-conditions/*"]
     }
   }
 }
