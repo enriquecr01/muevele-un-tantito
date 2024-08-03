@@ -1,7 +1,10 @@
 import React from "react";
 import { useDroppable } from "@dnd-kit/core";
 import {
+  rectSortingStrategy,
+  rectSwappingStrategy,
   SortableContext,
+  useSortable,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 
@@ -20,8 +23,10 @@ const containerStyle = {
 export default function Container(props) {
   const { id, items } = props;
 
-  const { setNodeRef } = useDroppable({
+  const { setNodeRef } = useSortable({
     id,
+    animateLayoutChanges: () => false,
+    transition: null,
   });
 
   function getColor(id: string) {
@@ -31,11 +36,7 @@ export default function Container(props) {
   }
 
   return (
-    <SortableContext
-      id={id}
-      items={items}
-      strategy={verticalListSortingStrategy}
-    >
+    <SortableContext id={id} items={items} strategy={rectSwappingStrategy}>
       <div
         className="bg-slate-500 rounded-xl border-black border-2 m-2 p-2"
         style={{ minHeight: "700px", minWidth: "430px" }}
