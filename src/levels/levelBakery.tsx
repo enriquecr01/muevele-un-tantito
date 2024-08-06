@@ -13,6 +13,10 @@ import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import Container from "@components/levelBakery/Container";
 import Concha from "@components/levelBakery/Concha";
 import putItem from "@sounds/putitem.mp3";
+import {
+  oneLineColorCondition,
+  twoVerticalLinesColorsCondition,
+} from "@win-conditions/levelBakery";
 
 export function LevelBakery() {
   const initialItems = [
@@ -85,9 +89,10 @@ export function LevelBakery() {
     setActiveColor(color);
   }
 
-  function handleDragEndTwo(event) {
+  async function handleDragEnd(event) {
     const { active, over } = event;
     const { id: overId } = over;
+    let win = false;
 
     if (activeId === overId) {
       return;
@@ -102,12 +107,14 @@ export function LevelBakery() {
       const overItem = items.find((x) => x === over.id)!;
       const overIdx = items.indexOf(overItem);
       //Yes, I know I could have used findIndex
-
       [newItems[activeIdx], newItems[overIdx]] = [
         newItems[overIdx],
         newItems[activeIdx],
       ];
 
+      win = oneLineColorCondition(newItems);
+      const win2 = twoVerticalLinesColorsCondition(newItems);
+      console.log(win2, newItems);
       return newItems;
     });
 
@@ -121,7 +128,7 @@ export function LevelBakery() {
         sensors={sensors}
         collisionDetection={closestCenter}
         onDragStart={handleDragStart}
-        onDragEnd={handleDragEndTwo}
+        onDragEnd={handleDragEnd}
       >
         <Container id="charola" items={items} />
         <DragOverlay transition={null}>
