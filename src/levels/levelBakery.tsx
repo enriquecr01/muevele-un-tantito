@@ -17,6 +17,8 @@ import {
   oneLineColorCondition,
   twoVerticalLinesColorsCondition,
 } from "@win-conditions/levelBakery";
+import { Helmet } from "react-helmet";
+import ScreenWin from "pages/screenWin";
 
 export function LevelBakery() {
   const initialItems = [
@@ -62,6 +64,7 @@ export function LevelBakery() {
   ]);
   const [activeId, setActiveId] = useState();
   const [activeColor, setActiveColor] = useState();
+  const [win, setWin] = useState(false);
 
   const putItemSound = new Audio(putItem);
 
@@ -113,30 +116,45 @@ export function LevelBakery() {
       ];
 
       win = oneLineColorCondition(newItems);
-      const win2 = twoVerticalLinesColorsCondition(newItems);
-      console.log(win2, newItems);
+      if (!win) {
+        win = twoVerticalLinesColorsCondition(newItems);
+      }
+
+      if (win) {
+        setTimeout(() => {
+          setWin(win);
+        }, 2000);
+      }
+
+      setActiveId(null);
+      putItemSound.play();
       return newItems;
     });
-
-    setActiveId(null);
-    putItemSound.play();
   }
 
   return (
-    <div className="flex flex-row">
-      <DndContext
-        sensors={sensors}
-        collisionDetection={closestCenter}
-        onDragStart={handleDragStart}
-        onDragEnd={handleDragEnd}
-      >
-        <Container id="charola" items={items} />
-        <DragOverlay transition={null}>
-          {activeId ? (
-            <Concha id={activeId} color={activeColor} isDragging />
-          ) : null}
-        </DragOverlay>
-      </DndContext>
-    </div>
+    <>
+      <Helmet>
+        <title>¡Muévele Tantito! | Panadería</title>
+      </Helmet>
+      {win && <ScreenWin />}
+      {!win && (
+        <div className="flex flex-row">
+          <DndContext
+            sensors={sensors}
+            collisionDetection={closestCenter}
+            onDragStart={handleDragStart}
+            onDragEnd={handleDragEnd}
+          >
+            <Container id="charola" items={items} />
+            <DragOverlay transition={null}>
+              {activeId ? (
+                <Concha id={activeId} color={activeColor} isDragging />
+              ) : null}
+            </DragOverlay>
+          </DndContext>
+        </div>
+      )}
+    </>
   );
 }

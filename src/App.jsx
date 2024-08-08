@@ -4,7 +4,7 @@
 import "./App.css";
 
 import { LevelBakery } from "./levels/LevelBakery";
-import MainMenu from "./levels/mainMenu";
+import MainMenu from "./pages/mainMenu";
 import Example from "./example";
 import Wachar from "./components/wachar";
 
