@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
   closestCenter,
+  closestCorners,
   DndContext,
   DragOverlay,
   KeyboardSensor,
@@ -19,6 +20,7 @@ import {
 } from "@win-conditions/levelBakery";
 import { Helmet } from "react-helmet";
 import ScreenWin from "pages/screenWin";
+import "animate.css";
 
 export function LevelBakery() {
   const initialItems = [
@@ -65,6 +67,7 @@ export function LevelBakery() {
   const [activeId, setActiveId] = useState();
   const [activeColor, setActiveColor] = useState();
   const [win, setWin] = useState(false);
+  const [removeLevel, setRemoveLevel] = useState(false);
 
   const putItemSound = new Audio(putItem);
 
@@ -122,6 +125,9 @@ export function LevelBakery() {
 
       if (win) {
         setTimeout(() => {
+          setRemoveLevel(true);
+        }, 1000);
+        setTimeout(() => {
           setWin(win);
         }, 2000);
       }
@@ -137,12 +143,22 @@ export function LevelBakery() {
       <Helmet>
         <title>¡Muévele Tantito! | Panadería</title>
       </Helmet>
-      {win && <ScreenWin />}
+      {win && (
+        <div
+          className={`${win ? "animate__animated animate__jackInTheBox" : ""}`}
+        >
+          <ScreenWin />
+        </div>
+      )}
       {!win && (
-        <div className="flex flex-row">
+        <div
+          className={`flex flex-row overflow-hidden ${
+            removeLevel ? "animate__animated animate__fadeOutDown" : ""
+          }`}
+        >
           <DndContext
             sensors={sensors}
-            collisionDetection={closestCenter}
+            collisionDetection={closestCorners}
             onDragStart={handleDragStart}
             onDragEnd={handleDragEnd}
           >
