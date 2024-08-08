@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  closestCenter,
   closestCorners,
   DndContext,
   DragOverlay,
@@ -152,7 +151,7 @@ export function LevelBakery() {
       )}
       {!win && (
         <div
-          className={`flex flex-row overflow-hidden ${
+          className={`flex flex-column justify-center overflow-hidden ${
             removeLevel ? "animate__animated animate__fadeOutDown" : ""
           }`}
         >

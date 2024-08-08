@@ -1,11 +1,8 @@
 import React from "react";
-import { useDroppable } from "@dnd-kit/core";
 import {
-  rectSortingStrategy,
   rectSwappingStrategy,
   SortableContext,
   useSortable,
-  verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 
 import SortableConcha from "./SortableConcha";
@@ -16,8 +13,6 @@ const containerStyle = {
   flex: 1,
   display: "grid",
   gridTemplateColumns: `repeat(6, 1fr)`,
-  minHeight: "700px",
-  minWidth: "430px",
 };
 
 export default function Container(props) {
@@ -37,10 +32,7 @@ export default function Container(props) {
 
   return (
     <SortableContext id={id} items={items} strategy={rectSwappingStrategy}>
-      <div
-        className="bg-slate-500 rounded-xl border-black border-2 m-2 p-2"
-        style={{ minHeight: "700px", minWidth: "430px" }}
-      >
+      <div className="bg-slate-500 rounded-xl border-black border-2 m-2 p-2">
         <div
           className="bg-slate-300 rounded-xl border-black border-2"
           ref={setNodeRef}

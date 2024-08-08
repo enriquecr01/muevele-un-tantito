@@ -29,7 +29,7 @@ export default function Item(props) {
 
   return (
     <div
-      className={`w-full flex items-center justify-center my-2`}
+      className={`w-full flex items-center justify-center my-2 touch-none`}
       style={style}
     >
       <img
