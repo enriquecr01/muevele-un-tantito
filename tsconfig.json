@@ -8,7 +8,8 @@
       "@sounds/*": ["assets/sounds/*"],
       "@components/*": ["components/*"],
       "@utils/*": ["utils/*"],
-      "@win-conditions/*": ["utils/win-conditions/*"]
+      "@win-conditions/*": ["utils/win-conditions/*"],
+      "@mocks/*": ["mocks/*"]
     }
   }
 }

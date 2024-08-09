@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   closestCorners,
   DndContext,
@@ -20,55 +20,22 @@ import {
 import { Helmet } from "react-helmet";
 import ScreenWin from "pages/screenWin";
 import "animate.css";
+import { shuffleArray } from "@utils/arrays";
+import { initialConchas } from "@mocks/levelBakery";
 
 export function LevelBakery() {
-  const initialItems = [
-    "chocolate-1",
-    "chocolate-4",
-    "chocolate-2",
-    "chocolate-5",
-    "chocolate-6",
-    "chocolate-3",
-    "vainilla-3",
-    "vainilla-5",
-    "vainilla-2",
-    "vainilla-6",
-    "vainilla-1",
-    "vainilla-4",
-    "fresa-5",
-    "fresa-4",
-    "fresa-1",
-    "fresa-3",
-    "fresa-2",
-    "fresa-6",
-  ];
-
-  const [items, setItems] = useState([
-    "chocolate-4",
-    "vainilla-4",
-    "vainilla-3",
-    "chocolate-2",
-    "fresa-2",
-    "chocolate-3",
-    "chocolate-6",
-    "vainilla-5",
-    "fresa-1",
-    "vainilla-6",
-    "vainilla-1",
-    "fresa-5",
-    "fresa-4",
-    "chocolate-5",
-    "fresa-3",
-    "chocolate-1",
-    "vainilla-2",
-    "fresa-6",
-  ]);
+  const [items, setItems] = useState<string[]>([]);
   const [activeId, setActiveId] = useState();
   const [activeColor, setActiveColor] = useState();
-  const [win, setWin] = useState(false);
-  const [removeLevel, setRemoveLevel] = useState(false);
+  const [win, setWin] = useState<boolean>(false);
+  const [removeLevel, setRemoveLevel] = useState<boolean>(false);
 
   const putItemSound = new Audio(putItem);
+
+  useEffect(() => {
+    const shuffledConchas = shuffleArray(initialConchas);
+    setItems(shuffledConchas);
+  }, [setItems]);
 
   const sensors = useSensors(
     useSensor(TouchSensor, {
@@ -151,7 +118,7 @@ export function LevelBakery() {
       )}
       {!win && (
         <div
-          className={`flex flex-column justify-center overflow-hidden ${
+          className={`flex flex-column justify-center items-center overflow-hidden h-screen  ${
             removeLevel ? "animate__animated animate__fadeOutDown" : ""
           }`}
         >

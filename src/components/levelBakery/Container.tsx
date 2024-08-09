@@ -32,7 +32,7 @@ export default function Container(props) {
 
   return (
     <SortableContext id={id} items={items} strategy={rectSwappingStrategy}>
-      <div className="bg-slate-500 rounded-xl border-black border-2 m-2 p-2">
+      <div className="bg-slate-500 rounded-xl border-black border-2 m-2">
         <div
           className="bg-slate-300 rounded-xl border-black border-2"
           ref={setNodeRef}
