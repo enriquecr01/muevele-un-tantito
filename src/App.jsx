@@ -4,6 +4,7 @@
 import "./App.css";
 
 import { LevelBakery } from "./levels/LevelBakery";
+import { LevelClayCraft } from "./levels/levelClayCraft";
 import MainMenu from "./pages/mainMenu";
 import Example from "./example";
 import Wachar from "./components/wachar";
@@ -16,7 +17,8 @@ function App() {
       {/* <h1 className="text-xl font-bold underline bg-amber-100">Hello world!</h1> */}
       {/* <Example></Example> */}
       {/* <MainMenu></MainMenu> */}
-      <LevelBakery></LevelBakery>
+      {/* <LevelBakery></LevelBakery> */}
+      <LevelClayCraft></LevelClayCraft>
       {/* <Wachar></Wachar> */}
 
       {/* <div>
