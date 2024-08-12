@@ -17,8 +17,16 @@ import "animate.css";
 import { shuffleArray } from "@utils/arrays";
 import { initialConchas } from "@mocks/levelBakery";
 
-export default function CantaritoRack() {
-  const [cantaritos, setCantaritos] = useState<number[]>([1, 2, 3]);
+type CantaritoRackProps = {
+  cantaritosArray: number[];
+  callback: (param: number[]) => void;
+};
+
+export default function CantaritoRack({
+  cantaritosArray,
+  callback,
+}: CantaritoRackProps) {
+  const [cantaritos, setCantaritos] = useState<number[]>(cantaritosArray);
   const [activeId, setActiveId] = useState();
 
   const putItemSound = new Audio(putItem);
@@ -69,6 +77,8 @@ export default function CantaritoRack() {
         newItems[overIdx],
         newItems[activeIdx],
       ];
+
+      callback(newItems);
 
       setActiveId(null);
       putItemSound.play();

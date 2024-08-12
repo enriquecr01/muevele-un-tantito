@@ -17,8 +17,13 @@ import "animate.css";
 import { shuffleArray } from "@utils/arrays";
 import { initialConchas } from "@mocks/levelBakery";
 
-export default function PlatoRack() {
-  const [platos, setPlatos] = useState<number[]>([1, 2, 3]);
+type PlatoRackProps = {
+  platosArray: number[];
+  callback: (param: number[]) => void;
+};
+
+export default function PlatoRack({ platosArray, callback }: PlatoRackProps) {
+  const [platos, setPlatos] = useState<number[]>(platosArray);
   const [activeId, setActiveId] = useState();
 
   const putItemSound = new Audio(putItem);
@@ -69,6 +74,7 @@ export default function PlatoRack() {
         newItems[overIdx],
         newItems[activeIdx],
       ];
+      callback(newItems);
 
       setActiveId(null);
       putItemSound.play();

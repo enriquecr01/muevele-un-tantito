@@ -17,8 +17,13 @@ import "animate.css";
 import { shuffleArray } from "@utils/arrays";
 import { initialConchas } from "@mocks/levelBakery";
 
-export default function OllaRack() {
-  const [ollas, setOllas] = useState<number[]>([1, 2, 3]);
+type OllaRackProps = {
+  ollasArray: number[];
+  callback: (param: number[]) => void;
+};
+
+export default function OllaRack({ ollasArray, callback }: OllaRackProps) {
+  const [ollas, setOllas] = useState<number[]>(ollasArray);
   const [activeId, setActiveId] = useState();
 
   const putItemSound = new Audio(putItem);
@@ -69,6 +74,8 @@ export default function OllaRack() {
         newItems[overIdx],
         newItems[activeIdx],
       ];
+
+      callback(newItems);
 
       setActiveId(null);
       putItemSound.play();
