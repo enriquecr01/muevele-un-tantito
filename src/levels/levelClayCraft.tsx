@@ -22,6 +22,9 @@ import ScreenWin from "pages/screenWin";
 import "animate.css";
 import { shuffleArray } from "@utils/arrays";
 import { initialConchas } from "@mocks/levelBakery";
+import CantaritoRack from "@components/levelClayCraft/cantarito/CantaritoRack";
+import OllaRack from "@components/levelClayCraft/olla/OllaRack";
+import PlatoRack from "@components/levelClayCraft/plato/PlatoRack";
 
 export function LevelClayCraft() {
   const [cantaritos, setCantaritos] = useState<number[]>([]);
@@ -125,7 +128,10 @@ export function LevelClayCraft() {
               removeLevel ? "animate__animated animate__fadeOutDown" : ""
             }`}
           >
-            <DndContext
+            <CantaritoRack />
+            <OllaRack />
+            <PlatoRack />
+            {/* <DndContext
               sensors={sensors}
               collisionDetection={closestCorners}
               onDragStart={handleDragStart}
@@ -137,26 +143,7 @@ export function LevelClayCraft() {
                   <Concha id={activeId} color={activeColor} isDragging />
                 ) : null}
               </DragOverlay>
-            </DndContext>
-          </div>
-          <div
-            className={`flex flex-column justify-center items-center overflow-hidden h-screen  ${
-              removeLevel ? "animate__animated animate__fadeOutDown" : ""
-            }`}
-          >
-            <DndContext
-              sensors={sensors}
-              collisionDetection={closestCorners}
-              onDragStart={handleDragStart}
-              onDragEnd={handleDragEnd}
-            >
-              <Container id="charola" items={items} />
-              <DragOverlay transition={null}>
-                {activeId ? (
-                  <Concha id={activeId} color={activeColor} isDragging />
-                ) : null}
-              </DragOverlay>
-            </DndContext>
+            </DndContext> */}
           </div>
         </>
       )}
