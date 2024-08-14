@@ -46,12 +46,21 @@ export function LevelClayCraft() {
               removeLevel ? "animate__animated animate__fadeOutDown" : ""
             }`}
           >
-            <CantaritoRack
-              callback={handleSetCantaritos}
-              cantaritosArray={initialCantaritos}
-            />
-            <OllaRack callback={handleSetOllas} ollasArray={initialOllas} />
-            <PlatoRack callback={handleSetPlatos} platosArray={initialPlatos} />
+            <div className="flex flex-col justify-start border-black border-2 rounded">
+              <div className="flex flex-row">
+                <CantaritoRack
+                  callback={handleSetCantaritos}
+                  cantaritosArray={initialCantaritos}
+                />
+                <PlatoRack
+                  callback={handleSetPlatos}
+                  platosArray={initialPlatos}
+                />
+              </div>
+              <div>
+                <OllaRack callback={handleSetOllas} ollasArray={initialOllas} />
+              </div>
+            </div>
           </div>
         </>
       )}

@@ -18,9 +18,9 @@ export default function CantaritoContainer(props) {
 
   return (
     <SortableContext id={id} items={items} strategy={rectSwappingStrategy}>
-      <div className="bg-slate-500 rounded-xl border-black border-2 m-2">
+      <div className="bg-amber-700 border-transparent border-2">
         <div
-          className="bg-slate-300 rounded-xl border-black border-2 p-2.5 m-2.5 flex flex-row"
+          className="bg-yellow-900 rounded border-black border-2 m-2.5 flex flex-row"
           ref={setNodeRef}
         >
           {items.map((id) => (
