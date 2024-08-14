@@ -57,7 +57,7 @@ export default function OllaRack({ ollasArray, callback }: OllaRackProps) {
     const { active, over } = event;
     const { id: overId } = over;
 
-    if (activeId === overId) {
+    if (activeId === overId || overId === "ollas") {
       return;
     }
 
@@ -92,7 +92,7 @@ export default function OllaRack({ ollasArray, callback }: OllaRackProps) {
           onDragStart={handleDragStart}
           onDragEnd={handleDragEnd}
         >
-          <OllaContainer id="charola" items={ollas} />
+          <OllaContainer id="ollas" items={ollas} />
           <DragOverlay transition={null}>
             {activeId ? (
               <Olla id={activeId} size={activeId} isDragging />

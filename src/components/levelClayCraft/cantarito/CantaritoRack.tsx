@@ -60,7 +60,7 @@ export default function CantaritoRack({
     const { active, over } = event;
     const { id: overId } = over;
 
-    if (activeId === overId) {
+    if (activeId === overId || overId === "cantaritos") {
       return;
     }
 
@@ -95,7 +95,7 @@ export default function CantaritoRack({
           onDragStart={handleDragStart}
           onDragEnd={handleDragEnd}
         >
-          <CantaritoContainer id="charola" items={cantaritos} />
+          <CantaritoContainer id="cantaritos" items={cantaritos} />
           <DragOverlay transition={null}>
             {activeId ? (
               <Cantarito id={activeId} size={activeId} isDragging />

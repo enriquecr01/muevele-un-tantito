@@ -57,7 +57,7 @@ export default function PlatoRack({ platosArray, callback }: PlatoRackProps) {
     const { active, over } = event;
     const { id: overId } = over;
 
-    if (activeId === overId) {
+    if (activeId === overId || overId === "platos") {
       return;
     }
 
@@ -91,7 +91,7 @@ export default function PlatoRack({ platosArray, callback }: PlatoRackProps) {
           onDragStart={handleDragStart}
           onDragEnd={handleDragEnd}
         >
-          <PlatoContainer id="charola" items={platos} />
+          <PlatoContainer id="platos" items={platos} />
           <DragOverlay transition={null}>
             {activeId ? (
               <Plato id={activeId} size={activeId} isDragging />
