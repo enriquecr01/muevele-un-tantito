@@ -10,21 +10,40 @@ import {
 import CantaritoRack from "@components/levelClayCraft/cantarito/CantaritoRack";
 import OllaRack from "@components/levelClayCraft/olla/OllaRack";
 import PlatoRack from "@components/levelClayCraft/plato/PlatoRack";
+import { verifyWin } from "@utils/win-conditions/levelClayCraft";
 
 export function LevelClayCraft() {
   const [win, setWin] = useState<boolean>(false);
   const [removeLevel, setRemoveLevel] = useState<boolean>(false);
+  let cantaritosArray = initialCantaritos;
+  let ollasArray = initialOllas;
+  let platosArray = initialPlatos;
 
   const handleSetCantaritos = (cantaritos) => {
-    console.log(cantaritos);
+    cantaritosArray = cantaritos;
+    handleVerifyWin();
   };
 
   const handleSetOllas = (ollas) => {
-    console.log(ollas);
+    ollasArray = ollas;
+    handleVerifyWin();
   };
 
   const handleSetPlatos = (platos) => {
-    console.log(platos);
+    platosArray = platos;
+    handleVerifyWin();
+  };
+
+  const handleVerifyWin = () => {
+    const win = verifyWin(cantaritosArray, ollasArray, platosArray);
+    if (win) {
+      setTimeout(() => {
+        setRemoveLevel(true);
+      }, 1000);
+      setTimeout(() => {
+        setWin(win);
+      }, 2000);
+    }
   };
 
   return (
