@@ -11,6 +11,7 @@ import CantaritoRack from "@components/levelClayCraft/cantarito/CantaritoRack";
 import OllaRack from "@components/levelClayCraft/olla/OllaRack";
 import PlatoRack from "@components/levelClayCraft/plato/PlatoRack";
 import { verifyWin } from "@utils/win-conditions/levelClayCraft";
+import talaveraPattern from "@images/talavera-pattern.jpg";
 
 export function LevelClayCraft() {
   const [win, setWin] = useState<boolean>(false);
@@ -46,6 +47,13 @@ export function LevelClayCraft() {
     }
   };
 
+  const talavera = {
+    backgroundColor: "#422006",
+    backgroundImage: `url(${talaveraPattern})`,
+    perspective: "1000px",
+    backgroundSize: "170px",
+  };
+
   return (
     <>
       <Helmet>
@@ -61,10 +69,11 @@ export function LevelClayCraft() {
       {!win && (
         <>
           <div
-            className={`flex flex-column justify-center items-center overflow-hidden h-screen  ${
+            className={`flex flex-col justify-center items-center overflow-hidden h-screen bg-yellow-950 ${
               removeLevel ? "animate__animated animate__fadeOutDown" : ""
             }`}
           >
+            <div className="flex flex-grow"></div>
             <div className="flex flex-col justify-start border-black border-2 rounded">
               <div className="flex flex-row">
                 <CantaritoRack
@@ -80,6 +89,7 @@ export function LevelClayCraft() {
                 <OllaRack callback={handleSetOllas} ollasArray={initialOllas} />
               </div>
             </div>
+            <div className="flex flex-grow w-full" style={talavera}></div>
           </div>
         </>
       )}
