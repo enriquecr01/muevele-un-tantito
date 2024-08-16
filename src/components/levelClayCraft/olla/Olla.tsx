@@ -2,6 +2,9 @@ import React from "react";
 import olla1 from "@images/olla-1.png";
 import olla2 from "@images/olla-2.png";
 import olla3 from "@images/olla-3.png";
+import olla4 from "@images/olla-4.png";
+import olla5 from "@images/olla-5.png";
+import olla6 from "@images/olla-6.png";
 import "animate.css";
 
 export default function Olla(props) {
@@ -14,16 +17,19 @@ export default function Olla(props) {
   };
 
   const getOllaSize = (size) => {
-    if (size === 1) {
-      return olla1;
-    }
-
-    if (size === 2) {
-      return olla2;
-    }
-
-    if (size === 3) {
-      return olla3;
+    switch (size) {
+      case 1:
+        return olla1;
+      case 2:
+        return olla2;
+      case 3:
+        return olla3;
+      case 4:
+        return olla4;
+      case 5:
+        return olla5;
+      case 6:
+        return olla6;
     }
   };
 

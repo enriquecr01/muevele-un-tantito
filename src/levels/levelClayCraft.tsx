@@ -74,7 +74,7 @@ export function LevelClayCraft() {
             }`}
           >
             <div className="flex flex-grow"></div>
-            <div className="flex flex-col justify-start border-black border-2 rounded">
+            <div className="flex flex-col justify-start border-black border-2 rounded max-w-screen-xl">
               <div className="flex flex-row">
                 <CantaritoRack
                   callback={handleSetCantaritos}

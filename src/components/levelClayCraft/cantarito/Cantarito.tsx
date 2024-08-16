@@ -2,6 +2,7 @@ import React from "react";
 import cantarito1 from "@images/cantarito-1.png";
 import cantarito2 from "@images/cantarito-2.png";
 import cantarito3 from "@images/cantarito-3.png";
+import cantarito4 from "@images/cantarito-4.png";
 import "animate.css";
 
 export default function Cantarito(props) {
@@ -14,16 +15,15 @@ export default function Cantarito(props) {
   };
 
   const getCantaritoSize = (size) => {
-    if (size === 1) {
-      return cantarito1;
-    }
-
-    if (size === 2) {
-      return cantarito2;
-    }
-
-    if (size === 3) {
-      return cantarito3;
+    switch (size) {
+      case 1:
+        return cantarito1;
+      case 2:
+        return cantarito2;
+      case 3:
+        return cantarito3;
+      case 4:
+        return cantarito4;
     }
   };
 

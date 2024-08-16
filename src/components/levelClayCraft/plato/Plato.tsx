@@ -2,6 +2,7 @@ import React from "react";
 import plato1 from "@images/plato-1.png";
 import plato2 from "@images/plato-2.png";
 import plato3 from "@images/plato-3.png";
+import plato4 from "@images/plato-4.png";
 import "animate.css";
 
 export default function Plato(props) {
@@ -14,16 +15,15 @@ export default function Plato(props) {
   };
 
   const getPlatoSize = (size) => {
-    if (size === 1) {
-      return plato1;
-    }
-
-    if (size === 2) {
-      return plato2;
-    }
-
-    if (size === 3) {
-      return plato3;
+    switch (size) {
+      case 1:
+        return plato1;
+      case 2:
+        return plato2;
+      case 3:
+        return plato3;
+      case 4:
+        return plato4;
     }
   };
 
