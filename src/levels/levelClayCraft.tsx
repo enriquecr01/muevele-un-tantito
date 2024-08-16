@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import ScreenWin from "pages/screenWin";
 import "animate.css";
@@ -12,13 +12,14 @@ import OllaRack from "@components/levelClayCraft/olla/OllaRack";
 import PlatoRack from "@components/levelClayCraft/plato/PlatoRack";
 import { verifyWin } from "@utils/win-conditions/levelClayCraft";
 import talaveraPattern from "@images/talavera-pattern.jpg";
+import { shuffleAndVerifyArraysAreNotSorted } from "@utils/arrays";
 
 export function LevelClayCraft() {
   const [win, setWin] = useState<boolean>(false);
   const [removeLevel, setRemoveLevel] = useState<boolean>(false);
-  let cantaritosArray = initialCantaritos;
-  let ollasArray = initialOllas;
-  let platosArray = initialPlatos;
+  let cantaritosArray = shuffleAndVerifyArraysAreNotSorted(initialCantaritos);
+  let ollasArray = shuffleAndVerifyArraysAreNotSorted(initialOllas);
+  let platosArray = shuffleAndVerifyArraysAreNotSorted(initialPlatos);
 
   const handleSetCantaritos = (cantaritos) => {
     cantaritosArray = cantaritos;

@@ -25,3 +25,12 @@ export function checkSortedDescending(array) {
     const sortArray = sortDescendingArray([...array]);
     return JSON.stringify(array) === JSON.stringify(sortArray);
 }
+
+export function shuffleAndVerifyArraysAreNotSorted(array) {
+    const arrayShuffled = shuffleArray(array);
+
+    if (checkSortedAscending(array)) shuffleAndVerifyArraysAreNotSorted(array);
+    if (checkSortedDescending(array)) shuffleAndVerifyArraysAreNotSorted(array);
+
+    return arrayShuffled;
+}
