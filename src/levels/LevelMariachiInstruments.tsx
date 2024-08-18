@@ -10,8 +10,8 @@ import {
   useSensors,
 } from "@dnd-kit/core";
 import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
-import Container from "@components/levelBakery/Container";
-import Concha from "@components/levelBakery/Concha";
+import Container from "@components/levelMariachiInstruments/Container";
+import Instrument from "@components/levelMariachiInstruments/Instrument";
 import putItem from "@sounds/putitem.mp3";
 import {
   oneLineColorCondition,
@@ -24,18 +24,24 @@ import { shuffleArray } from "@utils/arrays";
 import { initialConchas } from "@mocks/levelBakery";
 
 export function LevelMariachiInstruments() {
-  const [items, setItems] = useState<string[]>([]);
+  const [items, setItems] = useState<string[]>([
+    "trompeta",
+    "vihuela",
+    "acordeon",
+    "guitarra",
+    "guitarron",
+    "violin",
+  ]);
   const [activeId, setActiveId] = useState();
-  const [activeColor, setActiveColor] = useState();
   const [win, setWin] = useState<boolean>(false);
   const [removeLevel, setRemoveLevel] = useState<boolean>(false);
 
   const putItemSound = new Audio(putItem);
 
-  useEffect(() => {
-    const shuffledConchas = shuffleArray(initialConchas);
-    setItems(shuffledConchas);
-  }, [setItems]);
+  // useEffect(() => {
+  //   const shuffledConchas = shuffleArray(initialConchas);
+  //   setItems(shuffledConchas);
+  // }, [setItems]);
 
   const sensors = useSensors(
     useSensor(TouchSensor, {
@@ -54,11 +60,7 @@ export function LevelMariachiInstruments() {
     const { active } = event;
     const { id } = active;
 
-    const splitedId = id.split("-");
-    const color = splitedId[0];
-
     setActiveId(id);
-    setActiveColor(color);
   }
 
   async function handleDragEnd(event) {
@@ -104,6 +106,11 @@ export function LevelMariachiInstruments() {
     });
   }
 
+  const style = {
+    background:
+      "radial-gradient(circle, rgba(19,19,255,1) 0%, rgba(6,9,205,1) 37%, rgba(16,22,159,1) 100%)",
+  };
+
   return (
     <>
       <Helmet>
@@ -118,9 +125,10 @@ export function LevelMariachiInstruments() {
       )}
       {!win && (
         <div
-          className={`flex flex-column justify-center items-center overflow-hidden h-screen  ${
+          className={`flex flex-column justify-center items-center overflow-hidden h-screen bg-[#008dff]  ${
             removeLevel ? "animate__animated animate__fadeOutDown" : ""
           }`}
+          style={style}
         >
           <DndContext
             sensors={sensors}
@@ -131,7 +139,7 @@ export function LevelMariachiInstruments() {
             <Container id="charola" items={items} />
             <DragOverlay transition={null}>
               {activeId ? (
-                <Concha id={activeId} color={activeColor} isDragging />
+                <Instrument id={activeId} instrument={activeId} isDragging />
               ) : null}
             </DragOverlay>
           </DndContext>

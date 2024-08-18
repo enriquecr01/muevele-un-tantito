@@ -24,22 +24,12 @@ export default function Container(props) {
     transition: null,
   });
 
-  function getColor(id: string) {
-    const splitedId = id.split("-");
-    const color = splitedId[0];
-    return color;
-  }
-
   return (
     <SortableContext id={id} items={items} strategy={rectSwappingStrategy}>
-      <div className="bg-slate-500 rounded-xl border-black border-2 m-2">
-        <div
-          className="bg-slate-300 rounded-xl border-black border-2"
-          ref={setNodeRef}
-          style={containerStyle}
-        >
+      <div>
+        <div ref={setNodeRef} style={containerStyle}>
           {items.map((id) => (
-            <SortableInstrument key={id} id={id} color={getColor(id)} />
+            <SortableInstrument key={id} id={id} instrument={id} />
           ))}
         </div>
       </div>

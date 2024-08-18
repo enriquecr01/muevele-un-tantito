@@ -1,11 +1,14 @@
 import React from "react";
-import chocolate from "@images/chocolate.png";
-import vainilla from "@images/vainilla.png";
-import fresa from "@images/fresa.png";
+import trompeta from "@images/trompeta.png";
+import vihuela from "@images/vihuela.png";
+import acordeon from "@images/acordeon.png";
+import guitarra from "@images/guitarra.png";
+import guitarron from "@images/guitarron.png";
+import violin from "@images/violin.png";
 import "animate.css";
 
 export default function Instrument(props) {
-  const { color, isDragging } = props;
+  const { instrument, isDragging } = props;
 
   const style = {
     opacity: isDragging ? "0.5" : "1",
@@ -13,17 +16,20 @@ export default function Instrument(props) {
     cursor: isDragging ? "grabbing" : "grab",
   };
 
-  const getColor = (color) => {
-    if (color === "chocolate") {
-      return chocolate;
-    }
-
-    if (color === "vainilla") {
-      return vainilla;
-    }
-
-    if (color === "fresa") {
-      return fresa;
+  const getInstrument = (instrument) => {
+    switch (instrument) {
+      case "trompeta":
+        return trompeta;
+      case "vihuela":
+        return vihuela;
+      case "acordeon":
+        return acordeon;
+      case "guitarra":
+        return guitarra;
+      case "guitarron":
+        return guitarron;
+      case "violin":
+        return violin;
     }
   };
 
@@ -33,8 +39,8 @@ export default function Instrument(props) {
       style={style}
     >
       <img
-        src={getColor(color)}
-        alt="chocolate"
+        src={getInstrument(instrument)}
+        alt={instrument}
         className={`pointer-events-none ${
           isDragging ? "animate__animated animate__swing" : ""
         }`}
