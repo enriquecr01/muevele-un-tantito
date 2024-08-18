@@ -13,35 +13,33 @@ import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import Container from "@components/levelMariachiInstruments/Container";
 import Instrument from "@components/levelMariachiInstruments/Instrument";
 import putItem from "@sounds/putitem.mp3";
-import {
-  oneLineColorCondition,
-  twoVerticalLinesColorsCondition,
-} from "@win-conditions/levelBakery";
 import { Helmet } from "react-helmet";
 import ScreenWin from "pages/screenWin";
 import "animate.css";
 import { shuffleArray } from "@utils/arrays";
-import { initialConchas } from "@mocks/levelBakery";
+import { verifyWin } from "@utils/win-conditions/levelMariachiInstruments";
+import { initialInstruments } from "@mocks/levelMariachiInstruments";
 
 export function LevelMariachiInstruments() {
-  const [items, setItems] = useState<string[]>([
-    "trompeta",
-    "vihuela",
-    "acordeon",
-    "guitarra",
-    "guitarron",
-    "violin",
-  ]);
+  const [items, setItems] = useState<string[]>([]);
   const [activeId, setActiveId] = useState();
   const [win, setWin] = useState<boolean>(false);
   const [removeLevel, setRemoveLevel] = useState<boolean>(false);
 
   const putItemSound = new Audio(putItem);
 
-  // useEffect(() => {
-  //   const shuffledConchas = shuffleArray(initialConchas);
-  //   setItems(shuffledConchas);
-  // }, [setItems]);
+  function shuffleArrayAndVerify(array) {
+    const arrayShuffled = shuffleArray(array);
+
+    if (verifyWin(arrayShuffled)) shuffleArrayAndVerify(array);
+
+    return arrayShuffled;
+  }
+
+  useEffect(() => {
+    const shuffledConchas = shuffleArrayAndVerify(initialInstruments);
+    setItems(shuffledConchas);
+  }, [setItems]);
 
   const sensors = useSensors(
     useSensor(TouchSensor, {
@@ -86,10 +84,7 @@ export function LevelMariachiInstruments() {
         newItems[activeIdx],
       ];
 
-      win = oneLineColorCondition(newItems);
-      if (!win) {
-        win = twoVerticalLinesColorsCondition(newItems);
-      }
+      win = verifyWin(newItems);
 
       if (win) {
         setTimeout(() => {
@@ -136,7 +131,7 @@ export function LevelMariachiInstruments() {
             onDragStart={handleDragStart}
             onDragEnd={handleDragEnd}
           >
-            <Container id="charola" items={items} />
+            <Container id="container" items={items} />
             <DragOverlay transition={null}>
               {activeId ? (
                 <Instrument id={activeId} instrument={activeId} isDragging />
