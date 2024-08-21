@@ -18,12 +18,17 @@ import {
   twoVerticalLinesColorsCondition,
 } from "@win-conditions/levelBakery";
 import { Helmet } from "react-helmet";
-import ScreenWin from "pages/screenWin";
+import ScreenWin from "pages/ScreenWin";
 import "animate.css";
 import { shuffleArray } from "@utils/arrays";
 import { initialConchas } from "@mocks/levelBakery";
+import { NavigationHelper } from "@utils/components/Navigation/NavigationContainer";
 
-export function LevelBakery() {
+type LevelBakeryProps = {
+  navigation?: NavigationHelper;
+};
+
+export function LevelBakery({ navigation }: LevelBakeryProps) {
   const [items, setItems] = useState<string[]>([]);
   const [activeId, setActiveId] = useState();
   const [activeColor, setActiveColor] = useState();
@@ -113,7 +118,7 @@ export function LevelBakery() {
         <div
           className={`${win ? "animate__animated animate__jackInTheBox" : ""}`}
         >
-          <ScreenWin />
+          <ScreenWin nextLevel="LevelBakery" navigation={navigation} />
         </div>
       )}
       {!win && (

@@ -14,13 +14,20 @@ import Container from "@components/levelMariachiInstruments/Container";
 import Instrument from "@components/levelMariachiInstruments/Instrument";
 import putItem from "@sounds/putitem.mp3";
 import { Helmet } from "react-helmet";
-import ScreenWin from "pages/screenWin";
+import ScreenWin from "pages/ScreenWin";
 import "animate.css";
 import { shuffleArray } from "@utils/arrays";
 import { verifyWin } from "@utils/win-conditions/levelMariachiInstruments";
 import { initialInstruments } from "@mocks/levelMariachiInstruments";
+import { NavigationHelper } from "@utils/components/Navigation/NavigationContainer";
 
-export function LevelMariachiInstruments() {
+type LevelMariachiInstrumentsProps = {
+  navigation?: NavigationHelper;
+};
+
+export function LevelMariachiInstruments({
+  navigation,
+}: LevelMariachiInstrumentsProps) {
   const [items, setItems] = useState<string[]>([]);
   const [activeId, setActiveId] = useState();
   const [win, setWin] = useState<boolean>(false);
@@ -115,7 +122,7 @@ export function LevelMariachiInstruments() {
         <div
           className={`${win ? "animate__animated animate__jackInTheBox" : ""}`}
         >
-          <ScreenWin />
+          <ScreenWin nextLevel="LevelClayCraft" navigation={navigation} />
         </div>
       )}
       {!win && (

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
-import ScreenWin from "pages/screenWin";
+import ScreenWin from "pages/ScreenWin";
 import "animate.css";
 import {
   initialCantaritos,
@@ -13,8 +13,13 @@ import PlatoRack from "@components/levelClayCraft/plato/PlatoRack";
 import { verifyWin } from "@utils/win-conditions/levelClayCraft";
 import talaveraPattern from "@images/talavera-pattern.jpg";
 import { shuffleAndVerifyArraysAreNotSorted } from "@utils/arrays";
+import { NavigationHelper } from "@utils/components/Navigation/NavigationContainer";
 
-export function LevelClayCraft() {
+type LevelClayCraftProps = {
+  navigation?: NavigationHelper;
+};
+
+export function LevelClayCraft({ navigation }: LevelClayCraftProps) {
   const [win, setWin] = useState<boolean>(false);
   const [removeLevel, setRemoveLevel] = useState<boolean>(false);
   let cantaritosArray = shuffleAndVerifyArraysAreNotSorted(initialCantaritos);
@@ -64,7 +69,7 @@ export function LevelClayCraft() {
         <div
           className={`${win ? "animate__animated animate__jackInTheBox" : ""}`}
         >
-          <ScreenWin />
+          <ScreenWin nextLevel="LevelBakery" navigation={navigation} />
         </div>
       )}
       {!win && (
