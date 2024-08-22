@@ -5,9 +5,10 @@ import { NavigationHelper } from "@utils/components/Navigation/NavigationContain
 type ScreenWinProps = {
   nextLevel: string;
   navigation?: NavigationHelper;
+  reset: () => void;
 };
 
-const ScreenWin = ({ nextLevel, navigation }: ScreenWinProps) => {
+const ScreenWin = ({ nextLevel, navigation, reset }: ScreenWinProps) => {
   function goNextLevel() {
     navigation.navigate(nextLevel);
   }
@@ -18,7 +19,10 @@ const ScreenWin = ({ nextLevel, navigation }: ScreenWinProps) => {
         <section className="flex flex-col items-center justify-center gap-12 h-screen">
           <h1 className="text-8xl font-extrabold">¡BIEN HECHO!</h1>
           <div className="flex flex-row flex-no-wrap justify-center">
-            <button className="bg-transparent hover:bg-neutral-950/20 text-white py-2 px-4 w-1/2 focus:border-neutral-950/20 hover:ring-orange-600 hover:border-neutral-950/20 active:border-neutral-950/20">
+            <button
+              className="bg-transparent hover:bg-neutral-950/20 text-white py-2 px-4 w-1/2 focus:border-neutral-950/20 hover:ring-orange-600 hover:border-neutral-950/20 active:border-neutral-950/20"
+              onClick={reset}
+            >
               <span className="drop-shadow-[0_2px_2px_rgba(255,255,255,0.9)] text-2xl">
                 Repetir
               </span>

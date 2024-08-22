@@ -60,6 +60,14 @@ export function LevelClayCraft({ navigation }: LevelClayCraftProps) {
     backgroundSize: "170px",
   };
 
+  const reset = () => {
+    cantaritosArray = shuffleAndVerifyArraysAreNotSorted(initialCantaritos);
+    ollasArray = shuffleAndVerifyArraysAreNotSorted(initialOllas);
+    platosArray = shuffleAndVerifyArraysAreNotSorted(initialPlatos);
+    setRemoveLevel(false);
+    setWin(false);
+  };
+
   return (
     <>
       <Helmet>
@@ -69,7 +77,11 @@ export function LevelClayCraft({ navigation }: LevelClayCraftProps) {
         <div
           className={`${win ? "animate__animated animate__jackInTheBox" : ""}`}
         >
-          <ScreenWin nextLevel="LevelBakery" navigation={navigation} />
+          <ScreenWin
+            nextLevel="LevelBakery"
+            navigation={navigation}
+            reset={reset}
+          />
         </div>
       )}
       {!win && (

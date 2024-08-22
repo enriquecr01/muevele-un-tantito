@@ -109,39 +109,52 @@ export function LevelBakery({ navigation }: LevelBakeryProps) {
     });
   }
 
-  return (
-    <>
-      <Helmet>
-        <title>¡Muévele Tantito! | Panadería</title>
-      </Helmet>
-      {win && (
-        <div
-          className={`${win ? "animate__animated animate__jackInTheBox" : ""}`}
-        >
-          <ScreenWin nextLevel="LevelBakery" navigation={navigation} />
-        </div>
-      )}
-      {!win && (
-        <div
-          className={`flex flex-column justify-center items-center overflow-hidden h-screen  ${
-            removeLevel ? "animate__animated animate__fadeOutDown" : ""
-          }`}
-        >
-          <DndContext
-            sensors={sensors}
-            collisionDetection={closestCorners}
-            onDragStart={handleDragStart}
-            onDragEnd={handleDragEnd}
+    const reset = () => {
+      const shuffledConchas = shuffleArray(initialConchas);
+      setItems(shuffledConchas);
+      setRemoveLevel(false);
+      setWin(false);
+    };
+
+    return (
+      <>
+        <Helmet>
+          <title>¡Muévele Tantito! | Panadería</title>
+        </Helmet>
+        {win && (
+          <div
+            className={`${
+              win ? "animate__animated animate__jackInTheBox" : ""
+            }`}
           >
-            <Container id="charola" items={items} />
-            <DragOverlay transition={null}>
-              {activeId ? (
-                <Concha id={activeId} color={activeColor} isDragging />
-              ) : null}
-            </DragOverlay>
-          </DndContext>
-        </div>
-      )}
-    </>
-  );
+            <ScreenWin
+              nextLevel="LevelBakery"
+              navigation={navigation}
+              reset={reset}
+            />
+          </div>
+        )}
+        {!win && (
+          <div
+            className={`flex flex-column justify-center items-center overflow-hidden h-screen  ${
+              removeLevel ? "animate__animated animate__fadeOutDown" : ""
+            }`}
+          >
+            <DndContext
+              sensors={sensors}
+              collisionDetection={closestCorners}
+              onDragStart={handleDragStart}
+              onDragEnd={handleDragEnd}
+            >
+              <Container id="charola" items={items} />
+              <DragOverlay transition={null}>
+                {activeId ? (
+                  <Concha id={activeId} color={activeColor} isDragging />
+                ) : null}
+              </DragOverlay>
+            </DndContext>
+          </div>
+        )}
+      </>
+    );
 }

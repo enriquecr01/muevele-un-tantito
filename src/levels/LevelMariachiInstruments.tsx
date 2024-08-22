@@ -113,6 +113,13 @@ export function LevelMariachiInstruments({
       "radial-gradient(circle, rgba(19,19,255,1) 0%, rgba(6,9,205,1) 37%, rgba(16,22,159,1) 100%)",
   };
 
+  const reset = () => {
+    const shuffledConchas = shuffleArrayAndVerify(initialInstruments);
+    setItems(shuffledConchas);
+    setRemoveLevel(false);
+    setWin(false);
+  };
+
   return (
     <>
       <Helmet>
@@ -122,7 +129,11 @@ export function LevelMariachiInstruments({
         <div
           className={`${win ? "animate__animated animate__jackInTheBox" : ""}`}
         >
-          <ScreenWin nextLevel="LevelClayCraft" navigation={navigation} />
+          <ScreenWin
+            nextLevel="LevelClayCraft"
+            navigation={navigation}
+            reset={reset}
+          />
         </div>
       )}
       {!win && (
