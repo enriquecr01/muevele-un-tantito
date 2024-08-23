@@ -118,7 +118,7 @@ export function LevelBakery({ navigation }: LevelBakeryProps) {
 
     const style = {
       background:
-        "radial-gradient(circle, rgba(234,179,8,1) 0%, rgba(187,139,0,1) 100%)",
+        "radial-gradient(circle, rgba(255,220,69,1) 0%, rgba(252,199,19,1) 100%)",
     };
 
     return (
@@ -141,7 +141,7 @@ export function LevelBakery({ navigation }: LevelBakeryProps) {
         )}
         {!win && (
           <div
-            className={`flex flex-column justify-center items-center overflow-hidden h-screen bg-[#eab308] ${
+            className={`flex flex-column justify-center items-center overflow-hidden h-screen bg-[#ffdc45] ${
               removeLevel ? "animate__animated animate__fadeOutDown" : ""
             }`}
             style={style}

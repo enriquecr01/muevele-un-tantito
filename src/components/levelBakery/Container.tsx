@@ -37,8 +37,6 @@ export default function Container(props) {
     return color;
   }
 
-  const style = {};
-
   return (
     <SortableContext id={id} items={items} strategy={rectSwappingStrategy}>
       <div style={{ perspective: "2000px" }}>
