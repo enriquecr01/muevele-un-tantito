@@ -12,7 +12,14 @@ const containerStyle = {
   margin: 10,
   flex: 1,
   display: "grid",
-  gridTemplateColumns: `repeat(6, 1fr)`,
+  gridTemplateColumns: "repeat(6, 1fr)",
+  background: `repeating-linear-gradient(50deg,
+    transparent,
+    transparent 10px,
+    #ccc 20px,
+    #ccc 120px
+  ),
+  linear-gradient( to bottom, #eee, #bbb)`,
 };
 
 export default function Container(props) {
@@ -30,17 +37,24 @@ export default function Container(props) {
     return color;
   }
 
+  const style = {};
+
   return (
     <SortableContext id={id} items={items} strategy={rectSwappingStrategy}>
-      <div className="bg-slate-500 rounded-xl border-black border-2 m-2">
+      <div style={{ perspective: "2000px" }}>
         <div
-          className="bg-slate-300 rounded-xl border-black border-2"
-          ref={setNodeRef}
-          style={containerStyle}
+          className="bg-[#72757c] rounded-xl border-black border-2 m-2"
+          style={{ transform: "rotateX(15deg)" }}
         >
-          {items.map((id) => (
-            <SortableConcha key={id} id={id} color={getColor(id)} />
-          ))}
+          <div
+            className="bg-[#ababb7] rounded-xl border-black border-2"
+            ref={setNodeRef}
+            style={containerStyle}
+          >
+            {items.map((id) => (
+              <SortableConcha key={id} id={id} color={getColor(id)} />
+            ))}
+          </div>
         </div>
       </div>
     </SortableContext>

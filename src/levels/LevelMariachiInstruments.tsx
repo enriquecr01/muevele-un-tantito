@@ -110,7 +110,7 @@ export function LevelMariachiInstruments({
 
   const style = {
     background:
-      "radial-gradient(circle, rgba(19,19,255,1) 0%, rgba(6,9,205,1) 37%, rgba(16,22,159,1) 100%)",
+      "radial-gradient(circle, rgba(0,165,255,1) 0%, rgba(0,141,255,1) 89%, rgba(0,104,255,1) 100%)",
   };
 
   const reset = () => {
@@ -138,7 +138,7 @@ export function LevelMariachiInstruments({
       )}
       {!win && (
         <div
-          className={`flex flex-column justify-center items-center overflow-hidden h-screen bg-[#008dff]  ${
+          className={`flex flex-column justify-center items-center overflow-hidden h-screen bg-[#00a5ff]  ${
             removeLevel ? "animate__animated animate__fadeOutDown" : ""
           }`}
           style={style}

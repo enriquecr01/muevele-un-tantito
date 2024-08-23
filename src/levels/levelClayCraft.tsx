@@ -60,57 +60,68 @@ export function LevelClayCraft({ navigation }: LevelClayCraftProps) {
     backgroundSize: "170px",
   };
 
-  const reset = () => {
-    cantaritosArray = shuffleAndVerifyArraysAreNotSorted(initialCantaritos);
-    ollasArray = shuffleAndVerifyArraysAreNotSorted(initialOllas);
-    platosArray = shuffleAndVerifyArraysAreNotSorted(initialPlatos);
-    setRemoveLevel(false);
-    setWin(false);
-  };
+    const style = {
+      background:
+        "radial-gradient(circle, rgba(248,197,167,1) 0%, rgba(200,152,123,1) 84%, rgba(153,109,82,1) 100%)",
+    };
 
-  return (
-    <>
-      <Helmet>
-        <title>¡Muévele Tantito! | Estantería</title>
-      </Helmet>
-      {win && (
-        <div
-          className={`${win ? "animate__animated animate__jackInTheBox" : ""}`}
-        >
-          <ScreenWin
-            nextLevel="LevelBakery"
-            navigation={navigation}
-            reset={reset}
-          />
-        </div>
-      )}
-      {!win && (
-        <>
+    const reset = () => {
+      cantaritosArray = shuffleAndVerifyArraysAreNotSorted(initialCantaritos);
+      ollasArray = shuffleAndVerifyArraysAreNotSorted(initialOllas);
+      platosArray = shuffleAndVerifyArraysAreNotSorted(initialPlatos);
+      setRemoveLevel(false);
+      setWin(false);
+    };
+
+    return (
+      <>
+        <Helmet>
+          <title>¡Muévele Tantito! | Estantería</title>
+        </Helmet>
+        {win && (
           <div
-            className={`flex flex-col justify-center items-center overflow-hidden h-screen bg-yellow-950 ${
-              removeLevel ? "animate__animated animate__fadeOutDown" : ""
+            className={`${
+              win ? "animate__animated animate__jackInTheBox" : ""
             }`}
           >
-            <div className="flex flex-grow"></div>
-            <div className="flex flex-col justify-start border-black border-2 rounded max-w-screen-xl">
-              <div className="flex flex-row">
-                <CantaritoRack
-                  callback={handleSetCantaritos}
-                  cantaritosArray={initialCantaritos}
-                />
-                <PlatoRack
-                  callback={handleSetPlatos}
-                  platosArray={initialPlatos}
-                />
-              </div>
-              <div>
-                <OllaRack callback={handleSetOllas} ollasArray={initialOllas} />
-              </div>
-            </div>
-            <div className="flex flex-grow w-full" style={talavera}></div>
+            <ScreenWin
+              nextLevel="LevelBakery"
+              navigation={navigation}
+              reset={reset}
+            />
           </div>
-        </>
-      )}
-    </>
-  );
+        )}
+        {!win && (
+          <>
+            <div
+              className={`flex flex-col justify-center items-center overflow-hidden h-screen bg-[#f8c5a7] ${
+                removeLevel ? "animate__animated animate__fadeOutDown" : ""
+              }`}
+              style={style}
+            >
+              {/* <div className="flex flex-grow"></div> */}
+              <div className="flex flex-col justify-start border-black border-2 rounded max-w-screen-xl">
+                <div className="flex flex-row">
+                  <CantaritoRack
+                    callback={handleSetCantaritos}
+                    cantaritosArray={initialCantaritos}
+                  />
+                  <PlatoRack
+                    callback={handleSetPlatos}
+                    platosArray={initialPlatos}
+                  />
+                </div>
+                <div>
+                  <OllaRack
+                    callback={handleSetOllas}
+                    ollasArray={initialOllas}
+                  />
+                </div>
+              </div>
+              {/* <div className="flex flex-grow w-full" style={talavera}></div> */}
+            </div>
+          </>
+        )}
+      </>
+    );
 }

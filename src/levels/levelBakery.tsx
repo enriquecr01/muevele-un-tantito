@@ -116,6 +116,11 @@ export function LevelBakery({ navigation }: LevelBakeryProps) {
       setWin(false);
     };
 
+    const style = {
+      background:
+        "radial-gradient(circle, rgba(234,179,8,1) 0%, rgba(187,139,0,1) 100%)",
+    };
+
     return (
       <>
         <Helmet>
@@ -136,9 +141,10 @@ export function LevelBakery({ navigation }: LevelBakeryProps) {
         )}
         {!win && (
           <div
-            className={`flex flex-column justify-center items-center overflow-hidden h-screen  ${
+            className={`flex flex-column justify-center items-center overflow-hidden h-screen bg-[#eab308] ${
               removeLevel ? "animate__animated animate__fadeOutDown" : ""
             }`}
+            style={style}
           >
             <DndContext
               sensors={sensors}
