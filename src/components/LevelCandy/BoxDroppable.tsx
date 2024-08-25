@@ -2,13 +2,14 @@ import React from "react";
 import { useDroppable } from "@dnd-kit/core";
 import { FC } from "react";
 import FruitDraggable from "./FruitDraggable";
+import { Candy, ICandy } from "./Candy";
 
 interface ICartDroppable {
-  items: string[];
+  items: ICandy[];
   id: string;
 }
 
-const CartDroppable: FC<ICartDroppable> = (props) => {
+function BoxCartDroppable(props) {
   const { setNodeRef } = useDroppable({
     // id: "cart-droppable",
     id: props.id,
@@ -21,12 +22,14 @@ const CartDroppable: FC<ICartDroppable> = (props) => {
     >
       {props.items.map((item, idx) => (
         <div key={`${item}-${idx}`} className="text-2xl rounded-lg">
-          <FruitDraggable key={item}>{item}</FruitDraggable>
+          <Candy id={item.id} image={item.image} currentBox={item.currentBox}>
+            {item}
+          </Candy>
           {/* {item} */}
         </div>
       ))}
     </ul>
   );
-};
+}
 
-export default CartDroppable;
+export default BoxCartDroppable;

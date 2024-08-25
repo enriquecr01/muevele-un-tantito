@@ -4,6 +4,7 @@ import {
   DndContext,
   DragEndEvent,
   DragOverlay,
+  DragStartEvent,
   KeyboardSensor,
   PointerSensor,
   TouchSensor,
@@ -26,6 +27,8 @@ import { initialConchas } from "@mocks/levelBakery";
 import { NavigationHelper } from "@utils/components/Navigation/NavigationContainer";
 import FruitDraggable from "@components/LevelCandy/FruitDraggable";
 import CartDroppable from "@components/LevelCandy/CartDroppable";
+import { Candy, ICandy } from "@components/LevelCandy/Candy";
+import BoxCartDroppable from "@components/LevelCandy/BoxDroppable";
 
 type LevelCandyProps = {
   navigation?: NavigationHelper;
@@ -37,6 +40,18 @@ export function LevelCandy({ navigation }: LevelCandyProps) {
   const [activeColor, setActiveColor] = useState();
   const [win, setWin] = useState<boolean>(false);
   const [removeLevel, setRemoveLevel] = useState<boolean>(false);
+
+  const candiesDefaultArrays: ICandy[] = [
+    { id: "1", image: "asdasdasdoij", currentBox: "default-box" },
+    { id: "2", image: "asdasdasdoij", currentBox: "default-box" },
+    { id: "3", image: "asdasdasdoij", currentBox: "default-box" },
+  ];
+
+  const [candiesDefault, setCandiesDefault] =
+    useState<ICandy[]>(candiesDefaultArrays);
+  const [candies, setCandies] = useState<ICandy[]>([]);
+  const [candies2, setCandies2] = useState<ICandy[]>([]);
+  const [candies3, setCandies3] = useState<ICandy[]>([]);
 
   const fruits = ["Apple", "Banana", "Lemon", "Pear", "Mango"];
   const [cartItems, setCartItems] = useState<string[]>([]);
@@ -72,6 +87,105 @@ export function LevelCandy({ navigation }: LevelCandyProps) {
       temp = [...cartItems3];
       temp.push(newItem);
       setCartItems3(temp);
+    }
+  };
+
+  const dragsttart = (event: DragStartEvent) => {
+    console.log("event", event);
+  };
+
+  const addToBox = (e: DragEndEvent) => {
+    const newItem = { ...e.active.data.current.data };
+    const { active, over } = e;
+    console.log("active", active, "over", over, "event", e);
+    if (
+      (e.over?.id !== "default-box" &&
+        e.over?.id !== "box-1" &&
+        e.over?.id !== "box-2" &&
+        e.over?.id !== "box-3") ||
+      !newItem
+    )
+      return;
+
+    const currentBox = active.data.current.data.currentBox;
+    const overBox = over.id;
+    let currentArray = [];
+    let tempArray = [];
+
+    switch (currentBox) {
+      case "default-box":
+        currentArray = [...candiesDefault];
+        break;
+      case "box-1":
+        currentArray = [...candies];
+        break;
+      case "box-2":
+        currentArray = [...candies2];
+        break;
+      case "box-3":
+        currentArray = [...candies3];
+        break;
+    }
+
+    switch (overBox) {
+      case "default-box":
+        tempArray = [...candiesDefault];
+        break;
+      case "box-1":
+        tempArray = [...candies];
+        break;
+
+      case "box-2":
+        tempArray = [...candies2];
+        break;
+      case "box-3":
+        tempArray = [...candies3];
+        break;
+    }
+
+    const index = currentArray.findIndex((candy) => candy.id === active.id);
+
+    console.log(
+      index,
+      active.data.current.data.currentBox,
+      currentArray,
+      tempArray,
+      newItem
+    );
+
+    newItem.currentBox = overBox;
+
+    currentArray.splice(index, 1);
+    tempArray.push(newItem);
+
+    switch (currentBox) {
+      case "default-box":
+        setCandiesDefault(currentArray);
+        break;
+      case "box-1":
+        setCandies(currentArray);
+        break;
+      case "box-2":
+        setCandies2(currentArray);
+        break;
+      case "box-3":
+        setCandies3(currentArray);
+        break;
+    }
+
+    switch (overBox) {
+      case "default-box":
+        setCandiesDefault(tempArray);
+        break;
+      case "box-1":
+        setCandies(tempArray);
+        break;
+      case "box-2":
+        setCandies2(tempArray);
+        break;
+      case "box-3":
+        setCandies3(tempArray);
+        break;
     }
   };
 
@@ -203,6 +317,33 @@ export function LevelCandy({ navigation }: LevelCandyProps) {
                 <h1>My Cart 3</h1>
 
                 <CartDroppable id="cart-3" items={cartItems3} />
+              </div>
+            </main>
+          </DndContext>
+
+          <DndContext onDragStart={dragsttart} onDragEnd={addToBox}>
+            <main className="flex flex-col items-center gap-16 p-4">
+              <div className="flex flex-col items-center gap-4">
+                <h1>Candies</h1>
+                <ul className="flex justify-center w-full gap-4">
+                  <BoxCartDroppable id="default-box" items={candiesDefault} />
+
+                  {/* {candiesDefault.map((candy) => (
+                    <Candy id={candy.id} image={candy.image}>
+                      {candy}
+                    </Candy>
+                  ))} */}
+                </ul>
+              </div>
+              <div className="flex flex-col items-center gap-4 w-9/12">
+                <h1>My Cart</h1>
+                <BoxCartDroppable id="box-1" items={candies} />
+                <h1>My Cart 2</h1>
+
+                <BoxCartDroppable id="box-2" items={candies2} />
+                <h1>My Cart 3</h1>
+
+                <BoxCartDroppable id="box-3" items={candies3} />
               </div>
             </main>
           </DndContext>
