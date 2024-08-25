@@ -6,6 +6,7 @@ import "./App.css";
 import { LevelBakery } from "./levels/LevelBakery";
 import { LevelClayCraft } from "./levels/levelClayCraft";
 import { LevelMariachiInstruments } from "./levels/LevelMariachiInstruments";
+import { LevelCandy } from "./levels/LevelCandy";
 import MainMenu from "./pages/mainMenu";
 import MainFlow from "./pages/MainFlow";
 import Example from "./example";
@@ -22,7 +23,8 @@ function App() {
       {/* <LevelBakery></LevelBakery> */}
       {/* <LevelClayCraft></LevelClayCraft> */}
       {/* <LevelMariachiInstruments></LevelMariachiInstruments> */}
-      <MainFlow></MainFlow>
+      <LevelCandy></LevelCandy>
+      {/* <MainFlow></MainFlow> */}
       {/* <Wachar></Wachar> */}
 
       {/* <div>
