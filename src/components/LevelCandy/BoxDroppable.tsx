@@ -1,13 +1,6 @@
 import React from "react";
 import { useDroppable } from "@dnd-kit/core";
-import { FC } from "react";
-import FruitDraggable from "./FruitDraggable";
 import { Candy, ICandy } from "./Candy";
-
-interface ICartDroppable {
-  items: ICandy[];
-  id: string;
-}
 
 function BoxCartDroppable(props) {
   const { setNodeRef } = useDroppable({
