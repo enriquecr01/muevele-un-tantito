@@ -29,6 +29,11 @@ import FruitDraggable from "@components/LevelCandy/FruitDraggable";
 import CartDroppable from "@components/LevelCandy/CartDroppable";
 import { Candy, ICandy } from "@components/LevelCandy/Candy";
 import BoxCartDroppable from "@components/LevelCandy/BoxDroppable";
+import {
+  lollipopCandies,
+  rectangleCandies,
+  roundedCandies,
+} from "@mocks/levelCandy";
 
 type LevelCandyProps = {
   navigation?: NavigationHelper;
@@ -36,15 +41,15 @@ type LevelCandyProps = {
 
 export function LevelCandy({ navigation }: LevelCandyProps) {
   const [items, setItems] = useState<string[]>([]);
-  const [activeId, setActiveId] = useState();
+  const [activeId, setActiveId] = useState<ICandy>();
   const [activeColor, setActiveColor] = useState();
   const [win, setWin] = useState<boolean>(false);
   const [removeLevel, setRemoveLevel] = useState<boolean>(false);
 
   const candiesDefaultArrays: ICandy[] = [
-    { id: "1", image: "asdasdasdoij", currentBox: "default-box" },
-    { id: "2", image: "asdasdasdoij", currentBox: "default-box" },
-    { id: "3", image: "asdasdasdoij", currentBox: "default-box" },
+    ...lollipopCandies,
+    ...roundedCandies,
+    ...rectangleCandies,
   ];
 
   const [candiesDefault, setCandiesDefault] =
@@ -92,6 +97,8 @@ export function LevelCandy({ navigation }: LevelCandyProps) {
 
   const dragsttart = (event: DragStartEvent) => {
     console.log("event", event);
+
+    setActiveId(event.active.data.current.data);
   };
 
   const addToBox = (e: DragEndEvent) => {
@@ -109,6 +116,9 @@ export function LevelCandy({ navigation }: LevelCandyProps) {
 
     const currentBox = active.data.current.data.currentBox;
     const overBox = over.id;
+
+    if (currentBox === overBox) return;
+
     let currentArray = [];
     let tempArray = [];
 
@@ -345,6 +355,11 @@ export function LevelCandy({ navigation }: LevelCandyProps) {
 
                 <BoxCartDroppable id="box-3" items={candies3} />
               </div>
+              <DragOverlay transition={null}>
+                {activeId ? (
+                  <Candy id={activeId.id} image={activeId.image} isDragging />
+                ) : null}
+              </DragOverlay>
             </main>
           </DndContext>
         </div>
