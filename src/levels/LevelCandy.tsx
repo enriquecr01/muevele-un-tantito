@@ -170,7 +170,7 @@ export function LevelCandy({ navigation }: LevelCandyProps) {
 
   const style = {
     background:
-      "radial-gradient(circle, rgba(255,220,69,1) 0%, rgba(252,199,19,1) 100%)",
+      "radial-gradient(circle, rgba(193,225,193,1) 0%, rgba(206,228,171,1) 100%)",
   };
 
   return (
@@ -191,7 +191,7 @@ export function LevelCandy({ navigation }: LevelCandyProps) {
       )}
       {!win && (
         <div
-          className={`flex flex-column justify-center items-center overflow-hidden h-screen bg-[#ffdc45] ${
+          className={`flex flex-column justify-center items-center overflow-hidden h-screen bg-[#c1e1c1] ${
             removeLevel ? "animate__animated animate__fadeOutDown" : ""
           }`}
           style={style}
