@@ -25,6 +25,7 @@ import {
   rectangleCandies,
   roundedCandies,
 } from "@mocks/levelCandy";
+import EmptySpaceDroppable from "@components/LevelCandy/EmptySpaceDroppable";
 
 type LevelCandyProps = {
   navigation?: NavigationHelper;
@@ -201,23 +202,24 @@ export function LevelCandy({ navigation }: LevelCandyProps) {
             onDragEnd={addToBox}
             sensors={sensors}
           >
-            <main className="flex flex-col items-center gap-16 p-4">
-              <div className="flex flex-col items-center gap-4">
-                <h1>Candies</h1>
-                <ul className="flex justify-center w-full gap-4">
-                  <BoxCartDroppable id="default-box" items={candiesDefault} />
-                </ul>
-              </div>
-              <div className="flex flex-col items-center gap-4 w-9/12">
-                <h1>My Cart</h1>
+            <main className="flex flex-col items-center gap-16 p-4 w-full">
+              <div className="flex flex-row flex-wrap justify-center gap-4 w-full">
                 <BoxCartDroppable id="box-1" items={candies} />
-                <h1>My Cart 2</h1>
 
                 <BoxCartDroppable id="box-2" items={candies2} />
-                <h1>My Cart 3</h1>
 
                 <BoxCartDroppable id="box-3" items={candies3} />
               </div>
+
+              <div className="flex flex-col items-center gap-4">
+                <ul className="flex justify-center w-full gap-4">
+                  <EmptySpaceDroppable
+                    id="default-box"
+                    items={candiesDefault}
+                  />
+                </ul>
+              </div>
+
               <DragOverlay transition={null}>
                 {activeId ? (
                   <Candy id={activeId.id} image={activeId.image} isDragging />

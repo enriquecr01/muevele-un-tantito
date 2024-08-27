@@ -2,7 +2,7 @@ import React from "react";
 import { useDroppable } from "@dnd-kit/core";
 import { Candy } from "./Candy";
 
-function BoxCartDroppable(props) {
+function EmptySpaceDroppable(props) {
   const { setNodeRef } = useDroppable({
     // id: "cart-droppable",
     id: props.id,
@@ -17,16 +17,10 @@ function BoxCartDroppable(props) {
   };
 
   return (
-    <div
-      className="max-[543px]:w-full max-[1023px]:min-w-60 max-[1023px]:max-w-60"
-      style={{ perspective: "2000px" }}
-    >
-      <div
-        className="bg-[#da874c] rounded border-black border-2 m-2"
-        style={{ transform: "rotateX(15deg)" }}
-      >
+    <div className="max-[543px]:w-full max-[1023px]:min-w-60 max-[1023px]:max-w-60">
+      <div className="m-2">
         <div
-          className="bg-[#bb6d3e] rounded border-black border-2 max-[543px]:min-h-44 max-[543px]:max-h-44 max-[1023px]:min-h-44 max-[1023px]:max-h-44 lg:min-w-72 lg:max-w-72 lg:min-h-40 lg:max-h-40"
+          className=" max-[543px]:min-h-44 max-[543px]:max-h-44 max-[1023px]:min-h-44 max-[1023px]:max-h-44 lg:min-w-72 lg:max-w-72 lg:min-h-40 lg:max-h-40"
           ref={setNodeRef}
           style={containerStyle}
         >
@@ -47,4 +41,4 @@ function BoxCartDroppable(props) {
   );
 }
 
-export default BoxCartDroppable;
+export default EmptySpaceDroppable;

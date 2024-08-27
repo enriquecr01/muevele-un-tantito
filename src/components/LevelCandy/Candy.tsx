@@ -27,7 +27,7 @@ export function Candy(props) {
       <img
         src={props.image}
         alt={props.id}
-        className={`w-20 pointer-events-none ${
+        className={`w-28 pointer-events-none ${
           isDragging ? "animate__animated animate__swing" : ""
         }`}
       />
