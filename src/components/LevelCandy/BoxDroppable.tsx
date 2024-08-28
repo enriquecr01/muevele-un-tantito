@@ -13,7 +13,7 @@ function BoxCartDroppable(props) {
     margin: 10,
     flex: 1,
     display: "grid",
-    gridTemplateColumns: "repeat(6, 1fr)",
+    gridTemplateColumns: "repeat(5, 1fr)",
   };
 
   return (

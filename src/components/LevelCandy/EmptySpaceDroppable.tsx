@@ -13,14 +13,14 @@ function EmptySpaceDroppable(props) {
     margin: 10,
     flex: 1,
     display: "grid",
-    gridTemplateColumns: "repeat(6, 1fr)",
+    gridTemplateColumns: "repeat(5, 1fr)",
   };
 
   return (
-    <div className="max-[543px]:w-full max-[1023px]:min-w-[600px] max-[1023px]:max-w-[600px]">
+    <div className="max-[543px]:w-full max-[1023px]:min-w-[400px] max-[1023px]:max-w-[400px]">
       <div className="m-2">
         <div
-          className=" max-[543px]:min-h-44 max-[543px]:max-h-44 max-[1023px]:min-h-44 max-[1023px]:max-h-44 lg:min-w-[600px] lg:max-w-[600px] lg:min-h-40 lg:max-h-40"
+          className=" max-[543px]:min-h-44 max-[543px]:max-h-44 max-[1023px]:min-h-44 max-[1023px]:max-h-44 lg:min-w-[400px] lg:max-w-[400px] lg:min-h-40 lg:max-h-40"
           ref={setNodeRef}
           style={containerStyle}
         >
