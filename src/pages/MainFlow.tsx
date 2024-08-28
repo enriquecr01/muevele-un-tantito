@@ -6,6 +6,7 @@ import { LevelBakery } from "levels/LevelBakery";
 import { LevelClayCraft } from "levels/LevelClayCraft";
 import { LevelMariachiInstruments } from "levels/LevelMariachiInstruments";
 import MainMenu from "./MainMenu";
+import { LevelCandy } from "levels/LevelCandy";
 
 export default function MainFlow() {
   return (
@@ -18,6 +19,7 @@ export default function MainFlow() {
           name="LevelMariachiInstruments"
           component={LevelMariachiInstruments}
         />
+        <StackPage name="LevelCandy" component={LevelCandy} />
       </StackNavigation>
     </NavigationContainer>
   );
