@@ -17,10 +17,10 @@ function EmptySpaceDroppable(props) {
   };
 
   return (
-    <div className="max-[543px]:w-full max-[1023px]:min-w-5/12 max-[1023px]:max-w-5/12">
+    <div className="max-[543px]:w-full max-[1023px]:min-w-[600px] max-[1023px]:max-w-[600px]">
       <div className="m-2">
         <div
-          className=" max-[543px]:min-h-44 max-[543px]:max-h-44 max-[1023px]:min-h-44 max-[1023px]:max-h-44 lg:min-w-9/12 lg:max-w-5/12 lg:min-h-40 lg:max-h-40"
+          className=" max-[543px]:min-h-44 max-[543px]:max-h-44 max-[1023px]:min-h-44 max-[1023px]:max-h-44 lg:min-w-[600px] lg:max-w-[600px] lg:min-h-40 lg:max-h-40"
           ref={setNodeRef}
           style={containerStyle}
         >
