@@ -1,9 +1,9 @@
 import React from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import Plato from "@components/levelClayCraft/plato/Plato";
+import Olla from "levels/LevelClayCraft/components/olla/Olla";
 
-export default function SortablePlatos(props) {
+export default function SortableOlla(props) {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: props.id });
 
@@ -14,7 +14,7 @@ export default function SortablePlatos(props) {
 
   return (
     <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
-      <Plato id={props.id} size={props.size} />
+      <Olla id={props.id} size={props.size} />
     </div>
   );
 }

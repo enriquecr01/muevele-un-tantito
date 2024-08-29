@@ -1,9 +1,9 @@
 import React from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import Cantarito from "@components/levelClayCraft/cantarito/Cantarito";
+import Plato from "levels/LevelClayCraft/components/plato/Plato";
 
-export default function SortableCantarito(props) {
+export default function SortablePlatos(props) {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: props.id });
 
@@ -14,7 +14,7 @@ export default function SortableCantarito(props) {
 
   return (
     <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
-      <Cantarito id={props.id} size={props.size} />
+      <Plato id={props.id} size={props.size} />
     </div>
   );
 }

@@ -1,9 +1,9 @@
 import React from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import Instrument from "@components/levelMariachiInstruments/Instrument";
+import Concha from "levels/LevelBakery/components/Concha";
 
-export default function SortableInstrument(props) {
+export default function SortableConcha(props) {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: props.id });
 
@@ -14,7 +14,7 @@ export default function SortableInstrument(props) {
 
   return (
     <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
-      <Instrument id={props.id} instrument={props.instrument} />
+      <Concha id={props.id} color={props.color} />
     </div>
   );
 }

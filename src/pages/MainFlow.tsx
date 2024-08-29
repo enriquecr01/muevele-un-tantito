@@ -2,11 +2,11 @@ import React from "react";
 import NavigationContainer from "@utils/components/Navigation/NavigationContainer";
 import StackNavigation from "@utils/components/Navigation/StackNavigation";
 import StackPage from "@utils/components/Navigation/StackPage";
-import { LevelBakery } from "levels/LevelBakery";
-import { LevelClayCraft } from "levels/LevelClayCraft";
-import { LevelMariachiInstruments } from "levels/LevelMariachiInstruments";
+import { LevelBakery } from "levels/LevelClayCraft/LevelBakery";
+import { LevelClayCraft } from "levels/LevelClayCraft/LevelClayCraft";
+import { LevelMariachiInstruments } from "levels/LevelMariachiInstruments/LevelMariachiInstruments";
 import MainMenu from "./MainMenu";
-import { LevelCandy } from "levels/LevelCandy";
+import { LevelCandy } from "levels/LevelCandy/LevelCandy";
 
 export default function MainFlow() {
   return (

@@ -17,15 +17,15 @@ import ScreenWin from "pages/ScreenWin";
 import "animate.css";
 import { shuffleArray } from "@utils/arrays";
 import { NavigationHelper } from "@utils/components/Navigation/NavigationContainer";
-import { Candy, ICandy } from "@components/LevelCandy/Candy";
-import BoxCartDroppable from "@components/LevelCandy/BoxDroppable";
+import { Candy, ICandy } from "levels/LevelCandy/components/Candy";
+import BoxCartDroppable from "levels/LevelCandy/win-conditions/BoxDroppable";
 import {
   lollipopCandies,
   rectangleCandies,
   roundedCandies,
-} from "@mocks/levelCandy";
-import EmptySpaceDroppable from "@components/LevelCandy/EmptySpaceDroppable";
-import { verifyWin } from "@utils/win-conditions/levelCandy";
+} from "levels/LevelCandy/mocks/levelCandy";
+import EmptySpaceDroppable from "levels/LevelCandy/components/EmptySpaceDroppable";
+import { verifyWin } from "levels/LevelClayCraft/win-conditions/levelCandy";
 
 type LevelCandyProps = {
   navigation?: NavigationHelper;

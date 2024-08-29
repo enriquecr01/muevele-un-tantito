@@ -10,20 +10,23 @@ import {
   useSensors,
 } from "@dnd-kit/core";
 import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
-import PlatoContainer from "@components/levelClayCraft/plato/PlatoContainer";
-import Plato from "@components/levelClayCraft/plato/Plato";
+import CantaritoContainer from "levels/LevelClayCraft/components/cantarito/CantaritoContainer";
+import Cantarito from "levels/LevelClayCraft/components/cantarito/Cantarito";
 import putItem from "@sounds/putitem.mp3";
 import "animate.css";
 import { shuffleArray } from "@utils/arrays";
-import { initialConchas } from "@mocks/levelBakery";
+import { initialConchas } from "levels/LevelBakery/components/mocks/levelBakery";
 
-type PlatoRackProps = {
-  platosArray: number[];
+type CantaritoRackProps = {
+  cantaritosArray: number[];
   callback: (param: number[]) => void;
 };
 
-export default function PlatoRack({ platosArray, callback }: PlatoRackProps) {
-  const [platos, setPlatos] = useState<number[]>(platosArray);
+export default function CantaritoRack({
+  cantaritosArray,
+  callback,
+}: CantaritoRackProps) {
+  const [cantaritos, setCantaritos] = useState<number[]>(cantaritosArray);
   const [activeId, setActiveId] = useState();
 
   const putItemSound = new Audio(putItem);
@@ -57,11 +60,11 @@ export default function PlatoRack({ platosArray, callback }: PlatoRackProps) {
     const { active, over } = event;
     const { id: overId } = over;
 
-    if (activeId === overId || overId === "platos") {
+    if (activeId === overId || overId === "cantaritos") {
       return;
     }
 
-    setPlatos((items) => {
+    setCantaritos((items) => {
       const newItems = [...items];
 
       const activeItem = items.find((x) => x === active.id)!;
@@ -74,6 +77,7 @@ export default function PlatoRack({ platosArray, callback }: PlatoRackProps) {
         newItems[overIdx],
         newItems[activeIdx],
       ];
+
       callback(newItems);
 
       setActiveId(null);
@@ -91,10 +95,10 @@ export default function PlatoRack({ platosArray, callback }: PlatoRackProps) {
           onDragStart={handleDragStart}
           onDragEnd={handleDragEnd}
         >
-          <PlatoContainer id="platos" items={platos} />
+          <CantaritoContainer id="cantaritos" items={cantaritos} />
           <DragOverlay transition={null}>
             {activeId ? (
-              <Plato id={activeId} size={activeId} isDragging />
+              <Cantarito id={activeId} size={activeId} isDragging />
             ) : null}
           </DragOverlay>
         </DndContext>

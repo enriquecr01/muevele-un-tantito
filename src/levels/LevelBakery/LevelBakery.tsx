@@ -10,18 +10,18 @@ import {
   useSensors,
 } from "@dnd-kit/core";
 import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
-import Container from "@components/levelBakery/Container";
-import Concha from "@components/levelBakery/Concha";
+import Container from "levels/LevelBakery/components/Container";
+import Concha from "levels/LevelBakery/components/Concha";
 import putItem from "@sounds/putitem.mp3";
 import {
   oneLineColorCondition,
   twoVerticalLinesColorsCondition,
-} from "@win-conditions/levelBakery";
+} from "levels/LevelBakery/win-conditions/levelBakery";
 import { Helmet } from "react-helmet";
 import ScreenWin from "pages/ScreenWin";
 import "animate.css";
 import { shuffleArray } from "@utils/arrays";
-import { initialConchas } from "@mocks/levelBakery";
+import { initialConchas } from "levels/LevelBakery/components/mocks/levelBakery";
 import { NavigationHelper } from "@utils/components/Navigation/NavigationContainer";
 
 type LevelBakeryProps = {

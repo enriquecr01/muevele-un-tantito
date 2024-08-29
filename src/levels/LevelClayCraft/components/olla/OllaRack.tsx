@@ -10,23 +10,20 @@ import {
   useSensors,
 } from "@dnd-kit/core";
 import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
-import CantaritoContainer from "@components/levelClayCraft/cantarito/CantaritoContainer";
-import Cantarito from "@components/levelClayCraft/cantarito/Cantarito";
+import OllaContainer from "levels/LevelClayCraft/components/olla/OllaContainer";
+import Olla from "levels/LevelClayCraft/components/olla/Olla";
 import putItem from "@sounds/putitem.mp3";
 import "animate.css";
 import { shuffleArray } from "@utils/arrays";
-import { initialConchas } from "@mocks/levelBakery";
+import { initialConchas } from "levels/LevelBakery/components/mocks/levelBakery";
 
-type CantaritoRackProps = {
-  cantaritosArray: number[];
+type OllaRackProps = {
+  ollasArray: number[];
   callback: (param: number[]) => void;
 };
 
-export default function CantaritoRack({
-  cantaritosArray,
-  callback,
-}: CantaritoRackProps) {
-  const [cantaritos, setCantaritos] = useState<number[]>(cantaritosArray);
+export default function OllaRack({ ollasArray, callback }: OllaRackProps) {
+  const [ollas, setOllas] = useState<number[]>(ollasArray);
   const [activeId, setActiveId] = useState();
 
   const putItemSound = new Audio(putItem);
@@ -60,11 +57,11 @@ export default function CantaritoRack({
     const { active, over } = event;
     const { id: overId } = over;
 
-    if (activeId === overId || overId === "cantaritos") {
+    if (activeId === overId || overId === "ollas") {
       return;
     }
 
-    setCantaritos((items) => {
+    setOllas((items) => {
       const newItems = [...items];
 
       const activeItem = items.find((x) => x === active.id)!;
@@ -95,10 +92,10 @@ export default function CantaritoRack({
           onDragStart={handleDragStart}
           onDragEnd={handleDragEnd}
         >
-          <CantaritoContainer id="cantaritos" items={cantaritos} />
+          <OllaContainer id="ollas" items={ollas} />
           <DragOverlay transition={null}>
             {activeId ? (
-              <Cantarito id={activeId} size={activeId} isDragging />
+              <Olla id={activeId} size={activeId} isDragging />
             ) : null}
           </DragOverlay>
         </DndContext>

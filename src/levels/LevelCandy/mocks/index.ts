@@ -8,7 +8,7 @@ import mazapan from "@images/candies/mazapan.png";
 import borrachito from "@images/candies/borrachito.png";
 import cocada from "@images/candies/cocada.png";
 import jamoncillo from "@images/candies/jamoncillo.png";
-import { ICandy } from "@components/LevelCandy/Candy";
+import { ICandy } from "levels/LevelCandy/components/Candy";
 
 export const lollipopCandies: ICandy[] = [
     { id: 1, image: paleta1, currentBox: "default-box", type: 'lollipop' },

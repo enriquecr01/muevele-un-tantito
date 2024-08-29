@@ -10,20 +10,20 @@ import {
   useSensors,
 } from "@dnd-kit/core";
 import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
-import OllaContainer from "@components/levelClayCraft/olla/OllaContainer";
-import Olla from "@components/levelClayCraft/olla/Olla";
+import PlatoContainer from "levels/LevelClayCraft/components/plato/PlatoContainer";
+import Plato from "levels/LevelClayCraft/components/plato/Plato";
 import putItem from "@sounds/putitem.mp3";
 import "animate.css";
 import { shuffleArray } from "@utils/arrays";
-import { initialConchas } from "@mocks/levelBakery";
+import { initialConchas } from "levels/LevelBakery/components/mocks/levelBakery";
 
-type OllaRackProps = {
-  ollasArray: number[];
+type PlatoRackProps = {
+  platosArray: number[];
   callback: (param: number[]) => void;
 };
 
-export default function OllaRack({ ollasArray, callback }: OllaRackProps) {
-  const [ollas, setOllas] = useState<number[]>(ollasArray);
+export default function PlatoRack({ platosArray, callback }: PlatoRackProps) {
+  const [platos, setPlatos] = useState<number[]>(platosArray);
   const [activeId, setActiveId] = useState();
 
   const putItemSound = new Audio(putItem);
@@ -57,11 +57,11 @@ export default function OllaRack({ ollasArray, callback }: OllaRackProps) {
     const { active, over } = event;
     const { id: overId } = over;
 
-    if (activeId === overId || overId === "ollas") {
+    if (activeId === overId || overId === "platos") {
       return;
     }
 
-    setOllas((items) => {
+    setPlatos((items) => {
       const newItems = [...items];
 
       const activeItem = items.find((x) => x === active.id)!;
@@ -74,7 +74,6 @@ export default function OllaRack({ ollasArray, callback }: OllaRackProps) {
         newItems[overIdx],
         newItems[activeIdx],
       ];
-
       callback(newItems);
 
       setActiveId(null);
@@ -92,10 +91,10 @@ export default function OllaRack({ ollasArray, callback }: OllaRackProps) {
           onDragStart={handleDragStart}
           onDragEnd={handleDragEnd}
         >
-          <OllaContainer id="ollas" items={ollas} />
+          <PlatoContainer id="platos" items={platos} />
           <DragOverlay transition={null}>
             {activeId ? (
-              <Olla id={activeId} size={activeId} isDragging />
+              <Plato id={activeId} size={activeId} isDragging />
             ) : null}
           </DragOverlay>
         </DndContext>

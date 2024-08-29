@@ -1,9 +1,9 @@
 import React from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import Olla from "@components/levelClayCraft/olla/Olla";
+import Cantarito from "levels/LevelClayCraft/components/cantarito/Cantarito";
 
-export default function SortableOlla(props) {
+export default function SortableCantarito(props) {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: props.id });
 
@@ -14,7 +14,7 @@ export default function SortableOlla(props) {
 
   return (
     <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
-      <Olla id={props.id} size={props.size} />
+      <Cantarito id={props.id} size={props.size} />
     </div>
   );
 }
