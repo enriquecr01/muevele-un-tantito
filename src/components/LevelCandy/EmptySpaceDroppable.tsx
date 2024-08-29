@@ -9,8 +9,6 @@ function EmptySpaceDroppable(props) {
   });
 
   const containerStyle = {
-    padding: 10,
-    margin: 10,
     flex: 1,
     display: "grid",
     gridTemplateColumns: "repeat(5, 1fr)",
@@ -18,9 +16,9 @@ function EmptySpaceDroppable(props) {
 
   return (
     <div className="max-[543px]:min-w-[300px] max-[543px]:max-w-[300px] max-[1023px]:min-w-[400px] max-[1023px]:max-w-[400px]">
-      <div className="m-2">
+      <div className="sm:m-2">
         <div
-          className=" max-[543px]:min-h-24 max-[543px]:max-h-24 max-[1023px]:min-h-44 max-[1023px]:max-h-44 lg:min-w-[400px] lg:max-w-[400px] lg:min-h-40 lg:max-h-40"
+          className="sm:p-2.5 sm:m-2.5 max-[543px]:min-h-24 max-[543px]:max-h-24 max-[1023px]:min-h-44 max-[1023px]:max-h-44 lg:min-w-[400px] lg:max-w-[400px] lg:min-h-40 lg:max-h-40"
           ref={setNodeRef}
           style={containerStyle}
         >

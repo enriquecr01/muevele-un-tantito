@@ -234,7 +234,7 @@ export function LevelCandy({ navigation }: LevelCandyProps) {
             sensors={sensors}
           >
             <main className="flex flex-col items-center md:gap-16 md:p-4 w-full">
-              <div className="flex flex-row flex-wrap justify-center gap-4 w-full">
+              <div className="flex flex-row flex-wrap justify-center md:gap-4 w-full">
                 <BoxCartDroppable id="box-1" items={candies} />
 
                 <BoxCartDroppable id="box-2" items={candies2} />
@@ -242,8 +242,8 @@ export function LevelCandy({ navigation }: LevelCandyProps) {
                 <BoxCartDroppable id="box-3" items={candies3} />
               </div>
 
-              <div className="flex flex-col items-center gap-4">
-                <ul className="flex justify-center w-full gap-4">
+              <div className="flex flex-col items-center">
+                <ul className="flex justify-center w-full">
                   <EmptySpaceDroppable
                     id="default-box"
                     items={candiesDefault}
