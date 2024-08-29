@@ -48,7 +48,7 @@ export function LevelCandy({ navigation }: LevelCandyProps) {
     setActiveId(event.active.data.current.data);
   };
 
-  const addToBox = async (e: DragEndEvent) => {
+  const addToBox = (e: DragEndEvent) => {
     const newItem = { ...e.active.data.current.data };
     const { active, over } = e;
     if (
@@ -107,47 +107,31 @@ export function LevelCandy({ navigation }: LevelCandyProps) {
 
     switch (currentBox) {
       case "default-box":
-        await setCandiesDefault(() => {
-          return currentArray;
-        });
+        setCandiesDefault(currentArray);
         break;
       case "box-1":
-        await setCandies(() => {
-          return currentArray;
-        });
+        setCandies(currentArray);
         break;
       case "box-2":
-        await setCandies2(() => {
-          return currentArray;
-        });
+        setCandies2(currentArray);
         break;
       case "box-3":
-        await setCandies3(() => {
-          return currentArray;
-        });
+        setCandies3(currentArray);
         break;
     }
 
     switch (overBox) {
       case "default-box":
-        await setCandiesDefault(() => {
-          return tempArray;
-        });
+        setCandiesDefault(tempArray);
         break;
       case "box-1":
-        await setCandies(() => {
-          return tempArray;
-        });
+        setCandies(tempArray);
         break;
       case "box-2":
-        await setCandies2(() => {
-          return tempArray;
-        });
+        setCandies2(tempArray);
         break;
       case "box-3":
-        await setCandies3(() => {
-          return tempArray;
-        });
+        setCandies3(tempArray);
         break;
     }
 
