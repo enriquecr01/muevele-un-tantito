@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import ScreenWin from "pages/ScreenWin";
 import "animate.css";
@@ -6,12 +6,11 @@ import {
   initialCantaritos,
   initialOllas,
   initialPlatos,
-} from "levels/LevelClayCraft/mocks/levelClayCraft";
-import CantaritoRack from "levels/LevelClayCraft/components/cantarito/CantaritoRack";
-import OllaRack from "levels/LevelClayCraft/components/olla/OllaRack";
-import PlatoRack from "levels/LevelClayCraft/components/plato/PlatoRack";
-import { verifyWin } from "levels/LevelClayCraft/win-conditions/levelClayCraft";
-import talaveraPattern from "@images/talavera-pattern.jpg";
+} from "@LevelClayCraft/mocks";
+import CantaritoRack from "@LevelClayCraft/components/cantarito/CantaritoRack";
+import OllaRack from "@LevelClayCraft/components/olla/OllaRack";
+import PlatoRack from "@LevelClayCraft/components/plato/PlatoRack";
+import { verifyWin } from "@LevelClayCraft/win-conditions";
 import { shuffleAndVerifyArraysAreNotSorted } from "@utils/arrays";
 import { NavigationHelper } from "@utils/components/Navigation/NavigationContainer";
 
@@ -53,13 +52,6 @@ export function LevelClayCraft({ navigation }: LevelClayCraftProps) {
     }
   };
 
-  const talavera = {
-    backgroundColor: "#422006",
-    backgroundImage: `url(${talaveraPattern})`,
-    perspective: "1000px",
-    backgroundSize: "170px",
-  };
-
   const style = {
     background:
       "radial-gradient(circle, rgba(248,197,167,1) 0%, rgba(200,152,123,1) 84%, rgba(153,109,82,1) 100%)",
@@ -97,7 +89,6 @@ export function LevelClayCraft({ navigation }: LevelClayCraftProps) {
             }`}
             style={style}
           >
-            {/* <div className="flex flex-grow"></div> */}
             <div className="flex flex-col justify-start border-black border-2 rounded max-w-screen-xl">
               <div className="flex flex-row">
                 <CantaritoRack
@@ -113,7 +104,6 @@ export function LevelClayCraft({ navigation }: LevelClayCraftProps) {
                 <OllaRack callback={handleSetOllas} ollasArray={initialOllas} />
               </div>
             </div>
-            {/* <div className="flex flex-grow w-full" style={talavera}></div> */}
           </div>
         </>
       )}

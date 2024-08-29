@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   closestCorners,
   DndContext,
@@ -10,12 +10,10 @@ import {
   useSensors,
 } from "@dnd-kit/core";
 import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
-import PlatoContainer from "levels/LevelClayCraft/components/plato/PlatoContainer";
-import Plato from "levels/LevelClayCraft/components/plato/Plato";
+import PlatoContainer from "@LevelClayCraft/components/plato/PlatoContainer";
+import Plato from "@LevelClayCraft/components/plato/Plato";
 import putItem from "@sounds/putitem.mp3";
 import "animate.css";
-import { shuffleArray } from "@utils/arrays";
-import { initialConchas } from "levels/LevelBakery/components/mocks/levelBakery";
 
 type PlatoRackProps = {
   platosArray: number[];
@@ -27,11 +25,6 @@ export default function PlatoRack({ platosArray, callback }: PlatoRackProps) {
   const [activeId, setActiveId] = useState();
 
   const putItemSound = new Audio(putItem);
-
-  // useEffect(() => {
-  //   const shuffledConchas = shuffleArray(initialConchas);
-  //   setCantaritos(shuffledConchas);
-  // }, [cantaritos]);
 
   const sensors = useSensors(
     useSensor(TouchSensor, {

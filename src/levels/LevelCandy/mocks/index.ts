@@ -1,13 +1,13 @@
-import paleta1 from "@images/candies/paleta1.png";
-import paleta2 from "@images/candies/paleta2.png";
-import paleta3 from "@images/candies/paleta3.png";
-import paleta4 from "@images/candies/paleta4.png";
-import pipitoria from "@images/candies/pipitoria.png";
-import obleas from "@images/candies/obleas.png";
-import mazapan from "@images/candies/mazapan.png";
-import borrachito from "@images/candies/borrachito.png";
-import cocada from "@images/candies/cocada.png";
-import jamoncillo from "@images/candies/jamoncillo.png";
+import paleta1 from "@LevelCandy/assets/paleta1.png";
+import paleta2 from "@LevelCandy/assets/paleta2.png";
+import paleta3 from "@LevelCandy/assets/paleta3.png";
+import paleta4 from "@LevelCandy/assets/paleta4.png";
+import pipitoria from "@LevelCandy/assets/pipitoria.png";
+import obleas from "@LevelCandy/assets/obleas.png";
+import mazapan from "@LevelCandy/assets/mazapan.png";
+import borrachito from "@LevelCandy/assets/borrachito.png";
+import cocada from "@LevelCandy/assets/cocada.png";
+import jamoncillo from "@LevelCandy/assets/jamoncillo.png";
 import { ICandy } from "levels/LevelCandy/components/Candy";
 
 export const lollipopCandies: ICandy[] = [

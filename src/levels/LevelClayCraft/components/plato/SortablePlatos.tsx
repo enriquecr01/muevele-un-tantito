@@ -1,7 +1,7 @@
 import React from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import Plato from "levels/LevelClayCraft/components/plato/Plato";
+import Plato from "@LevelClayCraft/components/plato/Plato";
 
 export default function SortablePlatos(props) {
   const { attributes, listeners, setNodeRef, transform, transition } =

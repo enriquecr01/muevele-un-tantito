@@ -1,10 +1,10 @@
 import React from "react";
-import olla1 from "@images/olla-1.png";
-import olla2 from "@images/olla-2.png";
-import olla3 from "@images/olla-3.png";
-import olla4 from "@images/olla-4.png";
-import olla5 from "@images/olla-5.png";
-import olla6 from "@images/olla-6.png";
+import olla1 from "@LevelClayCraft/assets/olla-1.png";
+import olla2 from "@LevelClayCraft/assets/olla-2.png";
+import olla3 from "@LevelClayCraft/assets/olla-3.png";
+import olla4 from "@LevelClayCraft/assets/olla-4.png";
+import olla5 from "@LevelClayCraft/assets/olla-5.png";
+import olla6 from "@LevelClayCraft/assets/olla-6.png";
 import "animate.css";
 
 export default function Olla(props) {

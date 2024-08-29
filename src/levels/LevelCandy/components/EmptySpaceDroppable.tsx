@@ -4,7 +4,6 @@ import { Candy } from "./Candy";
 
 function EmptySpaceDroppable(props) {
   const { setNodeRef } = useDroppable({
-    // id: "cart-droppable",
     id: props.id,
   });
 

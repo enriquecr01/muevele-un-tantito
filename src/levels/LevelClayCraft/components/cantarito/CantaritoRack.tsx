@@ -10,12 +10,10 @@ import {
   useSensors,
 } from "@dnd-kit/core";
 import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
-import CantaritoContainer from "levels/LevelClayCraft/components/cantarito/CantaritoContainer";
-import Cantarito from "levels/LevelClayCraft/components/cantarito/Cantarito";
+import CantaritoContainer from "@LevelClayCraft/components/cantarito/CantaritoContainer";
+import Cantarito from "@LevelClayCraft/components/cantarito/Cantarito";
 import putItem from "@sounds/putitem.mp3";
 import "animate.css";
-import { shuffleArray } from "@utils/arrays";
-import { initialConchas } from "levels/LevelBakery/components/mocks/levelBakery";
 
 type CantaritoRackProps = {
   cantaritosArray: number[];
@@ -30,11 +28,6 @@ export default function CantaritoRack({
   const [activeId, setActiveId] = useState();
 
   const putItemSound = new Audio(putItem);
-
-  // useEffect(() => {
-  //   const shuffledConchas = shuffleArray(initialConchas);
-  //   setCantaritos(shuffledConchas);
-  // }, [cantaritos]);
 
   const sensors = useSensors(
     useSensor(TouchSensor, {

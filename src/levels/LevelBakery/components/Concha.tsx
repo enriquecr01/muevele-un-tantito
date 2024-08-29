@@ -1,7 +1,7 @@
 import React from "react";
-import chocolate from "@images/chocolate.png";
-import vainilla from "@images/vainilla.png";
-import fresa from "@images/fresa.png";
+import chocolate from "@LevelBakery/assets/chocolate.png";
+import vainilla from "@LevelBakery/assets/vainilla.png";
+import fresa from "@LevelBakery/assets/fresa.png";
 import "animate.css";
 
 export default function Item(props) {

@@ -17,15 +17,15 @@ import ScreenWin from "pages/ScreenWin";
 import "animate.css";
 import { shuffleArray } from "@utils/arrays";
 import { NavigationHelper } from "@utils/components/Navigation/NavigationContainer";
-import { Candy, ICandy } from "levels/LevelCandy/components/Candy";
-import BoxCartDroppable from "levels/LevelCandy/win-conditions/BoxDroppable";
+import { Candy, ICandy } from "@LevelCandy/components/Candy";
+import BoxDroppable from "@LevelCandy/components/BoxDroppable";
 import {
   lollipopCandies,
   rectangleCandies,
   roundedCandies,
-} from "levels/LevelCandy/mocks/levelCandy";
-import EmptySpaceDroppable from "levels/LevelCandy/components/EmptySpaceDroppable";
-import { verifyWin } from "levels/LevelClayCraft/win-conditions/levelCandy";
+} from "@LevelCandy/mocks";
+import EmptySpaceDroppable from "@LevelCandy/components/EmptySpaceDroppable";
+import { verifyWin } from "@LevelCandy/win-conditions";
 
 type LevelCandyProps = {
   navigation?: NavigationHelper;
@@ -235,11 +235,11 @@ export function LevelCandy({ navigation }: LevelCandyProps) {
           >
             <main className="flex flex-col items-center md:gap-16 md:p-4 w-full">
               <div className="flex flex-row flex-wrap justify-center md:gap-4 w-full">
-                <BoxCartDroppable id="box-1" items={candies} />
+                <BoxDroppable id="box-1" items={candies} />
 
-                <BoxCartDroppable id="box-2" items={candies2} />
+                <BoxDroppable id="box-2" items={candies2} />
 
-                <BoxCartDroppable id="box-3" items={candies3} />
+                <BoxDroppable id="box-3" items={candies3} />
               </div>
 
               <div className="flex flex-col items-center">

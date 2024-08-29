@@ -1,8 +1,8 @@
 import React from "react";
-import plato1 from "@images/plato-1.png";
-import plato2 from "@images/plato-2.png";
-import plato3 from "@images/plato-3.png";
-import plato4 from "@images/plato-4.png";
+import plato1 from "@LevelClayCraft/assets/plato-1.png";
+import plato2 from "@LevelClayCraft/assets/plato-2.png";
+import plato3 from "@LevelClayCraft/assets/plato-3.png";
+import plato4 from "@LevelClayCraft/assets/plato-4.png";
 import "animate.css";
 
 export default function Plato(props) {

@@ -1,7 +1,7 @@
 import React from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import Cantarito from "levels/LevelClayCraft/components/cantarito/Cantarito";
+import Cantarito from "@LevelClayCraft/components/cantarito/Cantarito";
 
 export default function SortableCantarito(props) {
   const { attributes, listeners, setNodeRef, transform, transition } =

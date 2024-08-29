@@ -2,7 +2,7 @@ import React from "react";
 import { useDroppable } from "@dnd-kit/core";
 import { Candy } from "./Candy";
 
-function BoxCartDroppable(props) {
+function BoxDroppable(props) {
   const { setNodeRef } = useDroppable({
     id: props.id,
   });
@@ -45,4 +45,4 @@ function BoxCartDroppable(props) {
   );
 }
 
-export default BoxCartDroppable;
+export default BoxDroppable;

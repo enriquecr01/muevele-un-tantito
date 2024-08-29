@@ -1,8 +1,8 @@
 import React from "react";
-import cantarito1 from "@images/cantarito-1.png";
-import cantarito2 from "@images/cantarito-2.png";
-import cantarito3 from "@images/cantarito-3.png";
-import cantarito4 from "@images/cantarito-4.png";
+import cantarito1 from "@LevelClayCraft/assets/cantarito-1.png";
+import cantarito2 from "@LevelClayCraft/assets/cantarito-2.png";
+import cantarito3 from "@LevelClayCraft/assets/cantarito-3.png";
+import cantarito4 from "@LevelClayCraft/assets/cantarito-4.png";
 import "animate.css";
 
 export default function Cantarito(props) {

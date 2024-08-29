@@ -8,8 +8,10 @@
       "@sounds/*": ["assets/sounds/*"],
       "@components/*": ["components/*"],
       "@utils/*": ["utils/*"],
-      "@win-conditions/*": ["utils/win-conditions/*"],
-      "@mocks/*": ["mocks/*"]
+      "@LevelBakery/*": ["levels/LevelBakery/*"],
+      "@LevelCandy/*": ["levels/LevelCandy/*"],
+      "@LevelClayCraft/*": ["levels/LevelClayCraft/*"],
+      "@LevelMariachiInstruments/*": ["levels/LevelMariachiInstruments/*"]
     }
   }
 }

@@ -1,10 +1,10 @@
 import React from "react";
-import trompeta from "@images/trompeta.png";
-import vihuela from "@images/vihuela.png";
-import acordeon from "@images/acordeon.png";
-import guitarra from "@images/guitarra.png";
-import guitarron from "@images/guitarron.png";
-import violin from "@images/violin.png";
+import trompeta from "@LevelMariachiInstruments/assets/trompeta.png";
+import vihuela from "@LevelMariachiInstruments/assets/vihuela.png";
+import acordeon from "@LevelMariachiInstruments/assets/acordeon.png";
+import guitarra from "@LevelMariachiInstruments/assets/guitarra.png";
+import guitarron from "@LevelMariachiInstruments/assets/guitarron.png";
+import violin from "@LevelMariachiInstruments/assets/violin.png";
 import "animate.css";
 
 export default function Instrument(props) {

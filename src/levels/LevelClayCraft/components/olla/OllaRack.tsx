@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   closestCorners,
   DndContext,
@@ -10,12 +10,10 @@ import {
   useSensors,
 } from "@dnd-kit/core";
 import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
-import OllaContainer from "levels/LevelClayCraft/components/olla/OllaContainer";
-import Olla from "levels/LevelClayCraft/components/olla/Olla";
+import OllaContainer from "@LevelClayCraft/components/olla/OllaContainer";
+import Olla from "@LevelClayCraft/components/olla/Olla";
 import putItem from "@sounds/putitem.mp3";
 import "animate.css";
-import { shuffleArray } from "@utils/arrays";
-import { initialConchas } from "levels/LevelBakery/components/mocks/levelBakery";
 
 type OllaRackProps = {
   ollasArray: number[];
@@ -27,11 +25,6 @@ export default function OllaRack({ ollasArray, callback }: OllaRackProps) {
   const [activeId, setActiveId] = useState();
 
   const putItemSound = new Audio(putItem);
-
-  // useEffect(() => {
-  //   const shuffledConchas = shuffleArray(initialConchas);
-  //   setCantaritos(shuffledConchas);
-  // }, [cantaritos]);
 
   const sensors = useSensors(
     useSensor(TouchSensor, {

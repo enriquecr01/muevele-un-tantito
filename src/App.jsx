@@ -3,10 +3,10 @@
 // import viteLogo from '/vite.svg'
 import "./App.css";
 
-import { LevelBakery } from "./levels/LevelBakery";
-import { LevelClayCraft } from "./levels/levelClayCraft";
-import { LevelMariachiInstruments } from "./levels/LevelMariachiInstruments";
-import { LevelCandy } from "./levels/LevelCandy";
+import { LevelBakery } from "./levels/LevelBakery/LevelBakery";
+import { LevelClayCraft } from "./levels/levelClayCraft/levelClayCraft";
+import { LevelMariachiInstruments } from "./levels/LevelMariachiInstruments/LevelMariachiInstruments";
+import { LevelCandy } from "./levels/LevelCandy/LevelCandy";
 import MainMenu from "./pages/mainMenu";
 import MainFlow from "./pages/MainFlow";
 import Example from "./example";

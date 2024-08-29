@@ -10,15 +10,15 @@ import {
   useSensors,
 } from "@dnd-kit/core";
 import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
-import Container from "levels/LevelMariachiInstruments/components/Container";
-import Instrument from "levels/LevelMariachiInstruments/components/Instrument";
+import Container from "@LevelMariachiInstruments/components/Container";
+import Instrument from "@LevelMariachiInstruments/components/Instrument";
 import putItem from "@sounds/putitem.mp3";
 import { Helmet } from "react-helmet";
 import ScreenWin from "pages/ScreenWin";
 import "animate.css";
 import { shuffleArray } from "@utils/arrays";
-import { verifyWin } from "levels/LevelMariachiInstruments/win-conditions/levelMariachiInstruments";
-import { initialInstruments } from "@mocks/levelMariachiInstruments";
+import { verifyWin } from "@LevelMariachiInstruments/win-conditions";
+import { initialInstruments } from "@LevelMariachiInstruments/mocks";
 import { NavigationHelper } from "@utils/components/Navigation/NavigationContainer";
 
 type LevelMariachiInstrumentsProps = {
