@@ -109,58 +109,56 @@ export function LevelBakery({ navigation }: LevelBakeryProps) {
     });
   }
 
-    const reset = () => {
-      const shuffledConchas = shuffleArray(initialConchas);
-      setItems(shuffledConchas);
-      setRemoveLevel(false);
-      setWin(false);
-    };
+  const reset = () => {
+    const shuffledConchas = shuffleArray(initialConchas);
+    setItems(shuffledConchas);
+    setRemoveLevel(false);
+    setWin(false);
+  };
 
-    const style = {
-      background:
-        "radial-gradient(circle, rgba(255,220,69,1) 0%, rgba(252,199,19,1) 100%)",
-    };
+  const style = {
+    background:
+      "radial-gradient(circle, rgba(255,220,69,1) 0%, rgba(252,199,19,1) 100%)",
+  };
 
-    return (
-      <>
-        <Helmet>
-          <title>¡Muévele Tantito! | Panadería</title>
-        </Helmet>
-        {win && (
-          <div
-            className={`${
-              win ? "animate__animated animate__jackInTheBox" : ""
-            }`}
+  return (
+    <>
+      <Helmet>
+        <title>¡Muévele Tantito! | Panadería</title>
+      </Helmet>
+      {win && (
+        <div
+          className={`${win ? "animate__animated animate__jackInTheBox" : ""}`}
+        >
+          <ScreenWin
+            nextLevel="LevelCandy"
+            navigation={navigation}
+            reset={reset}
+          />
+        </div>
+      )}
+      {!win && (
+        <div
+          className={`flex flex-column justify-center items-center overflow-hidden h-screen bg-[#ffdc45] ${
+            removeLevel ? "animate__animated animate__fadeOutDown" : ""
+          }`}
+          style={style}
+        >
+          <DndContext
+            sensors={sensors}
+            collisionDetection={closestCorners}
+            onDragStart={handleDragStart}
+            onDragEnd={handleDragEnd}
           >
-            <ScreenWin
-              nextLevel="LevelBakery"
-              navigation={navigation}
-              reset={reset}
-            />
-          </div>
-        )}
-        {!win && (
-          <div
-            className={`flex flex-column justify-center items-center overflow-hidden h-screen bg-[#ffdc45] ${
-              removeLevel ? "animate__animated animate__fadeOutDown" : ""
-            }`}
-            style={style}
-          >
-            <DndContext
-              sensors={sensors}
-              collisionDetection={closestCorners}
-              onDragStart={handleDragStart}
-              onDragEnd={handleDragEnd}
-            >
-              <Container id="charola" items={items} />
-              <DragOverlay transition={null}>
-                {activeId ? (
-                  <Concha id={activeId} color={activeColor} isDragging />
-                ) : null}
-              </DragOverlay>
-            </DndContext>
-          </div>
-        )}
-      </>
-    );
+            <Container id="charola" items={items} />
+            <DragOverlay transition={null}>
+              {activeId ? (
+                <Concha id={activeId} color={activeColor} isDragging />
+              ) : null}
+            </DragOverlay>
+          </DndContext>
+        </div>
+      )}
+    </>
+  );
 }

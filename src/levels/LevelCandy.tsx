@@ -16,7 +16,6 @@ import { Helmet } from "react-helmet";
 import ScreenWin from "pages/ScreenWin";
 import "animate.css";
 import { shuffleArray } from "@utils/arrays";
-import { initialConchas } from "@mocks/levelBakery";
 import { NavigationHelper } from "@utils/components/Navigation/NavigationContainer";
 import { Candy, ICandy } from "@components/LevelCandy/Candy";
 import BoxCartDroppable from "@components/LevelCandy/BoxDroppable";
@@ -234,7 +233,7 @@ export function LevelCandy({ navigation }: LevelCandyProps) {
             onDragEnd={addToBox}
             sensors={sensors}
           >
-            <main className="flex flex-col items-center gap-16 p-4 w-full">
+            <main className="flex flex-col items-center md:gap-16 md:p-4 w-full">
               <div className="flex flex-row flex-wrap justify-center gap-4 w-full">
                 <BoxCartDroppable id="box-1" items={candies} />
 

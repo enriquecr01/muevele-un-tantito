@@ -23,8 +23,8 @@ function App() {
       {/* <LevelBakery></LevelBakery> */}
       {/* <LevelClayCraft></LevelClayCraft> */}
       {/* <LevelMariachiInstruments></LevelMariachiInstruments> */}
-      <LevelCandy></LevelCandy>
-      {/* <MainFlow></MainFlow> */}
+      {/* <LevelCandy></LevelCandy> */}
+      <MainFlow></MainFlow>
       {/* <Wachar></Wachar> */}
 
       {/* <div>

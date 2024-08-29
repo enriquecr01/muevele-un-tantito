@@ -4,13 +4,10 @@ import { Candy } from "./Candy";
 
 function BoxCartDroppable(props) {
   const { setNodeRef } = useDroppable({
-    // id: "cart-droppable",
     id: props.id,
   });
 
   const containerStyle = {
-    padding: 10,
-    margin: 10,
     flex: 1,
     display: "grid",
     gridTemplateColumns: "repeat(5, 1fr)",
@@ -26,7 +23,7 @@ function BoxCartDroppable(props) {
         style={{ transform: "rotateX(15deg)" }}
       >
         <div
-          className="bg-[#bb6d3e] rounded border-black border-2 max-[543px]:min-h-44 max-[543px]:max-h-44 max-[1023px]:min-h-44 max-[1023px]:max-h-44 lg:min-w-72 lg:max-w-72 lg:min-h-40 lg:max-h-40"
+          className="bg-[#bb6d3e] p-2.5 m-2.5 rounded border-black border-2 max-[543px]:min-h-28 max-[543px]:max-h-28 max-[1023px]:min-h-44 max-[1023px]:max-h-44 lg:min-w-72 lg:max-w-72 lg:min-h-40 lg:max-h-40"
           ref={setNodeRef}
           style={containerStyle}
         >
