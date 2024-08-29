@@ -26,6 +26,7 @@ import {
   roundedCandies,
 } from "@mocks/levelCandy";
 import EmptySpaceDroppable from "@components/LevelCandy/EmptySpaceDroppable";
+import { verifyWin } from "@utils/win-conditions/levelCandy";
 
 type LevelCandyProps = {
   navigation?: NavigationHelper;
@@ -36,14 +37,7 @@ export function LevelCandy({ navigation }: LevelCandyProps) {
   const [win, setWin] = useState<boolean>(false);
   const [removeLevel, setRemoveLevel] = useState<boolean>(false);
 
-  const candiesDefaultArrays: ICandy[] = [
-    ...lollipopCandies,
-    ...roundedCandies,
-    ...rectangleCandies,
-  ];
-
-  const [candiesDefault, setCandiesDefault] =
-    useState<ICandy[]>(candiesDefaultArrays);
+  const [candiesDefault, setCandiesDefault] = useState<ICandy[]>([]);
   const [candies, setCandies] = useState<ICandy[]>([]);
   const [candies2, setCandies2] = useState<ICandy[]>([]);
   const [candies3, setCandies3] = useState<ICandy[]>([]);
@@ -54,7 +48,7 @@ export function LevelCandy({ navigation }: LevelCandyProps) {
     setActiveId(event.active.data.current.data);
   };
 
-  const addToBox = (e: DragEndEvent) => {
+  const addToBox = async (e: DragEndEvent) => {
     const newItem = { ...e.active.data.current.data };
     const { active, over } = e;
     if (
@@ -113,41 +107,87 @@ export function LevelCandy({ navigation }: LevelCandyProps) {
 
     switch (currentBox) {
       case "default-box":
-        setCandiesDefault(currentArray);
+        await setCandiesDefault(() => {
+          return currentArray;
+        });
         break;
       case "box-1":
-        setCandies(currentArray);
+        await setCandies(() => {
+          return currentArray;
+        });
         break;
       case "box-2":
-        setCandies2(currentArray);
+        await setCandies2(() => {
+          return currentArray;
+        });
         break;
       case "box-3":
-        setCandies3(currentArray);
+        await setCandies3(() => {
+          return currentArray;
+        });
         break;
     }
 
     switch (overBox) {
       case "default-box":
-        setCandiesDefault(tempArray);
+        await setCandiesDefault(() => {
+          return tempArray;
+        });
         break;
       case "box-1":
-        setCandies(tempArray);
+        await setCandies(() => {
+          return tempArray;
+        });
         break;
       case "box-2":
-        setCandies2(tempArray);
+        await setCandies2(() => {
+          return tempArray;
+        });
         break;
       case "box-3":
-        setCandies3(tempArray);
+        await setCandies3(() => {
+          return tempArray;
+        });
         break;
     }
 
     putItemSound.play();
   };
 
-  // useEffect(() => {
-  //   const shuffledConchas = shuffleArray(initialConchas);
-  //   setItems(shuffledConchas);
-  // }, [setItems]);
+  const verifyWinCandy = (candies, candies2, candies3) => {
+    const win = verifyWin(candies, candies2, candies3);
+
+    if (win) {
+      setTimeout(() => {
+        setRemoveLevel(true);
+      }, 1000);
+      setTimeout(() => {
+        setWin(win);
+      }, 2000);
+    }
+  };
+
+  useEffect(() => {
+    const candiesDefaultArrays: ICandy[] = [
+      ...lollipopCandies,
+      ...roundedCandies,
+      ...rectangleCandies,
+    ];
+    const shuffledCandies = shuffleArray(candiesDefaultArrays);
+    setCandiesDefault(shuffledCandies);
+  }, []);
+
+  useEffect(() => {
+    verifyWinCandy(candies, candies2, candies3);
+  }, [
+    candies,
+    candies2,
+    candies3,
+    setCandies,
+    setCandies2,
+    setCandies3,
+    setCandiesDefault,
+  ]);
 
   const sensors = useSensors(
     useSensor(TouchSensor, {
@@ -163,8 +203,16 @@ export function LevelCandy({ navigation }: LevelCandyProps) {
   );
 
   const reset = () => {
-    const shuffledConchas = shuffleArray(initialConchas);
-    // setItems(shuffledConchas);
+    const candiesDefaultArrays: ICandy[] = [
+      ...lollipopCandies,
+      ...roundedCandies,
+      ...rectangleCandies,
+    ];
+    const shuffledCandies = shuffleArray(candiesDefaultArrays);
+    setCandiesDefault(shuffledCandies);
+    setCandies([]);
+    setCandies2([]);
+    setCandies3([]);
     setRemoveLevel(false);
     setWin(false);
   };
@@ -222,7 +270,12 @@ export function LevelCandy({ navigation }: LevelCandyProps) {
 
               <DragOverlay transition={null}>
                 {activeId ? (
-                  <Candy id={activeId.id} image={activeId.image} isDragging />
+                  <Candy
+                    id={activeId.id}
+                    image={activeId.image}
+                    type={activeId.type}
+                    isDragging
+                  />
                 ) : null}
               </DragOverlay>
             </main>

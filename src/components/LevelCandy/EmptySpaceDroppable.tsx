@@ -30,6 +30,7 @@ function EmptySpaceDroppable(props) {
                 id={item.id}
                 image={item.image}
                 currentBox={item.currentBox}
+                type={item.type}
               >
                 {item}
               </Candy>
