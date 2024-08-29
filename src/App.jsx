@@ -9,8 +9,6 @@ import { LevelMariachiInstruments } from "./levels/LevelMariachiInstruments/Leve
 import { LevelCandy } from "./levels/LevelCandy/LevelCandy";
 import MainMenu from "./pages/mainMenu";
 import MainFlow from "./pages/MainFlow";
-import Example from "./example";
-import Wachar from "./components/wachar";
 
 function App() {
   // const [count, setCount] = useState(0)
