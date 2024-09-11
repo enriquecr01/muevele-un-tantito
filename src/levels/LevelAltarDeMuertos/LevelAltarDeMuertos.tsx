@@ -10,26 +10,26 @@ import {
   useSensors,
 } from "@dnd-kit/core";
 import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
-import Container from "@LevelBakery/components/Container";
-import Concha from "@LevelBakery/components/Concha";
+import Container from "@LevelAltarDeMuertos/components/Container";
+import Concha from "@LevelAltarDeMuertos/components/Level";
 import putItem from "@sounds/putitem.mp3";
-import {
-  oneLineColorCondition,
-  twoVerticalLinesColorsCondition,
-} from "@LevelBakery/win-conditions";
+// import {
+//   oneLineColorCondition,
+//   twoVerticalLinesColorsCondition,
+// } from "@LevelAltarDeMuertos/win-conditions";
 import { Helmet } from "react-helmet";
 import ScreenWin from "pages/ScreenWin";
 import "animate.css";
 import { shuffleArray } from "@utils/arrays";
-import { initialConchas } from "@LevelBakery/mocks";
+import { initialConchas } from "@LevelAltarDeMuertos/mocks";
 import { NavigationHelper } from "@utils/components/Navigation/NavigationContainer";
 
-type LevelBakeryProps = {
+type LevelAltarDeMuertosProps = {
   navigation?: NavigationHelper;
 };
 
-export function LevelBakery({ navigation }: LevelBakeryProps) {
-  const [items, setItems] = useState<string[]>([]);
+export function LevelAltarDeMuertos({ navigation }: LevelAltarDeMuertosProps) {
+  const [items, setItems] = useState<number[]>([1, 2, 3, 4, 5, 6, 7]);
   const [activeId, setActiveId] = useState();
   const [activeColor, setActiveColor] = useState();
   const [win, setWin] = useState<boolean>(false);
@@ -37,10 +37,10 @@ export function LevelBakery({ navigation }: LevelBakeryProps) {
 
   const putItemSound = new Audio(putItem);
 
-  useEffect(() => {
-    const shuffledConchas = shuffleArray(initialConchas);
-    setItems(shuffledConchas);
-  }, [setItems]);
+  // useEffect(() => {
+  //   const shuffledConchas = shuffleArray(initialConchas);
+  //   setItems(shuffledConchas);
+  // }, [setItems]);
 
   const sensors = useSensors(
     useSensor(TouchSensor, {
@@ -59,11 +59,11 @@ export function LevelBakery({ navigation }: LevelBakeryProps) {
     const { active } = event;
     const { id } = active;
 
-    const splitedId = id.split("-");
-    const color = splitedId[0];
+    // const splitedId = id.split("-");
+    // const color = splitedId[0];
 
     setActiveId(id);
-    setActiveColor(color);
+    // setActiveColor(color);
   }
 
   async function handleDragEnd(event) {
@@ -89,19 +89,19 @@ export function LevelBakery({ navigation }: LevelBakeryProps) {
         newItems[activeIdx],
       ];
 
-      win = oneLineColorCondition(newItems);
-      if (!win) {
-        win = twoVerticalLinesColorsCondition(newItems);
-      }
+      // win = oneLineColorCondition(newItems);
+      // if (!win) {
+      //   win = twoVerticalLinesColorsCondition(newItems);
+      // }
 
-      if (win) {
-        setTimeout(() => {
-          setRemoveLevel(true);
-        }, 1000);
-        setTimeout(() => {
-          setWin(win);
-        }, 2000);
-      }
+      // if (win) {
+      //   setTimeout(() => {
+      //     setRemoveLevel(true);
+      //   }, 1000);
+      //   setTimeout(() => {
+      //     setWin(win);
+      //   }, 2000);
+      // }
 
       setActiveId(null);
       putItemSound.play();

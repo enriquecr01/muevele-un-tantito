@@ -11,7 +11,8 @@
       "@LevelBakery/*": ["levels/LevelBakery/*"],
       "@LevelCandy/*": ["levels/LevelCandy/*"],
       "@LevelClayCraft/*": ["levels/LevelClayCraft/*"],
-      "@LevelMariachiInstruments/*": ["levels/LevelMariachiInstruments/*"]
+      "@LevelMariachiInstruments/*": ["levels/LevelMariachiInstruments/*"],
+      "@LevelAltarDeMuertos/*": ["levels/LevelAltarDeMuertos/*"]
     }
   }
 }

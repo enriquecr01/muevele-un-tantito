@@ -7,6 +7,7 @@ import { LevelBakery } from "./levels/LevelBakery/LevelBakery";
 import { LevelClayCraft } from "./levels/levelClayCraft/levelClayCraft";
 import { LevelMariachiInstruments } from "./levels/LevelMariachiInstruments/LevelMariachiInstruments";
 import { LevelCandy } from "./levels/LevelCandy/LevelCandy";
+import { LevelAltarDeMuertos } from "./levels/LevelAltarDeMuertos/LevelAltarDeMuertos";
 import MainMenu from "./pages/mainMenu";
 import MainFlow from "./pages/MainFlow";
 
@@ -22,7 +23,8 @@ function App() {
       {/* <LevelClayCraft></LevelClayCraft> */}
       {/* <LevelMariachiInstruments></LevelMariachiInstruments> */}
       {/* <LevelCandy></LevelCandy> */}
-      <MainFlow></MainFlow>
+      <LevelAltarDeMuertos></LevelAltarDeMuertos>
+      {/* <MainFlow></MainFlow> */}
       {/* <Wachar></Wachar> */}
 
       {/* <div>

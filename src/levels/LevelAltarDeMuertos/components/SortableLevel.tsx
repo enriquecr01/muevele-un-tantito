@@ -1,9 +1,9 @@
 import React from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import Concha from "@LevelBakery/components/Concha";
+import Level from "@LevelAltarDeMuertos/components/Level";
 
-export default function SortableConcha(props) {
+export default function SortableLevel(props) {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: props.id });
 
@@ -14,7 +14,7 @@ export default function SortableConcha(props) {
 
   return (
     <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
-      <Concha id={props.id} color={props.color} />
+      <Level id={props.id} color={props.color} />
     </div>
   );
 }
