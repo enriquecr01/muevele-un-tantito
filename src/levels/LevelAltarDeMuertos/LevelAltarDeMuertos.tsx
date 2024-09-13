@@ -118,7 +118,7 @@ export function LevelAltarDeMuertos({ navigation }: LevelAltarDeMuertosProps) {
 
   const style = {
     background:
-      "radial-gradient(circle, rgba(255,220,69,1) 0%, rgba(252,199,19,1) 100%)",
+      "radial-gradient(circle, rgba(173,159,240,1) 0%, rgba(201,186,255,1) 100%)",
   };
 
   return (
@@ -139,7 +139,7 @@ export function LevelAltarDeMuertos({ navigation }: LevelAltarDeMuertosProps) {
       )}
       {!win && (
         <div
-          className={`flex flex-column justify-center items-center overflow-hidden h-screen bg-[#ffdc45] ${
+          className={`flex flex-column justify-center items-stretch overflow-hidden h-screen bg-[#ad9ff0] ${
             removeLevel ? "animate__animated animate__fadeOutDown" : ""
           }`}
           style={style}

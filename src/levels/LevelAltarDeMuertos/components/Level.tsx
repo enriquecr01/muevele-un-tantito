@@ -47,7 +47,7 @@ export default function Level(props) {
         src={getLevel(id)}
         alt="chocolate"
         className={`pointer-events-none ${
-          isDragging ? "animate__animated animate__swing" : ""
+          isDragging ? "animate__animated animate__shakeX" : ""
         }`}
       />
     </div>

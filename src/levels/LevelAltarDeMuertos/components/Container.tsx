@@ -18,7 +18,7 @@ export default function Container(props) {
 
   return (
     <SortableContext id={id} items={items} strategy={rectSwappingStrategy}>
-      <div className="h-1/2">
+      <div className="flex items-center my-4">
         <div>
           <div className="flex flex-col" ref={setNodeRef}>
             {items.map((id) => (
