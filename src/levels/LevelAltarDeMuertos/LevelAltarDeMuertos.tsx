@@ -13,15 +13,12 @@ import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import Container from "@LevelAltarDeMuertos/components/Container";
 import Concha from "@LevelAltarDeMuertos/components/Level";
 import putItem from "@sounds/putitem.mp3";
-// import {
-//   oneLineColorCondition,
-//   twoVerticalLinesColorsCondition,
-// } from "@LevelAltarDeMuertos/win-conditions";
+import { verifyWin } from "@LevelAltarDeMuertos/win-conditions";
 import { Helmet } from "react-helmet";
 import ScreenWin from "pages/ScreenWin";
 import "animate.css";
-import { shuffleArray } from "@utils/arrays";
-import { initialConchas } from "@LevelAltarDeMuertos/mocks";
+import { shuffleAndVerifyArraysAreNotSorted } from "@utils/arrays";
+import { initialLevels } from "@LevelAltarDeMuertos/mocks";
 import { NavigationHelper } from "@utils/components/Navigation/NavigationContainer";
 
 type LevelAltarDeMuertosProps = {
@@ -31,16 +28,15 @@ type LevelAltarDeMuertosProps = {
 export function LevelAltarDeMuertos({ navigation }: LevelAltarDeMuertosProps) {
   const [items, setItems] = useState<number[]>([1, 2, 3, 4, 5, 6, 7]);
   const [activeId, setActiveId] = useState();
-  const [activeColor, setActiveColor] = useState();
   const [win, setWin] = useState<boolean>(false);
   const [removeLevel, setRemoveLevel] = useState<boolean>(false);
 
   const putItemSound = new Audio(putItem);
 
-  // useEffect(() => {
-  //   const shuffledConchas = shuffleArray(initialConchas);
-  //   setItems(shuffledConchas);
-  // }, [setItems]);
+  useEffect(() => {
+    const shuffledConchas = shuffleAndVerifyArraysAreNotSorted(initialLevels);
+    setItems(shuffledConchas);
+  }, [setItems]);
 
   const sensors = useSensors(
     useSensor(TouchSensor, {
@@ -59,11 +55,7 @@ export function LevelAltarDeMuertos({ navigation }: LevelAltarDeMuertosProps) {
     const { active } = event;
     const { id } = active;
 
-    // const splitedId = id.split("-");
-    // const color = splitedId[0];
-
     setActiveId(id);
-    // setActiveColor(color);
   }
 
   async function handleDragEnd(event) {
@@ -89,19 +81,16 @@ export function LevelAltarDeMuertos({ navigation }: LevelAltarDeMuertosProps) {
         newItems[activeIdx],
       ];
 
-      // win = oneLineColorCondition(newItems);
-      // if (!win) {
-      //   win = twoVerticalLinesColorsCondition(newItems);
-      // }
+      win = verifyWin(newItems);
 
-      // if (win) {
-      //   setTimeout(() => {
-      //     setRemoveLevel(true);
-      //   }, 1000);
-      //   setTimeout(() => {
-      //     setWin(win);
-      //   }, 2000);
-      // }
+      if (win) {
+        setTimeout(() => {
+          setRemoveLevel(true);
+        }, 1000);
+        setTimeout(() => {
+          setWin(win);
+        }, 2000);
+      }
 
       setActiveId(null);
       putItemSound.play();
@@ -110,7 +99,7 @@ export function LevelAltarDeMuertos({ navigation }: LevelAltarDeMuertosProps) {
   }
 
   const reset = () => {
-    const shuffledConchas = shuffleArray(initialConchas);
+    const shuffledConchas = shuffleAndVerifyArraysAreNotSorted(initialLevels);
     setItems(shuffledConchas);
     setRemoveLevel(false);
     setWin(false);
@@ -150,11 +139,9 @@ export function LevelAltarDeMuertos({ navigation }: LevelAltarDeMuertosProps) {
             onDragStart={handleDragStart}
             onDragEnd={handleDragEnd}
           >
-            <Container id="charola" items={items} />
+            <Container id="levels" items={items} />
             <DragOverlay transition={null}>
-              {activeId ? (
-                <Concha id={activeId} color={activeColor} isDragging />
-              ) : null}
+              {activeId ? <Concha id={activeId} isDragging /> : null}
             </DragOverlay>
           </DndContext>
         </div>
