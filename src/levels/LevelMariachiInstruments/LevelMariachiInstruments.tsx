@@ -130,7 +130,7 @@ export function LevelMariachiInstruments({
           className={`${win ? "animate__animated animate__jackInTheBox" : ""}`}
         >
           <ScreenWin
-            nextLevel="LevelClayCraft"
+            nextLevel="LevelAltarDeMuertos"
             navigation={navigation}
             reset={reset}
           />

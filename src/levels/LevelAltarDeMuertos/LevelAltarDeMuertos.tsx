@@ -120,7 +120,7 @@ export function LevelAltarDeMuertos({ navigation }: LevelAltarDeMuertosProps) {
           className={`${win ? "animate__animated animate__jackInTheBox" : ""}`}
         >
           <ScreenWin
-            nextLevel="LevelCandy"
+            nextLevel="LevelClayCraft"
             navigation={navigation}
             reset={reset}
           />

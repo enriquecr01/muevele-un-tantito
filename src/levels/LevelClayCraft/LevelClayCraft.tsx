@@ -75,7 +75,7 @@ export function LevelClayCraft({ navigation }: LevelClayCraftProps) {
           className={`${win ? "animate__animated animate__jackInTheBox" : ""}`}
         >
           <ScreenWin
-            nextLevel="LevelBakery"
+            nextLevel="LevelCandy"
             navigation={navigation}
             reset={reset}
           />
