@@ -45,7 +45,7 @@ export default function Drink(props) {
         src={getDrink(drink)}
         alt={drink}
         className={`pointer-events-none ${
-          isDragging ? "animate__animated animate__swing" : ""
+          isDragging ? "animate__animated animate__shakeY" : ""
         }`}
       />
     </div>

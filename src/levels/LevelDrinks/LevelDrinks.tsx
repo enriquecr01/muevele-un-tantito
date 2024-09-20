@@ -17,7 +17,7 @@ import { Helmet } from "react-helmet";
 import ScreenWin from "pages/ScreenWin";
 import "animate.css";
 import { shuffleArray } from "@utils/arrays";
-import { verifyWin } from "@LevelMariachiInstruments/win-conditions";
+import { verifyWin } from "@LevelDrinks/win-conditions";
 import { initialDrinks } from "@LevelDrinks/mocks";
 import { NavigationHelper } from "@utils/components/Navigation/NavigationContainer";
 
