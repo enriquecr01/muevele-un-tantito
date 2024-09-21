@@ -26,25 +26,25 @@ type LevelDrinksProps = {
 };
 
 export function LevelDrinks({ navigation }: LevelDrinksProps) {
-  const [items, setItems] = useState<string[]>(initialDrinks);
+  const [items, setItems] = useState<string[]>([]);
   const [activeId, setActiveId] = useState();
   const [win, setWin] = useState<boolean>(false);
   const [removeLevel, setRemoveLevel] = useState<boolean>(false);
 
   const putItemSound = new Audio(putItem);
 
-  // function shuffleArrayAndVerify(array) {
-  //   const arrayShuffled = shuffleArray(array);
+  function shuffleArrayAndVerify(array) {
+    const arrayShuffled = shuffleArray(array);
 
-  //   if (verifyWin(arrayShuffled)) shuffleArrayAndVerify(array);
+    if (verifyWin(arrayShuffled)) shuffleArrayAndVerify(array);
 
-  //   return arrayShuffled;
-  // }
+    return arrayShuffled;
+  }
 
-  // useEffect(() => {
-  //   const shuffledConchas = shuffleArrayAndVerify(initialDrinks);
-  //   setItems(shuffledConchas);
-  // }, [setItems]);
+  useEffect(() => {
+    const shuffledDrinks = shuffleArrayAndVerify(initialDrinks);
+    setItems(shuffledDrinks);
+  }, [setItems]);
 
   const sensors = useSensors(
     useSensor(TouchSensor, {
@@ -111,12 +111,12 @@ export function LevelDrinks({ navigation }: LevelDrinksProps) {
       "radial-gradient(circle, rgba(0,165,255,1) 0%, rgba(0,141,255,1) 89%, rgba(0,104,255,1) 100%)",
   };
 
-  // const reset = () => {
-  //   const shuffledDrinks = shuffleArrayAndVerify(initialDrinks);
-  //   setItems(shuffledDrinks);
-  //   setRemoveLevel(false);
-  //   setWin(false);
-  // };
+  const reset = () => {
+    const shuffledDrinks = shuffleArrayAndVerify(initialDrinks);
+    setItems(shuffledDrinks);
+    setRemoveLevel(false);
+    setWin(false);
+  };
 
   return (
     <>
@@ -130,8 +130,7 @@ export function LevelDrinks({ navigation }: LevelDrinksProps) {
           <ScreenWin
             nextLevel="LevelAltarDeMuertos"
             navigation={navigation}
-            reset={() => {}}
-            // reset={reset}
+            reset={reset}
           />
         </div>
       )}
