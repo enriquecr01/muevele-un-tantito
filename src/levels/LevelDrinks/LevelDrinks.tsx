@@ -108,7 +108,7 @@ export function LevelDrinks({ navigation }: LevelDrinksProps) {
 
   const style = {
     background:
-      "radial-gradient(circle, rgba(0,165,255,1) 0%, rgba(0,141,255,1) 89%, rgba(0,104,255,1) 100%)",
+      "radial-gradient(circle, rgba(0,78,206,1) 0%, rgba(16,16,153,1) 100%)",
   };
 
   const reset = () => {
@@ -136,7 +136,7 @@ export function LevelDrinks({ navigation }: LevelDrinksProps) {
       )}
       {!win && (
         <div
-          className={`flex flex-column justify-center items-center overflow-hidden h-screen bg-[#00a5ff]  ${
+          className={`flex flex-column justify-center items-center overflow-hidden h-screen bg-[#004ece]  ${
             removeLevel ? "animate__animated animate__fadeOutDown" : ""
           }`}
           style={style}
