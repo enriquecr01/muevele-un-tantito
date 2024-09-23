@@ -13,7 +13,8 @@
       "@LevelClayCraft/*": ["levels/LevelClayCraft/*"],
       "@LevelMariachiInstruments/*": ["levels/LevelMariachiInstruments/*"],
       "@LevelAltarDeMuertos/*": ["levels/LevelAltarDeMuertos/*"],
-      "@LevelDrinks/*": ["levels/LevelDrinks/*"]
+      "@LevelDrinks/*": ["levels/LevelDrinks/*"],
+      "@LevelTalavera/*": ["levels/LevelTalavera/*"]
     }
   }
 }
