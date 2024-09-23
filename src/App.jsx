@@ -25,8 +25,8 @@ function App() {
       {/* <LevelMariachiInstruments></LevelMariachiInstruments> */}
       {/* <LevelCandy></LevelCandy> */}
       {/* <LevelAltarDeMuertos></LevelAltarDeMuertos> */}
-      <LevelDrinks></LevelDrinks>
-      {/* <MainFlow></MainFlow> */}
+      {/* <LevelDrinks></LevelDrinks> */}
+      <MainFlow></MainFlow>
       {/* <Wachar></Wachar> */}
 
       {/* <div>

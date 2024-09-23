@@ -7,6 +7,7 @@ import { LevelClayCraft } from "@LevelClayCraft/LevelClayCraft";
 import { LevelMariachiInstruments } from "@LevelMariachiInstruments/LevelMariachiInstruments";
 import { LevelCandy } from "@LevelCandy/LevelCandy";
 import { LevelAltarDeMuertos } from "@LevelAltarDeMuertos/LevelAltarDeMuertos";
+import { LevelDrinks } from "@LevelDrinks/LevelDrinks";
 import MainMenu from "./MainMenu";
 
 export default function MainFlow() {
@@ -19,6 +20,7 @@ export default function MainFlow() {
           component={LevelMariachiInstruments}
         />
         <StackPage name="LevelAltarDeMuertos" component={LevelAltarDeMuertos} />
+        <StackPage name="LevelDrinks" component={LevelDrinks} />
         <StackPage name="LevelClayCraft" component={LevelClayCraft} />
         <StackPage name="LevelCandy" component={LevelCandy} />
         <StackPage name="LevelBakery" component={LevelBakery} />

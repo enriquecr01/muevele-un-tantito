@@ -128,7 +128,7 @@ export function LevelDrinks({ navigation }: LevelDrinksProps) {
           className={`${win ? "animate__animated animate__jackInTheBox" : ""}`}
         >
           <ScreenWin
-            nextLevel="LevelAltarDeMuertos"
+            nextLevel="LevelClayCraft"
             navigation={navigation}
             reset={reset}
           />
