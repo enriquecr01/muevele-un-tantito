@@ -215,7 +215,7 @@ export function LevelCandy({ navigation }: LevelCandyProps) {
           className={`${win ? "animate__animated animate__jackInTheBox" : ""}`}
         >
           <ScreenWin
-            nextLevel="LevelBakery"
+            nextLevel="LevelTalavera"
             navigation={navigation}
             reset={reset}
           />
