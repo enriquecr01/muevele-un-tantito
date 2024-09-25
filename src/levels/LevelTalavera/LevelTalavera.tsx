@@ -108,12 +108,12 @@ export function LevelTalavera({ navigation }: LevelTalaveraProps) {
 
   const style = {
     background:
-      "radial-gradient(circle, rgba(0,78,206,1) 0%, rgba(16,16,153,1) 100%)",
+      "radial-gradient(circle, rgba(250,241,202,1) 0%, rgba(255,247,214,1) 100%)",
   };
 
   const reset = () => {
-    const shuffledDrinks = shuffleArrayAndVerify(initialTiles);
-    setItems(shuffledDrinks);
+    const shuffledTiles = shuffleArrayAndVerify(initialTiles);
+    setItems(shuffledTiles);
     setRemoveLevel(false);
     setWin(false);
   };
@@ -136,7 +136,7 @@ export function LevelTalavera({ navigation }: LevelTalaveraProps) {
       )}
       {!win && (
         <div
-          className={`flex flex-column justify-center items-center overflow-hidden h-screen bg-[#004ece]  ${
+          className={`flex flex-column justify-center items-center overflow-hidden h-screen bg-[#faf1ca]  ${
             removeLevel ? "animate__animated animate__fadeOutDown" : ""
           }`}
           style={style}

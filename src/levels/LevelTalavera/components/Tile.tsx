@@ -39,7 +39,7 @@ export default function Tile(props) {
         src={getTile(tile)}
         alt={tile}
         className={`pointer-events-none ${
-          isDragging ? "animate__animated animate__shakeY" : ""
+          isDragging ? "animate__animated animate__pulse" : ""
         }`}
       />
     </div>

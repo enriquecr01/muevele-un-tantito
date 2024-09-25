@@ -1,51 +1,13 @@
-const orderedArrayAscending = [
-    "tequila",
-    "mezcal",
-    "champurrado",
-    "tepache",
-    "atole",
-    "tejuino",
-    "pulque",
+const orderedArray = [
+    "huevo",
+    "nacido",
+    "mediano",
+    "cayendo",
+    "volando"
 ];
 
-const orderedArrayDescending = [
-    "pulque",
-    "tejuino",
-    "atole",
-    "tepache",
-    "champurrado",
-    "mezcal",
-    "tequila",
-];
-
-const orderedArrayAlphabetically = [
-    "atole",
-    "champurrado",
-    "mezcal",
-    "pulque",
-    "tejuino",
-    "tepache",
-    "tequila",
-];
-
-function verifyOrderedAscending(array) {
-    if (JSON.stringify(array) === JSON.stringify(orderedArrayAscending)) {
-        return true;
-    }
-
-    return false;
-}
-
-function verifyOrderedDescending(array) {
-    if (JSON.stringify(array) === JSON.stringify(orderedArrayDescending)) {
-        return true;
-    }
-
-    return false;
-}
-
-function verifyOrderedAlphabetically(array) {
-    if (JSON.stringify(array) === JSON.stringify(orderedArrayAlphabetically)) {
+function verifyOrder(array) {
+    if (JSON.stringify(array) === JSON.stringify(orderedArray)) {
         return true;
     }
 
@@ -53,9 +15,7 @@ function verifyOrderedAlphabetically(array) {
 }
 
 export function verifyWin(array) {
-    if (verifyOrderedAscending(array)) return true;
-    if (verifyOrderedDescending(array)) return true;
-    if (verifyOrderedAlphabetically(array)) return true;
+    if (verifyOrder(array)) return true;
 
     return false;
 }
