@@ -14,7 +14,8 @@
       "@LevelMariachiInstruments/*": ["levels/LevelMariachiInstruments/*"],
       "@LevelAltarDeMuertos/*": ["levels/LevelAltarDeMuertos/*"],
       "@LevelDrinks/*": ["levels/LevelDrinks/*"],
-      "@LevelTalavera/*": ["levels/LevelTalavera/*"]
+      "@LevelTalavera/*": ["levels/LevelTalavera/*"],
+      "@LevelFood/*": ["levels/LevelFood/*"]
     }
   }
 }
