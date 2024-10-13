@@ -21,7 +21,7 @@ function BoxFood(props) {
       // style={containerStyle}
     >
       {props.items.map((item, idx) => (
-        <div key={`${item}-${idx}`}>
+        <div key={`${item}-${idx}`} className="h-full">
           <Food
             id={item.id}
             image={item.image}

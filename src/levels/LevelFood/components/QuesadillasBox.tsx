@@ -21,16 +21,15 @@ function BoxFood(props) {
       // style={containerStyle}
     >
       {props.items.map((item, idx) => (
-        <div key={`${item}-${idx}`}>
-          <Food
-            id={item.id}
-            image={item.image}
-            currentBox={item.currentBox}
-            type={item.type}
-          >
-            {item}
-          </Food>
-        </div>
+        <Food
+          key={`${item}-${idx}`}
+          id={item.id}
+          image={item.image}
+          currentBox={item.currentBox}
+          type={item.type}
+        >
+          {item}
+        </Food>
       ))}
     </div>
   );

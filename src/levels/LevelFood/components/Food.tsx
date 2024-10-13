@@ -10,7 +10,7 @@ export interface IFood {
 }
 
 export function Food(props) {
-  const { id, isDragging } = props;
+  const { id, isDragging, type } = props;
   const { attributes, listeners, setNodeRef } = useDraggable({
     id: id,
     data: { title: props.id, data: props },
@@ -24,7 +24,10 @@ export function Food(props) {
   return (
     <div
       ref={setNodeRef}
-      className="w-full flex items-center justify-center my-2 touch-none"
+      className={`w-full flex items-center justify-center touch-none 
+        ${type === "elote" ? "h-full" : ""}
+        ${type === "tamal" ? "w-20" : ""}
+        `}
       style={style}
       {...attributes}
       {...listeners}
@@ -34,7 +37,11 @@ export function Food(props) {
         alt={props.id}
         className={`w-28 pointer-events-none ${
           isDragging ? "animate__animated animate__swing" : ""
-        }`}
+        }
+          ${type === "elote" ? "h-full" : ""}
+          ${type === "taco" ? "max-h-24" : ""}
+          ${type === "tamal" ? "max-h-48 w-20" : ""}
+          `}
       />
     </div>
   );
