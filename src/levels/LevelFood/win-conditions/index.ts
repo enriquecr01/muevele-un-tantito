@@ -1,56 +1,55 @@
-import { ICandy } from "levels/LevelCandy/components/Candy";
+import { IFood } from "@LevelFood/components/Food";
 
-export function allBoxesHaveSameCandyType(candyArray1: ICandy[], candyArray2: ICandy[], candyArray3: ICandy[]) {
-
-    let firstBoxAccepted = true;
-    let secondBoxAccepted = true;
-    let thirdBoxAccepted = true;
-
-    let currentType = candyArray1[0].type;
-
-    candyArray1.every((candy) => {
-        if (candy.type !== currentType) {
-            firstBoxAccepted = false;
-            return false;
-        }
-
-        return true;
-    });
-
-    currentType = candyArray2[0].type;
-    candyArray2.every((candy) => {
-        if (candy.type !== currentType) {
-            secondBoxAccepted = false;
-            return false;
-        }
-
-        return true;
-    });
-
-    currentType = candyArray3[0].type;
-    candyArray3.every((candy) => {
-        if (candy.type !== currentType) {
-            thirdBoxAccepted = false;
-            return false;
-        }
-
-        return true;
-    });
-
-    return firstBoxAccepted && secondBoxAccepted && thirdBoxAccepted;
+function verifyEloteAndQuesadillasBox(array: IFood[]) {
+    if (array.length === 1) {
+        if (array[0].type === "elote") return true;
+    }
+    if (array.length === 3) {
+        if (
+            array[0].type === "quesadilla" &&
+            array[1].type === "quesadilla" &&
+            array[2].type === "quesadilla"
+        )
+            return true;
+    }
+    return false;
 }
 
-export function verifyWin(candyArray1: ICandy[], candyArray2: ICandy[], candyArray3: ICandy[]) {
+function verifyTamalesBox(array: IFood[]) {
+    if (array.length === 3) {
+        if (
+            array[0].type === "tamal" &&
+            array[1].type === "tamal" &&
+            array[2].type === "tamal"
+        )
+            return true;
+    }
+    return false;
+}
 
-    let atLeastOneArrayLength4 = false;
+function verifyTacosBox(array: IFood[]) {
+    if (array.length === 3) {
+        if (
+            array[0].type === "taco" &&
+            array[1].type === "taco" &&
+            array[2].type === "taco"
+        )
+            return true;
+    }
+    return false;
+}
 
-    if (candyArray1.length < 3 || candyArray2.length < 3 || candyArray3.length < 3) return false;
+export function verifyWin(
+    elote: IFood[],
+    quesadillas: IFood[],
+    tamales: IFood[],
+    tacos: IFood[]
+) {
 
-    if (candyArray1.length === 4) atLeastOneArrayLength4 = true;
-    if (candyArray2.length === 4) atLeastOneArrayLength4 = true;
-    if (candyArray3.length === 4) atLeastOneArrayLength4 = true;
+    const veryfiedEloteBox = verifyEloteAndQuesadillasBox(elote);
+    const veryfiedQuesadillaBox = verifyEloteAndQuesadillasBox(quesadillas);
+    const veryfiedTamalBox = verifyTamalesBox(tamales);
+    const veryfiedTacosBox = verifyTacosBox(tacos);
 
-    if (!atLeastOneArrayLength4) return false;
-
-    return allBoxesHaveSameCandyType(candyArray1, candyArray2, candyArray3);
+    return veryfiedEloteBox && veryfiedQuesadillaBox && veryfiedTamalBox && veryfiedTacosBox;
 }

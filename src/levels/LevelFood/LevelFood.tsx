@@ -22,12 +22,7 @@ import TacosBox from "@LevelFood/components/TacosBox";
 import TamalesBox from "@LevelFood/components/TamalesBox";
 import QuesadillasBox from "@LevelFood/components/QuesadillasBox";
 import EloteBox from "@LevelFood/components/EloteBox";
-import {
-  lollipopCandies,
-  rectangleCandies,
-  roundedCandies,
-  defaultFood,
-} from "@LevelFood/mocks";
+import { defaultFood } from "@LevelFood/mocks";
 import EmptySpaceDroppable from "@LevelFood/components/EmptySpaceDroppable";
 import { verifyWin } from "@LevelFood/win-conditions";
 
@@ -40,10 +35,7 @@ export function LevelFood({ navigation }: LevelFoodProps) {
   const [win, setWin] = useState<boolean>(false);
   const [removeLevel, setRemoveLevel] = useState<boolean>(false);
 
-  const [candiesDefault, setCandiesDefault] = useState<IFood[]>([]);
-  const [candies, setCandies] = useState<IFood[]>([]);
-  const [candies2, setCandies2] = useState<IFood[]>([]);
-  const [candies3, setCandies3] = useState<IFood[]>([]);
+  const [foodDefault, setFoodDefault] = useState<IFood[]>([]);
 
   const [tacos, setTacos] = useState<IFood[]>([]);
   const [tamales, setTamales] = useState<IFood[]>([]);
@@ -54,6 +46,47 @@ export function LevelFood({ navigation }: LevelFoodProps) {
 
   const handleDragStart = (event: DragStartEvent) => {
     setActiveId(event.active.data.current.data);
+  };
+
+  const approvesTamalesBoxRules = (currentFood) => {
+    if (currentFood.type === "elote") return false;
+    if (tamales.length === 3) return false;
+    return true;
+  };
+
+  const approvesTacoBoxRules = (currentFood) => {
+    if (currentFood.type === "elote") return false;
+    if (currentFood.type === "tamal") return false;
+    if (currentFood.type === "quesadilla") return false;
+    return true;
+  };
+
+  const approvesEloteAndQuesadillasBoxRules = (array, currentFood) => {
+    if (currentFood.type === "elote" && array.length === 1) return false;
+    if (array.length === 1) {
+      if (array[0].type === "tamal" && currentFood.type === "tamal")
+        return false;
+      if (array[0].type === "elote") return false;
+    }
+    if (array.length === 2) {
+      if (
+        (array[0].type === "taco" || array[0].type === "quesadilla") &&
+        array[1].type === "tamal"
+      )
+        return false;
+
+      if (
+        array[0].type === "tamal" &&
+        (array[1].type === "taco" || array[1].type === "quesadilla")
+      )
+        return false;
+
+      if (currentFood.type === "elote" || currentFood.type === "tamal")
+        return false;
+    }
+    if (array.length === 3) return false;
+
+    return true;
   };
 
   const addToBox = (e: DragEndEvent) => {
@@ -74,16 +107,28 @@ export function LevelFood({ navigation }: LevelFoodProps) {
 
     if (currentBox === overBox) return;
 
-    if (currentBox === "elote" && elote.length >= 1) return;
+    if (overBox === "elote") {
+      if (!approvesEloteAndQuesadillasBoxRules(elote, newItem)) return;
+    }
 
-    if (currentBox === "elote" && elote.length >= 1) return;
+    if (overBox === "quesadillas") {
+      if (!approvesEloteAndQuesadillasBoxRules(quesadillas, newItem)) return;
+    }
+
+    if (overBox === "tamales") {
+      if (!approvesTamalesBoxRules(newItem)) return;
+    }
+
+    if (overBox === "tacos") {
+      if (!approvesTacoBoxRules(newItem)) return;
+    }
 
     let currentArray = [];
     let tempArray = [];
 
     switch (currentBox) {
       case "default-box":
-        currentArray = [...candiesDefault];
+        currentArray = [...foodDefault];
         break;
       case "tacos":
         currentArray = [...tacos];
@@ -101,7 +146,7 @@ export function LevelFood({ navigation }: LevelFoodProps) {
 
     switch (overBox) {
       case "default-box":
-        tempArray = [...candiesDefault];
+        tempArray = [...foodDefault];
         break;
       case "tacos":
         tempArray = [...tacos];
@@ -117,7 +162,7 @@ export function LevelFood({ navigation }: LevelFoodProps) {
         break;
     }
 
-    const index = currentArray.findIndex((candy) => candy.id === active.id);
+    const index = currentArray.findIndex((food) => food.id === active.id);
     newItem.currentBox = overBox;
 
     currentArray.splice(index, 1);
@@ -125,7 +170,7 @@ export function LevelFood({ navigation }: LevelFoodProps) {
 
     switch (currentBox) {
       case "default-box":
-        setCandiesDefault(currentArray);
+        setFoodDefault(currentArray);
         break;
       case "tacos":
         setTacos(currentArray);
@@ -143,7 +188,7 @@ export function LevelFood({ navigation }: LevelFoodProps) {
 
     switch (overBox) {
       case "default-box":
-        setCandiesDefault(tempArray);
+        setFoodDefault(tempArray);
         break;
       case "tacos":
         setTacos(tempArray);
@@ -162,8 +207,8 @@ export function LevelFood({ navigation }: LevelFoodProps) {
     putItemSound.play();
   };
 
-  const verifyWinCandy = (candies, candies2, candies3) => {
-    const win = verifyWin(candies, candies2, candies3);
+  const verifyWinCandy = () => {
+    const win = verifyWin(elote, quesadillas, tamales, tacos);
 
     if (win) {
       setTimeout(() => {
@@ -178,19 +223,22 @@ export function LevelFood({ navigation }: LevelFoodProps) {
   useEffect(() => {
     const candiesDefaultArrays: IFood[] = [...defaultFood];
     const shuffledCandies = shuffleArray(candiesDefaultArrays);
-    setCandiesDefault(shuffledCandies);
+    setFoodDefault(shuffledCandies);
   }, []);
 
   useEffect(() => {
-    verifyWinCandy(candies, candies2, candies3);
+    verifyWinCandy();
   }, [
-    candies,
-    candies2,
-    candies3,
-    setCandies,
-    setCandies2,
-    setCandies3,
-    setCandiesDefault,
+    elote,
+    quesadillas,
+    tamales,
+    tacos,
+    defaultFood,
+    setElote,
+    setTamales,
+    setQuesadillas,
+    setTacos,
+    setFoodDefault,
   ]);
 
   const sensors = useSensors(
@@ -207,16 +255,13 @@ export function LevelFood({ navigation }: LevelFoodProps) {
   );
 
   const reset = () => {
-    const candiesDefaultArrays: IFood[] = [
-      ...lollipopCandies,
-      ...roundedCandies,
-      ...rectangleCandies,
-    ];
-    const shuffledCandies = shuffleArray(candiesDefaultArrays);
-    setCandiesDefault(shuffledCandies);
-    setCandies([]);
-    setCandies2([]);
-    setCandies3([]);
+    const foodDefaultArray: IFood[] = [...defaultFood];
+    const shuffledCandies = shuffleArray(foodDefaultArray);
+    setFoodDefault(shuffledCandies);
+    setElote([]);
+    setTacos([]);
+    setQuesadillas([]);
+    setTamales([]);
     setRemoveLevel(false);
     setWin(false);
   };
@@ -270,10 +315,7 @@ export function LevelFood({ navigation }: LevelFoodProps) {
 
               <div className="flex flex-col items-center">
                 <ul className="flex justify-center w-full">
-                  <EmptySpaceDroppable
-                    id="default-box"
-                    items={candiesDefault}
-                  />
+                  <EmptySpaceDroppable id="default-box" items={foodDefault} />
                 </ul>
               </div>
 

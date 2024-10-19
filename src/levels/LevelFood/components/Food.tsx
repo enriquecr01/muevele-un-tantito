@@ -38,7 +38,7 @@ export function Food(props) {
     <div
       ref={setNodeRef}
       className={`w-full flex items-center justify-center touch-none 
-        ${type === "elote" ? "h-full" : ""}
+        ${type === "elote" ? "h-full px-4" : ""}
         ${type === "tamal" ? "w-20" : ""}
         `}
       style={style}
