@@ -179,10 +179,10 @@ export function LevelFood({ navigation }: LevelFoodProps) {
         setTamales(currentArray);
         break;
       case "quesadillas":
-        setQuesadillas(tempArray);
+        setQuesadillas(currentArray);
         break;
       case "elote":
-        setElote(tempArray);
+        setElote(currentArray);
         break;
     }
 
