@@ -74,6 +74,10 @@ export function LevelFood({ navigation }: LevelFoodProps) {
 
     if (currentBox === overBox) return;
 
+    if (currentBox === "elote" && elote.length >= 1) return;
+
+    if (currentBox === "elote" && elote.length >= 1) return;
+
     let currentArray = [];
     let tempArray = [];
 

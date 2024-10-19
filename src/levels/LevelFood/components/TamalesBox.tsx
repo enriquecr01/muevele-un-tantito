@@ -7,12 +7,6 @@ function TamalesBox(props) {
     id: "tamales",
   });
 
-  const containerStyle = {
-    flex: 1,
-    display: "flex",
-    gridTemplateColumns: "repeat(3, 1fr)",
-  };
-
   return (
     <div
       className="bg-[#5da9ee] border-black border-2 rounded-xl h-4/6 w-full"
@@ -20,7 +14,7 @@ function TamalesBox(props) {
     >
       <div className="h-full flex items-center flex-row">
         {props.items.map((item, idx) => (
-          <div key={`${item}-${idx}`} className="w-1/3">
+          <div key={`${item}-${idx}`}>
             <Food
               key={`${item}-${idx}`}
               id={item.id}

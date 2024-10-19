@@ -7,18 +7,12 @@ function TacosBox(props) {
     id: "tacos",
   });
 
-  const containerStyle = {
-    flex: 1,
-    display: "grid",
-    gridTemplateColumns: "repeat(3, 1fr)",
-  };
-
   return (
     <div
       className="bg-[#5da9ee] border-black border-2 rounded-xl h-2/6 w-full"
       ref={setNodeRef}
     >
-      <div className="h-5/6 flex items-center flex-row" style={containerStyle}>
+      <div className="h-5/6 flex items-center flex-row">
         {props.items.map((item, idx) => (
           <div key={`${item}-${idx}`}>
             <Food
