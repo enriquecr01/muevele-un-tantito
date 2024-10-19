@@ -18,17 +18,19 @@ function TamalesBox(props) {
       className="bg-[#5da9ee] border-black border-2 rounded-xl h-4/6 w-full"
       ref={setNodeRef}
     >
-      <div className="h-full" style={containerStyle}>
+      <div className="h-full flex items-center flex-row">
         {props.items.map((item, idx) => (
-          <Food
-            key={`${item}-${idx}`}
-            id={item.id}
-            image={item.image}
-            currentBox={item.currentBox}
-            type={item.type}
-          >
-            {item}
-          </Food>
+          <div key={`${item}-${idx}`} className="w-1/3">
+            <Food
+              key={`${item}-${idx}`}
+              id={item.id}
+              image={item.image}
+              currentBox={item.currentBox}
+              type={item.type}
+            >
+              {item}
+            </Food>
+          </div>
         ))}
       </div>
     </div>

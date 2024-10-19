@@ -10,7 +10,7 @@ function TacosBox(props) {
   const containerStyle = {
     flex: 1,
     display: "grid",
-    gridTemplateColumns: "repeat(2, 1fr)",
+    gridTemplateColumns: "repeat(3, 1fr)",
   };
 
   return (
@@ -18,17 +18,18 @@ function TacosBox(props) {
       className="bg-[#5da9ee] border-black border-2 rounded-xl h-2/6 w-full"
       ref={setNodeRef}
     >
-      <div className="h-5/6" style={containerStyle}>
+      <div className="h-5/6 flex items-center flex-row" style={containerStyle}>
         {props.items.map((item, idx) => (
-          <Food
-            key={`${item}-${idx}`}
-            id={item.id}
-            image={item.image}
-            currentBox={item.currentBox}
-            type={item.type}
-          >
-            {item}
-          </Food>
+          <div key={`${item}-${idx}`}>
+            <Food
+              id={item.id}
+              image={item.image}
+              currentBox={item.currentBox}
+              type={item.type}
+            >
+              {item}
+            </Food>
+          </div>
         ))}
       </div>
     </div>

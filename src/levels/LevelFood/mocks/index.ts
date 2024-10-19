@@ -39,7 +39,8 @@ export const defaultFood = [
     { id: 4, image: quesadilla, currentBox: "default-box", type: 'quesadilla' },
     { id: 5, image: taco, currentBox: "default-box", type: 'taco' },
     { id: 6, image: taco, currentBox: "default-box", type: 'taco' },
-    { id: 7, image: tamal, currentBox: "default-box", type: 'tamal' },
+    { id: 7, image: taco, currentBox: "default-box", type: 'taco' },
     { id: 8, image: tamal, currentBox: "default-box", type: 'tamal' },
     { id: 9, image: tamal, currentBox: "default-box", type: 'tamal' },
+    { id: 10, image: tamal, currentBox: "default-box", type: 'tamal' },
 ];

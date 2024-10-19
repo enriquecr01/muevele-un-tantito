@@ -250,8 +250,8 @@ export function LevelFood({ navigation }: LevelFoodProps) {
             onDragEnd={addToBox}
             sensors={sensors}
           >
-            <main className="flex flex-col items-center md:gap-16 md:p-4 w-full">
-              <div className="flex flex-row items-center justify-center w-3/6 h-96">
+            <main className="flex flex-col items-center w-full h-full md:p-4">
+              <div className="flex flex-row items-center justify-center w-full lg:w-3/6 h-64 lg:h-80">
                 <div className="h-5/6 w-1/3">
                   <div className="flex flex-col h-full">
                     <TacosBox items={tacos} />

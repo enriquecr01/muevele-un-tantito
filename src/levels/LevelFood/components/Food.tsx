@@ -21,6 +21,19 @@ export function Food(props) {
     cursor: isDragging ? "grabbing" : "grab",
   };
 
+  const getStyleFood = (type) => {
+    switch (type) {
+      case "elote":
+        return "h-full w-28";
+      case "taco":
+        return "max-h-8 w-8 xs:max-h-12 xs:w-12 sm:max-h-16 sm:w-16 lg:max-h-20 lg:w-20";
+      case "tamal":
+        return "max-h-16 w-9 xs:max-h-32 xs:w-16 sm:max-h-36 sm:w-20 md:max-h-36 md:w-20";
+      case "quesadilla":
+        return "max-h-16 w-9 xs:max-h-32 xs:w-16 sm:max-h-36 sm:w-20 md:max-h-36 md:w-20";
+    }
+  };
+
   return (
     <div
       ref={setNodeRef}
@@ -38,9 +51,7 @@ export function Food(props) {
         className={`w-28 pointer-events-none ${
           isDragging ? "animate__animated animate__swing" : ""
         }
-          ${type === "elote" ? "h-full" : ""}
-          ${type === "taco" ? "max-h-24" : ""}
-          ${type === "tamal" ? "max-h-48 w-20" : ""}
+          ${getStyleFood(type)}
           `}
       />
     </div>
