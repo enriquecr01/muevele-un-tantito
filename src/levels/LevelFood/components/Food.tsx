@@ -24,13 +24,13 @@ export function Food(props) {
   const getStyleFood = (type) => {
     switch (type) {
       case "elote":
-        return "h-full w-28";
+        return "h-full";
       case "taco":
         return "max-h-8 w-8 xs:max-h-12 xs:w-12 sm:max-h-16 sm:w-16 lg:max-h-20 lg:w-20";
       case "tamal":
         return "max-h-16 w-9 xs:max-h-32 xs:w-16 sm:max-h-36 sm:w-20 md:max-h-36 md:w-20";
       case "quesadilla":
-        return "max-h-16 w-9 xs:max-h-32 xs:w-16 sm:max-h-36 sm:w-20 md:max-h-36 md:w-20";
+        return "max-h-16 w-16 xs:max-h-[4.5rem] xs:w-[4.5rem] sm:max-h-[4.6rem] sm:w-[4.6rem] md:max-h-[4.6rem] md:w-[4.6rem] lg:max-h-[5.5rem] lg:w-[5.5rem]";
     }
   };
 
