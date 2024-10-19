@@ -268,7 +268,7 @@ export function LevelFood({ navigation }: LevelFoodProps) {
 
   const style = {
     background:
-      "radial-gradient(circle, rgba(193,225,193,1) 0%, rgba(206,228,171,1) 100%)",
+      "radial-gradient(circle, rgba(255,247,209,1) 0%, rgba(255,243,183,1) 100%)",
   };
 
   return (
@@ -289,7 +289,7 @@ export function LevelFood({ navigation }: LevelFoodProps) {
       )}
       {!win && (
         <div
-          className={`flex flex-column justify-center items-center overflow-hidden h-screen bg-[#c1e1c1] ${
+          className={`flex flex-column justify-center items-center overflow-hidden h-screen bg-[#fff7d1] ${
             removeLevel ? "animate__animated animate__fadeOutDown" : ""
           }`}
           style={style}
