@@ -15,7 +15,8 @@
       "@LevelAltarDeMuertos/*": ["levels/LevelAltarDeMuertos/*"],
       "@LevelDrinks/*": ["levels/LevelDrinks/*"],
       "@LevelTalavera/*": ["levels/LevelTalavera/*"],
-      "@LevelFood/*": ["levels/LevelFood/*"]
+      "@LevelFood/*": ["levels/LevelFood/*"],
+      "@LevelAlebrijes/*": ["levels/LevelAlebrijes/*"]
     }
   }
 }
