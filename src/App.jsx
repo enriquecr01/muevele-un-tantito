@@ -33,8 +33,8 @@ function App() {
       {/* <LevelTalavera></LevelTalavera> */}
       {/* <LevelFood></LevelFood> */}
       {/* <LevelAlebrijes></LevelAlebrijes> */}
-      <LevelFruits></LevelFruits>
-      {/* <MainFlow></MainFlow> */}
+      {/* <LevelFruits></LevelFruits> */}
+      <MainFlow></MainFlow>
       {/* <Wachar></Wachar> */}
 
       {/* <div>

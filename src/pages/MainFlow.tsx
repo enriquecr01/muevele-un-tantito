@@ -12,12 +12,14 @@ import { LevelTalavera } from "@LevelTalavera/LevelTalavera";
 import { LevelFood } from "@LevelFood/LevelFood";
 import MainMenu from "./MainMenu";
 import { LevelAlebrijes } from "@LevelAlebrijes/LevelAlebrijes";
+import { LevelFruits } from "@LevelFruits/LevelFruits";
 
 export default function MainFlow() {
   return (
     <NavigationContainer>
       <StackNavigation initialRouteName="MainMenu">
         <StackPage name="MainMenu" component={MainMenu} />
+        <StackPage name="LevelFruits" component={LevelFruits} />
         <StackPage
           name="LevelMariachiInstruments"
           component={LevelMariachiInstruments}

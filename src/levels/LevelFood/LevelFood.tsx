@@ -281,7 +281,7 @@ export function LevelFood({ navigation }: LevelFoodProps) {
           className={`${win ? "animate__animated animate__jackInTheBox" : ""}`}
         >
           <ScreenWin
-            nextLevel="LevelTalavera"
+            nextLevel="LevelBakery"
             navigation={navigation}
             reset={reset}
           />

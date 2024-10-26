@@ -9,7 +9,7 @@ type MainMenuProps = {
 
 const MainMenu = ({ navigation }: MainMenuProps) => {
   const goFirstLevel = () => {
-    navigation.navigate("LevelMariachiInstruments");
+    navigation.navigate("LevelFruits");
   };
 
   return (

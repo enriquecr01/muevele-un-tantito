@@ -58,8 +58,6 @@ export function LevelFruits({ navigation }: LevelFruitProps) {
     const currentBox = active.data.current.data.currentBox;
     const overBox = over.id;
 
-    // console.log(overBox, newItem);
-
     if (currentBox === overBox) return;
 
     let currentArray = [];
@@ -214,7 +212,7 @@ export function LevelFruits({ navigation }: LevelFruitProps) {
           className={`${win ? "animate__animated animate__jackInTheBox" : ""}`}
         >
           <ScreenWin
-            nextLevel="LevelTalavera"
+            nextLevel="LevelMariachiInstruments"
             navigation={navigation}
             reset={reset}
           />

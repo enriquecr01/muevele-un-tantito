@@ -128,7 +128,7 @@ export function LevelTalavera({ navigation }: LevelTalaveraProps) {
           className={`${win ? "animate__animated animate__jackInTheBox" : ""}`}
         >
           <ScreenWin
-            nextLevel="LevelBakery"
+            nextLevel="LevelFood"
             navigation={navigation}
             reset={reset}
           />
