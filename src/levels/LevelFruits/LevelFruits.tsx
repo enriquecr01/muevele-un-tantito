@@ -17,29 +17,25 @@ import ScreenWin from "pages/ScreenWin";
 import "animate.css";
 import { shuffleArray } from "@utils/arrays";
 import { NavigationHelper } from "@utils/components/Navigation/NavigationContainer";
-import { Candy, ICandy } from "@LevelCandy/components/Candy";
-import BoxDroppable from "@LevelCandy/components/BoxDroppable";
-import {
-  lollipopCandies,
-  rectangleCandies,
-  roundedCandies,
-} from "@LevelCandy/mocks";
-import EmptySpaceDroppable from "@LevelCandy/components/EmptySpaceDroppable";
-import { verifyWin } from "@LevelCandy/win-conditions";
+import { Fruit, IFruit } from "@LevelFruits/components/Fruit";
+import FruitDroppable from "@LevelFruits/components/FruitDroppable";
+import { initialFruits } from "@LevelFruits/mocks";
+import EmptySpaceDroppable from "@LevelFruits/components/EmptySpaceDroppable";
+import { verifyWin } from "@LevelFruits/win-conditions";
 
-type LevelCandyProps = {
+type LevelFruitProps = {
   navigation?: NavigationHelper;
 };
 
-export function LevelCandy({ navigation }: LevelCandyProps) {
-  const [activeId, setActiveId] = useState<ICandy>();
+export function LevelFruits({ navigation }: LevelFruitProps) {
+  const [activeId, setActiveId] = useState<IFruit>();
   const [win, setWin] = useState<boolean>(false);
   const [removeLevel, setRemoveLevel] = useState<boolean>(false);
 
-  const [candiesDefault, setCandiesDefault] = useState<ICandy[]>([]);
-  const [candies, setCandies] = useState<ICandy[]>([]);
-  const [candies2, setCandies2] = useState<ICandy[]>([]);
-  const [candies3, setCandies3] = useState<ICandy[]>([]);
+  const [fruitDefault, setFruitsDefault] = useState<IFruit[]>([]);
+  const [aguacate, setAguacate] = useState<IFruit>();
+  const [papaya, setPapaya] = useState<IFruit>();
+  const [pitaya, setPitaya] = useState<IFruit>();
 
   const putItemSound = new Audio(putItem);
 
@@ -52,15 +48,17 @@ export function LevelCandy({ navigation }: LevelCandyProps) {
     const { active, over } = e;
     if (
       (e.over?.id !== "default-box" &&
-        e.over?.id !== "box-1" &&
-        e.over?.id !== "box-2" &&
-        e.over?.id !== "box-3") ||
+        e.over?.id !== "aguacate" &&
+        e.over?.id !== "papaya" &&
+        e.over?.id !== "pitaya") ||
       !newItem
     )
       return;
 
     const currentBox = active.data.current.data.currentBox;
     const overBox = over.id;
+
+    // console.log(overBox, newItem);
 
     if (currentBox === overBox) return;
 
@@ -69,35 +67,44 @@ export function LevelCandy({ navigation }: LevelCandyProps) {
 
     switch (currentBox) {
       case "default-box":
-        currentArray = [...candiesDefault];
+        currentArray = [...fruitDefault];
         break;
-      case "box-1":
-        currentArray = [...candies];
+      case "aguacate":
+        currentArray = aguacate ? [aguacate] : [];
         break;
-      case "box-2":
-        currentArray = [...candies2];
+      case "papaya":
+        currentArray = papaya ? [papaya] : [];
         break;
-      case "box-3":
-        currentArray = [...candies3];
+      case "pitaya":
+        currentArray = pitaya ? [pitaya] : [];
         break;
     }
 
     switch (overBox) {
       case "default-box":
-        tempArray = [...candiesDefault];
+        tempArray = [...fruitDefault];
         break;
-      case "box-1":
-        tempArray = [...candies];
+      case "aguacate":
+        tempArray = aguacate ? [aguacate] : [];
         break;
-
-      case "box-2":
-        tempArray = [...candies2];
+      case "papaya":
+        tempArray = papaya ? [papaya] : [];
         break;
-      case "box-3":
-        tempArray = [...candies3];
+      case "pitaya":
+        tempArray = pitaya ? [pitaya] : [];
         break;
     }
 
+    console.log(currentBox, currentArray);
+
+    if (
+      (overBox === "aguacate" ||
+        overBox === "papaya" ||
+        overBox === "pitaya") &&
+      tempArray.length > 0
+    ) {
+      return false;
+    }
     const index = currentArray.findIndex((candy) => candy.id === active.id);
     newItem.currentBox = overBox;
 
@@ -106,39 +113,39 @@ export function LevelCandy({ navigation }: LevelCandyProps) {
 
     switch (currentBox) {
       case "default-box":
-        setCandiesDefault(currentArray);
+        setFruitsDefault(currentArray);
         break;
-      case "box-1":
-        setCandies(currentArray);
+      case "aguacate":
+        setAguacate(currentArray[0]);
         break;
-      case "box-2":
-        setCandies2(currentArray);
+      case "papaya":
+        setPapaya(currentArray[0]);
         break;
-      case "box-3":
-        setCandies3(currentArray);
+      case "pitaya":
+        setPitaya(currentArray[0]);
         break;
     }
 
     switch (overBox) {
       case "default-box":
-        setCandiesDefault(tempArray);
+        setFruitsDefault(tempArray);
         break;
-      case "box-1":
-        setCandies(tempArray);
+      case "aguacate":
+        setAguacate(tempArray[0]);
         break;
-      case "box-2":
-        setCandies2(tempArray);
+      case "papaya":
+        setPapaya(tempArray[0]);
         break;
-      case "box-3":
-        setCandies3(tempArray);
+      case "pitaya":
+        setPitaya(tempArray[0]);
         break;
     }
 
     putItemSound.play();
   };
 
-  const verifyWinCandy = (candies, candies2, candies3) => {
-    const win = verifyWin(candies, candies2, candies3);
+  const verifyWinCandy = (aguacate: IFruit, papaya: IFruit, pitaya: IFruit) => {
+    const win = verifyWin(aguacate, papaya, pitaya);
 
     if (win) {
       setTimeout(() => {
@@ -151,25 +158,21 @@ export function LevelCandy({ navigation }: LevelCandyProps) {
   };
 
   useEffect(() => {
-    const candiesDefaultArrays: ICandy[] = [
-      ...lollipopCandies,
-      ...roundedCandies,
-      ...rectangleCandies,
-    ];
+    const candiesDefaultArrays: IFruit[] = [...initialFruits];
     const shuffledCandies = shuffleArray(candiesDefaultArrays);
-    setCandiesDefault(shuffledCandies);
+    setFruitsDefault(shuffledCandies);
   }, []);
 
   useEffect(() => {
-    verifyWinCandy(candies, candies2, candies3);
+    verifyWinCandy(aguacate, papaya, pitaya);
   }, [
-    candies,
-    candies2,
-    candies3,
-    setCandies,
-    setCandies2,
-    setCandies3,
-    setCandiesDefault,
+    aguacate,
+    papaya,
+    pitaya,
+    setAguacate,
+    setPapaya,
+    setPitaya,
+    setFruitsDefault,
   ]);
 
   const sensors = useSensors(
@@ -186,29 +189,25 @@ export function LevelCandy({ navigation }: LevelCandyProps) {
   );
 
   const reset = () => {
-    const candiesDefaultArrays: ICandy[] = [
-      ...lollipopCandies,
-      ...roundedCandies,
-      ...rectangleCandies,
-    ];
+    const candiesDefaultArrays: IFruit[] = [...initialFruits];
     const shuffledCandies = shuffleArray(candiesDefaultArrays);
-    setCandiesDefault(shuffledCandies);
-    setCandies([]);
-    setCandies2([]);
-    setCandies3([]);
+    setFruitsDefault(shuffledCandies);
+    setAguacate(null);
+    setPapaya(null);
+    setPitaya(null);
     setRemoveLevel(false);
     setWin(false);
   };
 
   const style = {
     background:
-      "radial-gradient(circle, rgba(255,198,198,1) 0%, rgba(227,170,170,1) 100%)",
+      "radial-gradient(circle, rgba(192,199,140,1) 0%, rgba(149,157,100,1) 100%)",
   };
 
   return (
     <>
       <Helmet>
-        <title>¡Muévele Tantito! | Dulces</title>
+        <title>¡Muévele Tantito! | Frutas</title>
       </Helmet>
       {win && (
         <div
@@ -223,7 +222,7 @@ export function LevelCandy({ navigation }: LevelCandyProps) {
       )}
       {!win && (
         <div
-          className={`flex flex-column justify-center items-center overflow-hidden h-screen bg-[#ffc6c6] ${
+          className={`flex flex-column justify-center items-center overflow-hidden h-screen bg-[#c0c78c] ${
             removeLevel ? "animate__animated animate__fadeOutDown" : ""
           }`}
           style={style}
@@ -235,30 +234,22 @@ export function LevelCandy({ navigation }: LevelCandyProps) {
           >
             <main className="flex flex-col items-center md:gap-16 md:p-4 w-full">
               <div className="flex flex-row flex-wrap justify-center md:gap-4 w-full">
-                <BoxDroppable id="box-1" items={candies} />
+                <FruitDroppable id="aguacate" fruit={aguacate} />
 
-                <BoxDroppable id="box-2" items={candies2} />
+                <FruitDroppable id="papaya" fruit={papaya} />
 
-                <BoxDroppable id="box-3" items={candies3} />
+                <FruitDroppable id="pitaya" fruit={pitaya} />
               </div>
 
               <div className="flex flex-col items-center">
                 <ul className="flex justify-center w-full">
-                  <EmptySpaceDroppable
-                    id="default-box"
-                    items={candiesDefault}
-                  />
+                  <EmptySpaceDroppable id="default-box" items={fruitDefault} />
                 </ul>
               </div>
 
               <DragOverlay transition={null}>
                 {activeId ? (
-                  <Candy
-                    id={activeId.id}
-                    image={activeId.image}
-                    type={activeId.type}
-                    isDragging
-                  />
+                  <Fruit id={activeId.id} image={activeId.image} isDragging />
                 ) : null}
               </DragOverlay>
             </main>

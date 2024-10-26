@@ -12,6 +12,7 @@ import { LevelDrinks } from "./levels/levelDrinks/LevelDrinks";
 import { LevelTalavera } from "./levels/levelTalavera/LevelTalavera";
 import { LevelFood } from "./levels/LevelFood/LevelFood";
 import { LevelAlebrijes } from "./levels/LevelAlebrijes/LevelAlebrijes";
+import { LevelFruits } from "./levels/LevelFruits/LevelFruits";
 import MainMenu from "./pages/mainMenu";
 import MainFlow from "./pages/MainFlow";
 
@@ -31,7 +32,8 @@ function App() {
       {/* <LevelDrinks></LevelDrinks> */}
       {/* <LevelTalavera></LevelTalavera> */}
       {/* <LevelFood></LevelFood> */}
-      <LevelAlebrijes></LevelAlebrijes>
+      {/* <LevelAlebrijes></LevelAlebrijes> */}
+      <LevelFruits></LevelFruits>
       {/* <MainFlow></MainFlow> */}
       {/* <Wachar></Wachar> */}
 

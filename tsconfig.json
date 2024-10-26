@@ -16,7 +16,8 @@
       "@LevelDrinks/*": ["levels/LevelDrinks/*"],
       "@LevelTalavera/*": ["levels/LevelTalavera/*"],
       "@LevelFood/*": ["levels/LevelFood/*"],
-      "@LevelAlebrijes/*": ["levels/LevelAlebrijes/*"]
+      "@LevelAlebrijes/*": ["levels/LevelAlebrijes/*"],
+      "@LevelFruits/*": ["levels/LevelFruits/*"]
     }
   }
 }
