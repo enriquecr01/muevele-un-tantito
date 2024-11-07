@@ -5,7 +5,7 @@ import {
   useSortable,
 } from "@dnd-kit/sortable";
 
-import SortableLevel from "./SortableLevel";
+import { SortableLevel } from "@LevelAltarDeMuertos/index";
 
 export default function Container(props) {
   const { id, items } = props;

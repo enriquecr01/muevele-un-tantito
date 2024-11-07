@@ -1,9 +1,9 @@
 import React from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import Level from "@LevelAltarDeMuertos/components/Level";
+import { Level } from "@LevelAltarDeMuertos/index";
 
-export default function SortableLevel(props) {
+export function SortableLevel(props) {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: props.id });
 

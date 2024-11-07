@@ -11,15 +11,13 @@ import {
 } from "@dnd-kit/core";
 import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import Container from "@LevelAltarDeMuertos/components/Container";
-import Concha from "@LevelAltarDeMuertos/components/Level";
 import putItem from "@sounds/putitem.mp3";
-import { verifyWin } from "@LevelAltarDeMuertos/win-conditions";
 import { Helmet } from "react-helmet";
 import ScreenWin from "pages/ScreenWin";
 import "animate.css";
 import { shuffleAndVerifyArraysAreNotSorted } from "@utils/arrays";
-import { initialLevels } from "@LevelAltarDeMuertos/mocks";
 import { NavigationHelper } from "@utils/components/Navigation/NavigationContainer";
+import { Level, verifyWin, initialLevels } from "@LevelAltarDeMuertos/index";
 
 type LevelAltarDeMuertosProps = {
   navigation?: NavigationHelper;
@@ -113,7 +111,7 @@ export function LevelAltarDeMuertos({ navigation }: LevelAltarDeMuertosProps) {
   return (
     <>
       <Helmet>
-        <title>¡Muévele Tantito! | Panadería</title>
+        <title>¡Muévele Tantito! | Altar de Muertos</title>
       </Helmet>
       {win && (
         <div
@@ -141,7 +139,7 @@ export function LevelAltarDeMuertos({ navigation }: LevelAltarDeMuertosProps) {
           >
             <Container id="levels" items={items} />
             <DragOverlay transition={null}>
-              {activeId ? <Concha id={activeId} isDragging /> : null}
+              {activeId ? <Level id={activeId} isDragging /> : null}
             </DragOverlay>
           </DndContext>
         </div>

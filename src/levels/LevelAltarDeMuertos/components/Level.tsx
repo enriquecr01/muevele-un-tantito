@@ -1,16 +1,16 @@
 import React from "react";
-
-import piso1 from "@LevelAltarDeMuertos/assets/piso-1.png";
-import piso2 from "@LevelAltarDeMuertos/assets/piso-2.png";
-import piso3 from "@LevelAltarDeMuertos/assets/piso-3.png";
-import piso4 from "@LevelAltarDeMuertos/assets/piso-4.png";
-import piso5 from "@LevelAltarDeMuertos/assets/piso-5.png";
-import piso6 from "@LevelAltarDeMuertos/assets/piso-6.png";
-import piso7 from "@LevelAltarDeMuertos/assets/piso-7.png";
-
 import "animate.css";
+import {
+  piso1,
+  piso2,
+  piso3,
+  piso4,
+  piso5,
+  piso6,
+  piso7,
+} from "@LevelAltarDeMuertos/index";
 
-export default function Level(props) {
+export function Level(props) {
   const { id, isDragging } = props;
 
   const style = {
