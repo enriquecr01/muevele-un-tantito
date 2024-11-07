@@ -1,9 +1,10 @@
 import React from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import Alebrije from "@LevelAlebrijes/components/Alebrije";
 
-export default function SortableAlebrije(props) {
+import { Alebrije } from "@LevelAlebrijes/index";
+
+export function SortableAlebrije(props) {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: props.id });
 

@@ -10,17 +10,18 @@ import {
   useSensors,
 } from "@dnd-kit/core";
 import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
-import Container from "@LevelAlebrijes/components/Container";
-import Instrument from "@LevelAlebrijes/components/Alebrije";
 import putItem from "@sounds/putitem.mp3";
 import { Helmet } from "react-helmet";
 import ScreenWin from "pages/ScreenWin";
 import "animate.css";
 import { shuffleArray } from "@utils/arrays";
-import { verifyWin } from "@LevelAlebrijes/win-conditions";
-import { initialAlebrijes } from "@LevelAlebrijes/mocks";
 import { NavigationHelper } from "@utils/components/Navigation/NavigationContainer";
-import Alebrije from "@LevelAlebrijes/components/Alebrije";
+import {
+  Container,
+  verifyWin,
+  initialAlebrijes,
+  Alebrije,
+} from "@LevelAlebrijes/index";
 
 type LevelAlebrijesProps = {
   navigation?: NavigationHelper;
@@ -122,7 +123,7 @@ export function LevelAlebrijes({ navigation }: LevelAlebrijesProps) {
   return (
     <>
       <Helmet>
-        <title>¡Muévele Tantito! | Instrumentos</title>
+        <title>¡Muévele Tantito! | Alebrijes</title>
       </Helmet>
       {win && (
         <div

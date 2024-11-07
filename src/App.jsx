@@ -32,9 +32,9 @@ function App() {
       {/* <LevelDrinks></LevelDrinks> */}
       {/* <LevelTalavera></LevelTalavera> */}
       {/* <LevelFood></LevelFood> */}
-      {/* <LevelAlebrijes></LevelAlebrijes> */}
+      <LevelAlebrijes></LevelAlebrijes>
       {/* <LevelFruits></LevelFruits> */}
-      <MainFlow></MainFlow>
+      {/* <MainFlow></MainFlow> */}
       {/* <Wachar></Wachar> */}
 
       {/* <div>

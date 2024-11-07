@@ -5,7 +5,7 @@ import {
   useSortable,
 } from "@dnd-kit/sortable";
 
-import SortableAlebrije from "./SortableAlebrije";
+import { SortableAlebrije } from "@LevelAlebrijes/index";
 
 const containerStyle = {
   padding: 10,
@@ -15,7 +15,7 @@ const containerStyle = {
   gridTemplateColumns: `repeat(7, 1fr)`,
 };
 
-export default function Container(props) {
+export function Container(props) {
   const { id, items } = props;
 
   const { setNodeRef } = useSortable({
