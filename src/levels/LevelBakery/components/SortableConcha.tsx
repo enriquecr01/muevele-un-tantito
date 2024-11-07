@@ -1,9 +1,9 @@
 import React from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import Concha from "@LevelBakery/components/Concha";
+import { Concha } from "@LevelBakery/index";
 
-export default function SortableConcha(props) {
+export function SortableConcha(props) {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: props.id });
 

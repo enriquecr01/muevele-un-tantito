@@ -5,7 +5,7 @@ import {
   useSortable,
 } from "@dnd-kit/sortable";
 
-import SortableConcha from "./SortableConcha";
+import { SortableConcha } from "@LevelBakery/index";
 
 const containerStyle = {
   padding: 10,
@@ -22,7 +22,7 @@ const containerStyle = {
   linear-gradient( to bottom, #eee, #bbb)`,
 };
 
-export default function Container(props) {
+export function Container(props) {
   const { id, items } = props;
 
   const { setNodeRef } = useSortable({

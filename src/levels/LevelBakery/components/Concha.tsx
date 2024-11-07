@@ -1,10 +1,8 @@
 import React from "react";
-import chocolate from "@LevelBakery/assets/chocolate.png";
-import vainilla from "@LevelBakery/assets/vainilla.png";
-import fresa from "@LevelBakery/assets/fresa.png";
 import "animate.css";
+import { chocolate, vainilla, fresa } from "@LevelBakery/index";
 
-export default function Item(props) {
+export function Concha(props) {
   const { color, isDragging } = props;
 
   const style = {
