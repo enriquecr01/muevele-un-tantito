@@ -1,9 +1,9 @@
 import React from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import Drink from "@LevelDrinks/components/Drink";
+import { Drink } from "@LevelDrinks/index";
 
-export default function SortableInstrument(props) {
+export function SortableDrink(props) {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: props.id });
 

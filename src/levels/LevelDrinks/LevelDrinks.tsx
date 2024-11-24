@@ -10,16 +10,13 @@ import {
   useSensors,
 } from "@dnd-kit/core";
 import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
-import Container from "@LevelDrinks/components/Container";
-import Drink from "@LevelDrinks/components/Drink";
 import putItem from "@sounds/putitem.mp3";
 import { Helmet } from "react-helmet";
 import ScreenWin from "pages/ScreenWin";
 import "animate.css";
 import { shuffleArray } from "@utils/arrays";
-import { verifyWin } from "@LevelDrinks/win-conditions";
-import { initialDrinks } from "@LevelDrinks/mocks";
 import { NavigationHelper } from "@utils/components/Navigation/NavigationContainer";
+import { Container, Drink, verifyWin, initialDrinks } from "@LevelDrinks/index";
 
 type LevelDrinksProps = {
   navigation?: NavigationHelper;

@@ -1,14 +1,16 @@
 import React from "react";
-import atole from "@LevelDrinks/assets/atole.png";
-import champurrado from "@LevelDrinks/assets/champurrado.png";
-import mezcal from "@LevelDrinks/assets/mezcal.png";
-import pulque from "@LevelDrinks/assets/pulque.png";
-import tejuino from "@LevelDrinks/assets/tejuino.png";
-import tepache from "@LevelDrinks/assets/tepache.png";
-import tequila from "@LevelDrinks/assets/tequila.png";
 import "animate.css";
+import {
+  atole,
+  champurrado,
+  mezcal,
+  pulque,
+  tejuino,
+  tepache,
+  tequila,
+} from "@LevelDrinks/index";
 
-export default function Drink(props) {
+export function Drink(props) {
   const { drink, isDragging } = props;
 
   const style = {

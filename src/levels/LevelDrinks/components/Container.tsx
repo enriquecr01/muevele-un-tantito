@@ -4,8 +4,7 @@ import {
   SortableContext,
   useSortable,
 } from "@dnd-kit/sortable";
-
-import SortableDrink from "./SortableDrink";
+import { SortableDrink } from "@LevelDrinks/index";
 
 const containerStyle = {
   padding: 10,
@@ -15,7 +14,7 @@ const containerStyle = {
   gridTemplateColumns: `repeat(7, 1fr)`,
 };
 
-export default function Container(props) {
+export function Container(props) {
   const { id, items } = props;
 
   const { setNodeRef } = useSortable({
