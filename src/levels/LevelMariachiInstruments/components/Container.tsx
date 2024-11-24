@@ -4,8 +4,7 @@ import {
   SortableContext,
   useSortable,
 } from "@dnd-kit/sortable";
-
-import SortableInstrument from "./SortableInstrument";
+import { SortableInstrument } from "@LevelMariachiInstruments/index";
 
 const containerStyle = {
   padding: 10,
@@ -15,7 +14,7 @@ const containerStyle = {
   gridTemplateColumns: `repeat(6, 1fr)`,
 };
 
-export default function Container(props) {
+export function Container(props) {
   const { id, items } = props;
 
   const { setNodeRef } = useSortable({

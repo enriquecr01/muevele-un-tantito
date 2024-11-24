@@ -1,13 +1,15 @@
 import React from "react";
-import trompeta from "@LevelMariachiInstruments/assets/trompeta.png";
-import vihuela from "@LevelMariachiInstruments/assets/vihuela.png";
-import acordeon from "@LevelMariachiInstruments/assets/acordeon.png";
-import guitarra from "@LevelMariachiInstruments/assets/guitarra.png";
-import guitarron from "@LevelMariachiInstruments/assets/guitarron.png";
-import violin from "@LevelMariachiInstruments/assets/violin.png";
 import "animate.css";
+import {
+  trompeta,
+  vihuela,
+  acordeon,
+  guitarra,
+  guitarron,
+  violin,
+} from "@LevelMariachiInstruments/index";
 
-export default function Instrument(props) {
+export function Instrument(props) {
   const { instrument, isDragging } = props;
 
   const style = {

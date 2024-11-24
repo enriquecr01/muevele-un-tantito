@@ -1,9 +1,9 @@
 import React from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import Instrument from "@LevelMariachiInstruments/components/Instrument";
+import { Instrument } from "@LevelMariachiInstruments/index";
 
-export default function SortableInstrument(props) {
+export function SortableInstrument(props) {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: props.id });
 

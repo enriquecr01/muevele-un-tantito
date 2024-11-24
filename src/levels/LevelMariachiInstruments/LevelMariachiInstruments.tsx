@@ -10,16 +10,18 @@ import {
   useSensors,
 } from "@dnd-kit/core";
 import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
-import Container from "@LevelMariachiInstruments/components/Container";
-import Instrument from "@LevelMariachiInstruments/components/Instrument";
 import putItem from "@sounds/putitem.mp3";
 import { Helmet } from "react-helmet";
 import ScreenWin from "pages/ScreenWin";
 import "animate.css";
 import { shuffleArray } from "@utils/arrays";
-import { verifyWin } from "@LevelMariachiInstruments/win-conditions";
-import { initialInstruments } from "@LevelMariachiInstruments/mocks";
 import { NavigationHelper } from "@utils/components/Navigation/NavigationContainer";
+import {
+  Container,
+  Instrument,
+  verifyWin,
+  initialInstruments,
+} from "@LevelMariachiInstruments/index";
 
 type LevelMariachiInstrumentsProps = {
   navigation?: NavigationHelper;
