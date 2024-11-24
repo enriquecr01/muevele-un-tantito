@@ -17,14 +17,17 @@ import ScreenWin from "pages/ScreenWin";
 import "animate.css";
 import { shuffleArray } from "@utils/arrays";
 import { NavigationHelper } from "@utils/components/Navigation/NavigationContainer";
-import { Food, IFood } from "@LevelFood/components/Food";
-import TacosBox from "@LevelFood/components/TacosBox";
-import TamalesBox from "@LevelFood/components/TamalesBox";
-import QuesadillasBox from "@LevelFood/components/QuesadillasBox";
-import EloteBox from "@LevelFood/components/EloteBox";
-import { defaultFood } from "@LevelFood/mocks";
-import EmptySpaceDroppable from "@LevelFood/components/EmptySpaceDroppable";
-import { verifyWin } from "@LevelFood/win-conditions";
+import {
+  Food,
+  IFood,
+  TacosBox,
+  TamalesBox,
+  QuesadillasBox,
+  EloteBox,
+  defaultFood,
+  EmptySpaceDroppable,
+  verifyWin,
+} from "@LevelFood/index";
 
 type LevelFoodProps = {
   navigation?: NavigationHelper;

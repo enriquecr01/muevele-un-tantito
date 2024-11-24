@@ -1,16 +1,14 @@
-import {
-    paleta1,
-    paleta2,
-    paleta3,
-    paleta4,
-    pipitoria,
-    obleas,
-    mazapan,
-    borrachito,
-    cocada,
-    jamoncillo,
-    ICandy
-} from '@LevelCandy/index'
+import { ICandy } from '@LevelCandy/index'
+import paleta1 from "@LevelCandy/assets/paleta1.png";
+import paleta2 from "@LevelCandy/assets/paleta2.png";
+import paleta3 from "@LevelCandy/assets/paleta3.png";
+import paleta4 from "@LevelCandy/assets/paleta4.png";
+import pipitoria from "@LevelCandy/assets/pipitoria.png";
+import obleas from "@LevelCandy/assets/obleas.png";
+import mazapan from "@LevelCandy/assets/mazapan.png";
+import borrachito from "@LevelCandy/assets/borrachito.png";
+import cocada from "@LevelCandy/assets/cocada.png";
+import jamoncillo from "@LevelCandy/assets/jamoncillo.png";
 
 
 export const lollipopCandies: ICandy[] = [

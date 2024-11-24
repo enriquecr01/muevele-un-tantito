@@ -1,8 +1,8 @@
 import React from "react";
 import { useDroppable } from "@dnd-kit/core";
-import { Food } from "./Food";
+import { Food } from "@LevelFood/index";
 
-function EmptySpaceDroppable(props) {
+export function EmptySpaceDroppable(props) {
   const { setNodeRef } = useDroppable({
     id: props.id,
   });
@@ -38,5 +38,3 @@ function EmptySpaceDroppable(props) {
     </div>
   );
 }
-
-export default EmptySpaceDroppable;

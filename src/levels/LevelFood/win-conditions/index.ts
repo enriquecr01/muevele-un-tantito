@@ -1,4 +1,4 @@
-import { IFood } from "@LevelFood/components/Food";
+import { IFood } from "@LevelFood/index";
 
 function verifyEloteAndQuesadillasBox(array: IFood[]) {
     if (array.length === 1) {

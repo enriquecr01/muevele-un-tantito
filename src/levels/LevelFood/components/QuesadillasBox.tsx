@@ -1,8 +1,8 @@
 import React from "react";
 import { useDroppable } from "@dnd-kit/core";
-import { Food } from "./Food";
+import { Food } from "@LevelFood/index";
 
-function BoxFood(props) {
+export function QuesadillasBox(props) {
   const { setNodeRef } = useDroppable({
     id: "quesadillas",
   });
@@ -26,5 +26,3 @@ function BoxFood(props) {
     </div>
   );
 }
-
-export default BoxFood;

@@ -2,13 +2,6 @@ import React from "react";
 import { useDraggable } from "@dnd-kit/core";
 import "animate.css";
 
-export interface IFood {
-  id: number;
-  image: string;
-  currentBox: string;
-  type: string;
-}
-
 export function Food(props) {
   const { id, isDragging, type } = props;
   const { attributes, listeners, setNodeRef } = useDraggable({
