@@ -1,11 +1,8 @@
 import React from "react";
-import plato1 from "@LevelClayCraft/assets/plato-1.png";
-import plato2 from "@LevelClayCraft/assets/plato-2.png";
-import plato3 from "@LevelClayCraft/assets/plato-3.png";
-import plato4 from "@LevelClayCraft/assets/plato-4.png";
 import "animate.css";
+import { plato1, plato2, plato3, plato4 } from "@LevelClayCraft/index";
 
-export default function Plato(props) {
+export function Plato(props) {
   const { size, isDragging } = props;
 
   const style = {

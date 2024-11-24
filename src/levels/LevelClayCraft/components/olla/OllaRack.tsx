@@ -10,17 +10,16 @@ import {
   useSensors,
 } from "@dnd-kit/core";
 import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
-import OllaContainer from "@LevelClayCraft/components/olla/OllaContainer";
-import Olla from "@LevelClayCraft/components/olla/Olla";
 import putItem from "@sounds/putitem.mp3";
 import "animate.css";
+import { OllaContainer, Olla } from "@LevelClayCraft/index";
 
 type OllaRackProps = {
   ollasArray: number[];
   callback: (param: number[]) => void;
 };
 
-export default function OllaRack({ ollasArray, callback }: OllaRackProps) {
+export function OllaRack({ ollasArray, callback }: OllaRackProps) {
   const [ollas, setOllas] = useState<number[]>(ollasArray);
   const [activeId, setActiveId] = useState();
 

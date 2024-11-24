@@ -10,17 +10,16 @@ import {
   useSensors,
 } from "@dnd-kit/core";
 import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
-import PlatoContainer from "@LevelClayCraft/components/plato/PlatoContainer";
-import Plato from "@LevelClayCraft/components/plato/Plato";
 import putItem from "@sounds/putitem.mp3";
 import "animate.css";
+import { Plato, PlatosContainer } from "@LevelClayCraft/index";
 
 type PlatoRackProps = {
   platosArray: number[];
   callback: (param: number[]) => void;
 };
 
-export default function PlatoRack({ platosArray, callback }: PlatoRackProps) {
+export function PlatoRack({ platosArray, callback }: PlatoRackProps) {
   const [platos, setPlatos] = useState<number[]>(platosArray);
   const [activeId, setActiveId] = useState();
 
@@ -84,7 +83,7 @@ export default function PlatoRack({ platosArray, callback }: PlatoRackProps) {
           onDragStart={handleDragStart}
           onDragEnd={handleDragEnd}
         >
-          <PlatoContainer id="platos" items={platos} />
+          <PlatosContainer id="platos" items={platos} />
           <DragOverlay transition={null}>
             {activeId ? (
               <Plato id={activeId} size={activeId} isDragging />

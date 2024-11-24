@@ -10,17 +10,16 @@ import {
   useSensors,
 } from "@dnd-kit/core";
 import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
-import CantaritoContainer from "@LevelClayCraft/components/cantarito/CantaritoContainer";
-import Cantarito from "@LevelClayCraft/components/cantarito/Cantarito";
 import putItem from "@sounds/putitem.mp3";
 import "animate.css";
+import { CantaritoContainer, Cantarito } from "@LevelClayCraft/index";
 
 type CantaritoRackProps = {
   cantaritosArray: number[];
   callback: (param: number[]) => void;
 };
 
-export default function CantaritoRack({
+export function CantaritoRack({
   cantaritosArray,
   callback,
 }: CantaritoRackProps) {

@@ -4,10 +4,9 @@ import {
   SortableContext,
   useSortable,
 } from "@dnd-kit/sortable";
+import { SortableOlla } from "@LevelClayCraft/index";
 
-import SortableOlla from "./SortableOlla";
-
-export default function OllaContainer(props) {
+export function OllaContainer(props) {
   const { id, items } = props;
 
   const { setNodeRef } = useSortable({

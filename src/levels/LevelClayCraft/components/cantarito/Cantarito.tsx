@@ -1,11 +1,13 @@
 import React from "react";
-import cantarito1 from "@LevelClayCraft/assets/cantarito-1.png";
-import cantarito2 from "@LevelClayCraft/assets/cantarito-2.png";
-import cantarito3 from "@LevelClayCraft/assets/cantarito-3.png";
-import cantarito4 from "@LevelClayCraft/assets/cantarito-4.png";
 import "animate.css";
+import {
+  cantarito1,
+  cantarito2,
+  cantarito3,
+  cantarito4,
+} from "@LevelClayCraft/index";
 
-export default function Cantarito(props) {
+export function Cantarito(props) {
   const { size, isDragging } = props;
 
   const style = {

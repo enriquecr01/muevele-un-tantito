@@ -1,9 +1,9 @@
 import React from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import Olla from "@LevelClayCraft/components/olla/Olla";
+import { Olla } from "@LevelClayCraft/index";
 
-export default function SortableOlla(props) {
+export function SortableOlla(props) {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: props.id });
 

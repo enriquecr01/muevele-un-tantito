@@ -5,9 +5,9 @@ import {
   useSortable,
 } from "@dnd-kit/sortable";
 
-import SortableCantarito from "./SortableCantarito";
+import { SortableCantarito } from "@LevelClayCraft/index";
 
-export default function CantaritoContainer(props) {
+export function CantaritoContainer(props) {
   const { id, items } = props;
 
   const { setNodeRef } = useSortable({

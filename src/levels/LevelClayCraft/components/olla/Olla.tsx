@@ -1,13 +1,15 @@
 import React from "react";
-import olla1 from "@LevelClayCraft/assets/olla-1.png";
-import olla2 from "@LevelClayCraft/assets/olla-2.png";
-import olla3 from "@LevelClayCraft/assets/olla-3.png";
-import olla4 from "@LevelClayCraft/assets/olla-4.png";
-import olla5 from "@LevelClayCraft/assets/olla-5.png";
-import olla6 from "@LevelClayCraft/assets/olla-6.png";
 import "animate.css";
+import {
+  olla1,
+  olla2,
+  olla3,
+  olla4,
+  olla5,
+  olla6,
+} from "@LevelClayCraft/index";
 
-export default function Olla(props) {
+export function Olla(props) {
   const { size, isDragging } = props;
 
   const style = {

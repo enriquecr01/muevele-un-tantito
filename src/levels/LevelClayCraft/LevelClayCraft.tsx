@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import ScreenWin from "pages/ScreenWin";
 import "animate.css";
+import { shuffleAndVerifyArraysAreNotSorted } from "@utils/arrays";
+import { NavigationHelper } from "@utils/components/Navigation/NavigationContainer";
 import {
+  CantaritoRack,
+  OllaRack,
+  PlatoRack,
   initialCantaritos,
   initialOllas,
   initialPlatos,
-} from "@LevelClayCraft/mocks";
-import CantaritoRack from "@LevelClayCraft/components/cantarito/CantaritoRack";
-import OllaRack from "@LevelClayCraft/components/olla/OllaRack";
-import PlatoRack from "@LevelClayCraft/components/plato/PlatoRack";
-import { verifyWin } from "@LevelClayCraft/win-conditions";
-import { shuffleAndVerifyArraysAreNotSorted } from "@utils/arrays";
-import { NavigationHelper } from "@utils/components/Navigation/NavigationContainer";
+  verifyWin,
+} from "@LevelClayCraft/index";
 
 type LevelClayCraftProps = {
   navigation?: NavigationHelper;

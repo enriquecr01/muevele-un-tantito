@@ -4,10 +4,9 @@ import {
   SortableContext,
   useSortable,
 } from "@dnd-kit/sortable";
+import { SortablePlatos } from "@LevelClayCraft/index";
 
-import SortablePlatos from "./SortablePlatos";
-
-export default function PlatosContainer(props) {
+export function PlatosContainer(props) {
   const { id, items } = props;
 
   const { setNodeRef } = useSortable({

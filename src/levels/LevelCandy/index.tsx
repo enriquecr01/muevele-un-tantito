@@ -26,3 +26,4 @@ export * from "@LevelCandy/components/EmptySpaceDroppable";
 export * from "@LevelCandy/mocks";
 export * from "@LevelCandy/win-conditions";
 export * from "@LevelCandy/models/ICandy";
+export * from "@LevelCandy/LevelCandy";
