@@ -1,4 +1,4 @@
-import { ICandy } from "levels/LevelCandy/components/Candy";
+import { ICandy } from "@LevelCandy/index";
 
 export function allBoxesHaveSameCandyType(candyArray1: ICandy[], candyArray2: ICandy[], candyArray3: ICandy[]) {
 

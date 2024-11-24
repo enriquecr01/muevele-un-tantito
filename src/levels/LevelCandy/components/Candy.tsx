@@ -2,13 +2,6 @@ import React from "react";
 import { useDraggable } from "@dnd-kit/core";
 import "animate.css";
 
-export interface ICandy {
-  id: number;
-  image: string;
-  currentBox: string;
-  type: string;
-}
-
 export function Candy(props) {
   const { id, isDragging } = props;
   const { attributes, listeners, setNodeRef } = useDraggable({
