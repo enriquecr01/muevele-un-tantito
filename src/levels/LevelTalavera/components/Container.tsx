@@ -5,7 +5,7 @@ import {
   useSortable,
 } from "@dnd-kit/sortable";
 
-import SortableTalavera from "./SortableTile";
+import { SortableTalavera } from "@LevelTalavera/index";
 
 const containerStyle = {
   padding: 10,
@@ -15,7 +15,7 @@ const containerStyle = {
   gridTemplateColumns: `repeat(5, 1fr)`,
 };
 
-export default function Container(props) {
+export function Container(props) {
   const { id, items } = props;
 
   const { setNodeRef } = useSortable({

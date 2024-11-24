@@ -24,7 +24,7 @@ function App() {
       {/* <h1 className="text-xl font-bold underline bg-amber-100">Hello world!</h1> */}
       {/* <Example></Example> */}
       {/* <MainMenu></MainMenu> */}
-      <LevelBakery></LevelBakery>
+      {/* <LevelBakery></LevelBakery> */}
       {/* <LevelClayCraft></LevelClayCraft> */}
       {/* <LevelMariachiInstruments></LevelMariachiInstruments> */}
       {/* <LevelCandy></LevelCandy> */}
@@ -34,7 +34,7 @@ function App() {
       {/* <LevelFood></LevelFood> */}
       {/* <LevelAlebrijes></LevelAlebrijes> */}
       {/* <LevelFruits></LevelFruits> */}
-      {/* <MainFlow></MainFlow> */}
+      <MainFlow></MainFlow>
       {/* <Wachar></Wachar> */}
 
       {/* <div>

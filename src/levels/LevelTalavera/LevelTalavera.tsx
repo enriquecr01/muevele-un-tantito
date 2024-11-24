@@ -10,16 +10,13 @@ import {
   useSensors,
 } from "@dnd-kit/core";
 import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
-import Container from "@LevelTalavera/components/Container";
-import Tile from "@LevelTalavera/components/Tile";
 import putItem from "@sounds/putitem.mp3";
 import { Helmet } from "react-helmet";
 import ScreenWin from "pages/ScreenWin";
 import "animate.css";
 import { shuffleArray } from "@utils/arrays";
-import { verifyWin } from "@LevelTalavera/win-conditions";
-import { initialTiles } from "@LevelTalavera/mocks";
 import { NavigationHelper } from "@utils/components/Navigation/NavigationContainer";
+import { Container, Tile, verifyWin, initialTiles } from "@LevelTalavera/index";
 
 type LevelTalaveraProps = {
   navigation?: NavigationHelper;

@@ -1,12 +1,8 @@
 import React from "react";
-import huevo from "@LevelTalavera/assets/huevo.png";
-import cayendo from "@LevelTalavera/assets/cayendo.png";
-import mediano from "@LevelTalavera/assets/mediano.png";
-import nacido from "@LevelTalavera/assets/nacido.png";
-import volando from "@LevelTalavera/assets/volando.png";
 import "animate.css";
+import { huevo, cayendo, mediano, nacido, volando } from "@LevelTalavera/index";
 
-export default function Tile(props) {
+export function Tile(props) {
   const { tile, isDragging } = props;
 
   const style = {
