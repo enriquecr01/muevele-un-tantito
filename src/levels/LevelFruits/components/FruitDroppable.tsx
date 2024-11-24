@@ -1,11 +1,8 @@
 import React from "react";
 import { useDroppable } from "@dnd-kit/core";
-import { Fruit } from "./Fruit";
-import aguacate from "@LevelFruits/assets/aguacate-1.png";
-import papaya from "@LevelFruits/assets/papaya-1.png";
-import pitaya from "@LevelFruits/assets/pitaya-1.png";
+import { Fruit, aguacate1, papaya1, pitaya1 } from "@LevelFruits/index";
 
-function FruitDroppable(props) {
+export function FruitDroppable(props) {
   const { setNodeRef } = useDroppable({
     id: props.id,
   });
@@ -19,11 +16,11 @@ function FruitDroppable(props) {
   const getFruitImage = () => {
     switch (props.id) {
       case "aguacate":
-        return aguacate;
+        return aguacate1;
       case "papaya":
-        return papaya;
+        return papaya1;
       case "pitaya":
-        return pitaya;
+        return pitaya1;
     }
   };
 
@@ -58,5 +55,3 @@ function FruitDroppable(props) {
     </div>
   );
 }
-
-export default FruitDroppable;

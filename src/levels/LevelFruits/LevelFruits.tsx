@@ -17,11 +17,14 @@ import ScreenWin from "pages/ScreenWin";
 import "animate.css";
 import { shuffleArray } from "@utils/arrays";
 import { NavigationHelper } from "@utils/components/Navigation/NavigationContainer";
-import { Fruit, IFruit } from "@LevelFruits/components/Fruit";
-import FruitDroppable from "@LevelFruits/components/FruitDroppable";
-import { initialFruits } from "@LevelFruits/mocks";
-import EmptySpaceDroppable from "@LevelFruits/components/EmptySpaceDroppable";
-import { verifyWin } from "@LevelFruits/win-conditions";
+import {
+  Fruit,
+  IFruit,
+  FruitDroppable,
+  initialFruits,
+  EmptySpaceDroppable,
+  verifyWin,
+} from "@LevelFruits/index";
 
 type LevelFruitProps = {
   navigation?: NavigationHelper;

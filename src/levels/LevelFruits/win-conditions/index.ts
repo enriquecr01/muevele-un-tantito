@@ -1,4 +1,4 @@
-import { IFruit } from "@LevelFruits/components/Fruit";
+import { IFruit } from "@LevelFruits/index";
 
 export function verifyWin(aguacate: IFruit, papaya: IFruit, pitaya: IFruit) {
 

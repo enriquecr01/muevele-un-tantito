@@ -2,12 +2,6 @@ import React from "react";
 import { useDraggable } from "@dnd-kit/core";
 import "animate.css";
 
-export interface IFruit {
-  id: string;
-  image: string;
-  currentBox: string;
-}
-
 export function Fruit(props) {
   const { id, isDragging, disabled } = props;
   const { attributes, listeners, setNodeRef } = useDraggable({
