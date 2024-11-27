@@ -13,10 +13,12 @@ import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import Container from "@LevelAltarDeMuertos/components/Container";
 import putItem from "@sounds/putitem.mp3";
 import { Helmet } from "react-helmet";
-import ScreenWin from "pages/ScreenWin";
+import { ScreenWin } from "pages/index";
 import "animate.css";
-import { shuffleAndVerifyArraysAreNotSorted } from "@utils/arrays";
-import { NavigationHelper } from "@utils/components/Navigation/NavigationContainer";
+import {
+  NavigationHelper,
+  shuffleAndVerifyArraysAreNotSorted,
+} from "@utils/index";
 import { Level, verifyWin, initialLevels } from "@LevelAltarDeMuertos/index";
 
 type LevelAltarDeMuertosProps = {

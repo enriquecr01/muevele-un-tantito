@@ -10,11 +10,11 @@ import { LevelAltarDeMuertos } from "@LevelAltarDeMuertos/LevelAltarDeMuertos";
 import { LevelDrinks } from "@LevelDrinks/LevelDrinks";
 import { LevelTalavera } from "@LevelTalavera/LevelTalavera";
 import { LevelFood } from "@LevelFood/LevelFood";
-import MainMenu from "./MainMenu";
 import { LevelAlebrijes } from "@LevelAlebrijes/LevelAlebrijes";
 import { LevelFruits } from "@LevelFruits/LevelFruits";
+import { MainMenu } from "./MainMenu";
 
-export default function MainFlow() {
+export function MainFlow() {
   return (
     <NavigationContainer>
       <StackNavigation initialRouteName="MainMenu">

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
-import ScreenWin from "pages/ScreenWin";
+import { ScreenWin } from "pages/index";
 import "animate.css";
-import { shuffleAndVerifyArraysAreNotSorted } from "@utils/arrays";
-import { NavigationHelper } from "@utils/components/Navigation/NavigationContainer";
+import {
+  NavigationHelper,
+  shuffleAndVerifyArraysAreNotSorted,
+} from "@utils/index";
 import {
   CantaritoRack,
   OllaRack,

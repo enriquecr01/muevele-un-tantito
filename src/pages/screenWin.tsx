@@ -8,7 +8,7 @@ type ScreenWinProps = {
   reset: () => void;
 };
 
-const ScreenWin = ({ nextLevel, navigation, reset }: ScreenWinProps) => {
+export const ScreenWin = ({ nextLevel, navigation, reset }: ScreenWinProps) => {
   function goNextLevel() {
     navigation.navigate(nextLevel);
   }
@@ -41,5 +41,3 @@ const ScreenWin = ({ nextLevel, navigation, reset }: ScreenWinProps) => {
     </>
   );
 };
-
-export default ScreenWin;

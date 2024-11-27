@@ -7,7 +7,7 @@ type MainMenuProps = {
   navigation?: NavigationHelper;
 };
 
-const MainMenu = ({ navigation }: MainMenuProps) => {
+export const MainMenu = ({ navigation }: MainMenuProps) => {
   const goFirstLevel = () => {
     navigation.navigate("LevelFruits");
   };
@@ -49,5 +49,3 @@ const MainMenu = ({ navigation }: MainMenuProps) => {
     </>
   );
 };
-
-export default MainMenu;

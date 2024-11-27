@@ -12,10 +12,9 @@ import {
 import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import putItem from "@sounds/putitem.mp3";
 import { Helmet } from "react-helmet";
-import ScreenWin from "pages/ScreenWin";
+import { ScreenWin } from "pages/index";
 import "animate.css";
-import { shuffleArray } from "@utils/arrays";
-import { NavigationHelper } from "@utils/components/Navigation/NavigationContainer";
+import { shuffleArray, NavigationHelper } from "@utils/index";
 import { Container, Tile, verifyWin, initialTiles } from "@LevelTalavera/index";
 
 type LevelTalaveraProps = {

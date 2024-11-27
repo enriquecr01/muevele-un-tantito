@@ -8,6 +8,7 @@
       "@sounds/*": ["assets/sounds/*"],
       "@components/*": ["components/*"],
       "@utils/*": ["utils/*"],
+      "@pages/*": ["pages/*"],
       "@LevelBakery/*": ["levels/LevelBakery/*"],
       "@LevelCandy/*": ["levels/LevelCandy/*"],
       "@LevelClayCraft/*": ["levels/LevelClayCraft/*"],

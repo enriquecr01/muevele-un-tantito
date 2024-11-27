@@ -13,8 +13,8 @@ import { LevelTalavera } from "./levels/levelTalavera/LevelTalavera";
 import { LevelFood } from "./levels/LevelFood/LevelFood";
 import { LevelAlebrijes } from "./levels/LevelAlebrijes/LevelAlebrijes";
 import { LevelFruits } from "./levels/LevelFruits/LevelFruits";
-import MainMenu from "./pages/mainMenu";
-import MainFlow from "./pages/MainFlow";
+import { MainMenu } from "./pages/mainMenu";
+import { MainFlow } from "./pages/MainFlow";
 
 function App() {
   // const [count, setCount] = useState(0)
