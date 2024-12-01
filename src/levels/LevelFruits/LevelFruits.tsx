@@ -4,18 +4,16 @@ import {
   DragEndEvent,
   DragOverlay,
   DragStartEvent,
-  KeyboardSensor,
-  PointerSensor,
-  TouchSensor,
-  useSensor,
-  useSensors,
 } from "@dnd-kit/core";
-import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import putItem from "@sounds/putitem.mp3";
 import { Helmet } from "react-helmet";
 import { ScreenWin } from "pages/index";
 import "animate.css";
-import { NavigationHelper, shuffleArray } from "@utils/index";
+import {
+  NavigationHelper,
+  shuffleArray,
+  useMueveleTantitoSensors,
+} from "@utils/index";
 import {
   Fruit,
   IFruit,
@@ -38,6 +36,8 @@ export function LevelFruits({ navigation }: LevelFruitProps) {
   const [aguacate, setAguacate] = useState<IFruit>();
   const [papaya, setPapaya] = useState<IFruit>();
   const [pitaya, setPitaya] = useState<IFruit>();
+
+  const { sensors } = useMueveleTantitoSensors();
 
   const putItemSound = new Audio(putItem);
 
@@ -174,19 +174,6 @@ export function LevelFruits({ navigation }: LevelFruitProps) {
     setPitaya,
     setFruitsDefault,
   ]);
-
-  const sensors = useSensors(
-    useSensor(TouchSensor, {
-      activationConstraint: {
-        delay: 300,
-        tolerance: 8,
-      },
-    }),
-    useSensor(PointerSensor),
-    useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates,
-    })
-  );
 
   const reset = () => {
     const candiesDefaultArrays: IFruit[] = [...initialFruits];

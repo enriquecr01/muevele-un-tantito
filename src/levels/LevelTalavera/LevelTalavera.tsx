@@ -1,20 +1,14 @@
 import React, { useEffect, useState } from "react";
-import {
-  closestCorners,
-  DndContext,
-  DragOverlay,
-  KeyboardSensor,
-  PointerSensor,
-  TouchSensor,
-  useSensor,
-  useSensors,
-} from "@dnd-kit/core";
-import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
+import { closestCorners, DndContext, DragOverlay } from "@dnd-kit/core";
 import putItem from "@sounds/putitem.mp3";
 import { Helmet } from "react-helmet";
 import { ScreenWin } from "pages/index";
 import "animate.css";
-import { shuffleArray, NavigationHelper } from "@utils/index";
+import {
+  shuffleArray,
+  NavigationHelper,
+  useMueveleTantitoSensors,
+} from "@utils/index";
 import { Container, Tile, verifyWin, initialTiles } from "@LevelTalavera/index";
 
 type LevelTalaveraProps = {
@@ -26,6 +20,8 @@ export function LevelTalavera({ navigation }: LevelTalaveraProps) {
   const [activeId, setActiveId] = useState();
   const [win, setWin] = useState<boolean>(false);
   const [removeLevel, setRemoveLevel] = useState<boolean>(false);
+
+  const { sensors } = useMueveleTantitoSensors();
 
   const putItemSound = new Audio(putItem);
 
@@ -41,19 +37,6 @@ export function LevelTalavera({ navigation }: LevelTalaveraProps) {
     const shuffledDrinks = shuffleArrayAndVerify(initialTiles);
     setItems(shuffledDrinks);
   }, [setItems]);
-
-  const sensors = useSensors(
-    useSensor(TouchSensor, {
-      activationConstraint: {
-        delay: 300,
-        tolerance: 8,
-      },
-    }),
-    useSensor(PointerSensor),
-    useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates,
-    })
-  );
 
   function handleDragStart(event) {
     const { active } = event;

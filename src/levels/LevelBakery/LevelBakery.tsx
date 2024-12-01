@@ -1,20 +1,14 @@
 import React, { useEffect, useState } from "react";
-import {
-  closestCorners,
-  DndContext,
-  DragOverlay,
-  KeyboardSensor,
-  PointerSensor,
-  TouchSensor,
-  useSensor,
-  useSensors,
-} from "@dnd-kit/core";
-import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
+import { closestCorners, DndContext, DragOverlay } from "@dnd-kit/core";
 import putItem from "@sounds/putitem.mp3";
 import { Helmet } from "react-helmet";
 import { ScreenWin } from "pages/index";
 import "animate.css";
-import { NavigationHelper, shuffleArray } from "@utils/index";
+import {
+  NavigationHelper,
+  shuffleArray,
+  useMueveleTantitoSensors,
+} from "@utils/index";
 import {
   Container,
   Concha,
@@ -34,25 +28,14 @@ export function LevelBakery({ navigation }: LevelBakeryProps) {
   const [win, setWin] = useState<boolean>(false);
   const [removeLevel, setRemoveLevel] = useState<boolean>(false);
 
+  const { sensors } = useMueveleTantitoSensors();
+
   const putItemSound = new Audio(putItem);
 
   useEffect(() => {
     const shuffledConchas = shuffleArray(initialConchas);
     setItems(shuffledConchas);
   }, [setItems]);
-
-  const sensors = useSensors(
-    useSensor(TouchSensor, {
-      activationConstraint: {
-        delay: 300,
-        tolerance: 8,
-      },
-    }),
-    useSensor(PointerSensor),
-    useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates,
-    })
-  );
 
   function handleDragStart(event) {
     const { active } = event;

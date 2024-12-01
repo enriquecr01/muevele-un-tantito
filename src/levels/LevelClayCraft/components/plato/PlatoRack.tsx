@@ -1,18 +1,9 @@
 import React, { useState } from "react";
-import {
-  closestCorners,
-  DndContext,
-  DragOverlay,
-  KeyboardSensor,
-  PointerSensor,
-  TouchSensor,
-  useSensor,
-  useSensors,
-} from "@dnd-kit/core";
-import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
+import { closestCorners, DndContext, DragOverlay } from "@dnd-kit/core";
 import putItem from "@sounds/putitem.mp3";
 import "animate.css";
 import { Plato, PlatosContainer } from "@LevelClayCraft/index";
+import { useMueveleTantitoSensors } from "@utils/index";
 
 type PlatoRackProps = {
   platosArray: number[];
@@ -23,20 +14,9 @@ export function PlatoRack({ platosArray, callback }: PlatoRackProps) {
   const [platos, setPlatos] = useState<number[]>(platosArray);
   const [activeId, setActiveId] = useState();
 
-  const putItemSound = new Audio(putItem);
+  const { sensors } = useMueveleTantitoSensors();
 
-  const sensors = useSensors(
-    useSensor(TouchSensor, {
-      activationConstraint: {
-        delay: 300,
-        tolerance: 8,
-      },
-    }),
-    useSensor(PointerSensor),
-    useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates,
-    })
-  );
+  const putItemSound = new Audio(putItem);
 
   function handleDragStart(event) {
     const { active } = event;

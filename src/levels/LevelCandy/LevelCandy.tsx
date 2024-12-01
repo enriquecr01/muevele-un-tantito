@@ -4,18 +4,16 @@ import {
   DragEndEvent,
   DragOverlay,
   DragStartEvent,
-  KeyboardSensor,
-  PointerSensor,
-  TouchSensor,
-  useSensor,
-  useSensors,
 } from "@dnd-kit/core";
-import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import putItem from "@sounds/putitem.mp3";
 import { Helmet } from "react-helmet";
 import { ScreenWin } from "pages/index";
 import "animate.css";
-import { NavigationHelper, shuffleArray } from "@utils/index";
+import {
+  NavigationHelper,
+  shuffleArray,
+  useMueveleTantitoSensors,
+} from "@utils/index";
 import {
   Candy,
   ICandy,
@@ -40,6 +38,8 @@ export function LevelCandy({ navigation }: LevelCandyProps) {
   const [candies, setCandies] = useState<ICandy[]>([]);
   const [candies2, setCandies2] = useState<ICandy[]>([]);
   const [candies3, setCandies3] = useState<ICandy[]>([]);
+
+  const { sensors } = useMueveleTantitoSensors();
 
   const putItemSound = new Audio(putItem);
 
@@ -171,19 +171,6 @@ export function LevelCandy({ navigation }: LevelCandyProps) {
     setCandies3,
     setCandiesDefault,
   ]);
-
-  const sensors = useSensors(
-    useSensor(TouchSensor, {
-      activationConstraint: {
-        delay: 300,
-        tolerance: 8,
-      },
-    }),
-    useSensor(PointerSensor),
-    useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates,
-    })
-  );
 
   const reset = () => {
     const candiesDefaultArrays: ICandy[] = [
