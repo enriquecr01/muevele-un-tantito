@@ -20,4 +20,5 @@ export * from "@LevelAlebrijes/components/SortableAlebrije";
 export * from "@LevelAlebrijes/mocks";
 export * from "@LevelAlebrijes/win-conditions";
 export * from "@LevelAlebrijes/LevelAlebrijes";
+export * from "@LevelAlebrijes/useLevelAlebrijes";
 

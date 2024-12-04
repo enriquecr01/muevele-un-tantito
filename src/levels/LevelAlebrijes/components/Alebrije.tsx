@@ -41,14 +41,14 @@ export function Alebrije(props) {
 
   return (
     <div
-      className={`w-full flex items-center justify-center my-2 touch-none`}
+      className={`w-full flex items-center justify-center my-2 touch-none select-none`}
       style={style}
     >
       <img
         src={getAlebrije(alebrije)}
         alt={alebrije}
         className={`pointer-events-none ${
-          isDragging ? "animate__animated animate__swing" : ""
+          isDragging ? "animate__animated animate__headShake" : ""
         }`}
       />
     </div>
