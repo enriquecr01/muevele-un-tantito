@@ -17,7 +17,7 @@ export function Candy(props) {
   return (
     <div
       ref={setNodeRef}
-      className="w-full flex items-center justify-center my-2 touch-none"
+      className="w-full flex items-center justify-center my-2 touch-none select-none"
       style={style}
       {...attributes}
       {...listeners}

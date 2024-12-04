@@ -9,20 +9,12 @@ import putItem from "@sounds/putitem.mp3";
 import { Helmet } from "react-helmet";
 import { ScreenWin } from "pages/index";
 import "animate.css";
-import {
-  NavigationHelper,
-  shuffleArray,
-  useMueveleTantitoSensors,
-} from "@utils/index";
+import { NavigationHelper, useMueveleTantitoSensors } from "@utils/index";
 import {
   Candy,
-  ICandy,
-  lollipopCandies,
-  rectangleCandies,
-  roundedCandies,
   BoxDroppable,
   EmptySpaceDroppable,
-  verifyWin,
+  useLevelCandy,
 } from "@LevelCandy/index";
 
 type LevelCandyProps = {
@@ -30,24 +22,33 @@ type LevelCandyProps = {
 };
 
 export function LevelCandy({ navigation }: LevelCandyProps) {
-  const [activeId, setActiveId] = useState<ICandy>();
-  const [win, setWin] = useState<boolean>(false);
-  const [removeLevel, setRemoveLevel] = useState<boolean>(false);
-
-  const [candiesDefault, setCandiesDefault] = useState<ICandy[]>([]);
-  const [candies, setCandies] = useState<ICandy[]>([]);
-  const [candies2, setCandies2] = useState<ICandy[]>([]);
-  const [candies3, setCandies3] = useState<ICandy[]>([]);
+  const {
+    setActiveId,
+    win,
+    reset,
+    removeLevel,
+    candies,
+    candies2,
+    candies3,
+    candiesDefault,
+    activeId,
+    addToBox,
+  } = useLevelCandy();
 
   const { sensors } = useMueveleTantitoSensors();
 
   const putItemSound = new Audio(putItem);
 
+  const style = {
+    background:
+      "radial-gradient(circle, rgba(255,198,198,1) 0%, rgba(227,170,170,1) 100%)",
+  };
+
   const handleDragStart = (event: DragStartEvent) => {
     setActiveId(event.active.data.current.data);
   };
 
-  const addToBox = (e: DragEndEvent) => {
+  const handleDragEnd = (e: DragEndEvent) => {
     const newItem = { ...e.active.data.current.data };
     const { active, over } = e;
     if (
@@ -64,132 +65,8 @@ export function LevelCandy({ navigation }: LevelCandyProps) {
 
     if (currentBox === overBox) return;
 
-    let currentArray = [];
-    let tempArray = [];
-
-    switch (currentBox) {
-      case "default-box":
-        currentArray = [...candiesDefault];
-        break;
-      case "box-1":
-        currentArray = [...candies];
-        break;
-      case "box-2":
-        currentArray = [...candies2];
-        break;
-      case "box-3":
-        currentArray = [...candies3];
-        break;
-    }
-
-    switch (overBox) {
-      case "default-box":
-        tempArray = [...candiesDefault];
-        break;
-      case "box-1":
-        tempArray = [...candies];
-        break;
-
-      case "box-2":
-        tempArray = [...candies2];
-        break;
-      case "box-3":
-        tempArray = [...candies3];
-        break;
-    }
-
-    const index = currentArray.findIndex((candy) => candy.id === active.id);
-    newItem.currentBox = overBox;
-
-    currentArray.splice(index, 1);
-    tempArray.push(newItem);
-
-    switch (currentBox) {
-      case "default-box":
-        setCandiesDefault(currentArray);
-        break;
-      case "box-1":
-        setCandies(currentArray);
-        break;
-      case "box-2":
-        setCandies2(currentArray);
-        break;
-      case "box-3":
-        setCandies3(currentArray);
-        break;
-    }
-
-    switch (overBox) {
-      case "default-box":
-        setCandiesDefault(tempArray);
-        break;
-      case "box-1":
-        setCandies(tempArray);
-        break;
-      case "box-2":
-        setCandies2(tempArray);
-        break;
-      case "box-3":
-        setCandies3(tempArray);
-        break;
-    }
-
+    addToBox(currentBox, overBox, active, newItem);
     putItemSound.play();
-  };
-
-  const verifyWinCandy = (candies, candies2, candies3) => {
-    const win = verifyWin(candies, candies2, candies3);
-
-    if (win) {
-      setTimeout(() => {
-        setRemoveLevel(true);
-      }, 1000);
-      setTimeout(() => {
-        setWin(win);
-      }, 2000);
-    }
-  };
-
-  useEffect(() => {
-    const candiesDefaultArrays: ICandy[] = [
-      ...lollipopCandies,
-      ...roundedCandies,
-      ...rectangleCandies,
-    ];
-    const shuffledCandies = shuffleArray(candiesDefaultArrays);
-    setCandiesDefault(shuffledCandies);
-  }, []);
-
-  useEffect(() => {
-    verifyWinCandy(candies, candies2, candies3);
-  }, [
-    candies,
-    candies2,
-    candies3,
-    setCandies,
-    setCandies2,
-    setCandies3,
-    setCandiesDefault,
-  ]);
-
-  const reset = () => {
-    const candiesDefaultArrays: ICandy[] = [
-      ...lollipopCandies,
-      ...roundedCandies,
-      ...rectangleCandies,
-    ];
-    const shuffledCandies = shuffleArray(candiesDefaultArrays);
-    setCandiesDefault(shuffledCandies);
-    setCandies([]);
-    setCandies2([]);
-    setCandies3([]);
-    setRemoveLevel(false);
-    setWin(false);
-  };
-
-  const style = {
-    background:
-      "radial-gradient(circle, rgba(255,198,198,1) 0%, rgba(227,170,170,1) 100%)",
   };
 
   return (
@@ -217,7 +94,7 @@ export function LevelCandy({ navigation }: LevelCandyProps) {
         >
           <DndContext
             onDragStart={handleDragStart}
-            onDragEnd={addToBox}
+            onDragEnd={handleDragEnd}
             sensors={sensors}
           >
             <main className="flex flex-col items-center md:gap-16 md:p-4 w-full">

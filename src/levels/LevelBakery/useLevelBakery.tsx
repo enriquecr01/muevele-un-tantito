@@ -18,11 +18,6 @@ export const useLevelBakery = () => {
     setItems(shuffledConchas);
   }, [setItems]);
 
-  useEffect(() => {
-    const shuffledConchas = shuffleArray(initialConchas);
-    setItems(shuffledConchas);
-  }, [setItems]);
-
   function swapArrays(items, active, over) {
     const newItems = [...items];
 
