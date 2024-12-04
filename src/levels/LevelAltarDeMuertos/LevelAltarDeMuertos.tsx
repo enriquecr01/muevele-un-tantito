@@ -1,35 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { closestCorners, DndContext, DragOverlay } from "@dnd-kit/core";
 import Container from "@LevelAltarDeMuertos/components/Container";
 import putItem from "@sounds/putitem.mp3";
 import { Helmet } from "react-helmet";
 import { ScreenWin } from "pages/index";
 import "animate.css";
-import {
-  NavigationHelper,
-  shuffleAndVerifyArraysAreNotSorted,
-  useMueveleTantitoSensors,
-} from "@utils/index";
-import { Level, verifyWin, initialLevels } from "@LevelAltarDeMuertos/index";
+import { NavigationHelper, useMueveleTantitoSensors } from "@utils/index";
+import { Level, useLevelAltarDeMuertos } from "@LevelAltarDeMuertos/index";
 
 type LevelAltarDeMuertosProps = {
   navigation?: NavigationHelper;
 };
 
 export function LevelAltarDeMuertos({ navigation }: LevelAltarDeMuertosProps) {
-  const [items, setItems] = useState<number[]>([1, 2, 3, 4, 5, 6, 7]);
-  const [activeId, setActiveId] = useState();
-  const [win, setWin] = useState<boolean>(false);
-  const [removeLevel, setRemoveLevel] = useState<boolean>(false);
-
+  const {
+    activeId,
+    setActiveId,
+    swapArrays,
+    handleWin,
+    setItems,
+    win,
+    items,
+    reset,
+    removeLevel,
+  } = useLevelAltarDeMuertos();
   const { sensors } = useMueveleTantitoSensors();
 
   const putItemSound = new Audio(putItem);
 
-  useEffect(() => {
-    const shuffledConchas = shuffleAndVerifyArraysAreNotSorted(initialLevels);
-    setItems(shuffledConchas);
-  }, [setItems]);
+  const style = {
+    background:
+      "radial-gradient(circle, rgba(173,159,240,1) 0%, rgba(201,186,255,1) 100%)",
+  };
 
   function handleDragStart(event) {
     const { active } = event;
@@ -41,54 +43,20 @@ export function LevelAltarDeMuertos({ navigation }: LevelAltarDeMuertosProps) {
   async function handleDragEnd(event) {
     const { active, over } = event;
     const { id: overId } = over;
-    let win = false;
 
     if (activeId === overId) {
       return;
     }
 
     setItems((items) => {
-      const newItems = [...items];
-
-      const activeItem = items.find((x) => x === active.id)!;
-      const activeIdx = items.indexOf(activeItem);
-
-      const overItem = items.find((x) => x === over.id)!;
-      const overIdx = items.indexOf(overItem);
-      //Yes, I know I could have used findIndex
-      [newItems[activeIdx], newItems[overIdx]] = [
-        newItems[overIdx],
-        newItems[activeIdx],
-      ];
-
-      win = verifyWin(newItems);
-
-      if (win) {
-        setTimeout(() => {
-          setRemoveLevel(true);
-        }, 1000);
-        setTimeout(() => {
-          setWin(win);
-        }, 2000);
-      }
+      const newItems = swapArrays(items, active, over);
+      handleWin(newItems);
 
       setActiveId(null);
       putItemSound.play();
       return newItems;
     });
   }
-
-  const reset = () => {
-    const shuffledConchas = shuffleAndVerifyArraysAreNotSorted(initialLevels);
-    setItems(shuffledConchas);
-    setRemoveLevel(false);
-    setWin(false);
-  };
-
-  const style = {
-    background:
-      "radial-gradient(circle, rgba(173,159,240,1) 0%, rgba(201,186,255,1) 100%)",
-  };
 
   return (
     <>

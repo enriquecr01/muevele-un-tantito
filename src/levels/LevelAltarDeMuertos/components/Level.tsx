@@ -40,7 +40,7 @@ export function Level(props) {
 
   return (
     <div
-      className={`flex items-center justify-center touch-none`}
+      className={`flex items-center justify-center touch-none select-none`}
       style={style}
     >
       <img

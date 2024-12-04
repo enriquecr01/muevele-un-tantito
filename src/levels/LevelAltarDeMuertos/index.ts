@@ -20,4 +20,5 @@ export * from "@LevelAltarDeMuertos/components/SortableLevel";
 export * from "@LevelAltarDeMuertos/mocks";
 export * from "@LevelAltarDeMuertos/win-conditions";
 export * from "@LevelAltarDeMuertos/LevelAltarDeMuertos";
+export * from "@LevelAltarDeMuertos/useLevelAltarDeMuertos";
 
