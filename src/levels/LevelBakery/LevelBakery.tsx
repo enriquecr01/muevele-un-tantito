@@ -1,41 +1,39 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { closestCorners, DndContext, DragOverlay } from "@dnd-kit/core";
 import putItem from "@sounds/putitem.mp3";
 import { Helmet } from "react-helmet";
 import { ScreenWin } from "pages/index";
 import "animate.css";
-import {
-  NavigationHelper,
-  shuffleArray,
-  useMueveleTantitoSensors,
-} from "@utils/index";
-import {
-  Container,
-  Concha,
-  oneLineColorCondition,
-  twoVerticalLinesColorsCondition,
-  initialConchas,
-} from "@LevelBakery/index";
+import { NavigationHelper, useMueveleTantitoSensors } from "@utils/index";
+import { Container, Concha, useLevelBakery } from "@LevelBakery/index";
 
 type LevelBakeryProps = {
   navigation?: NavigationHelper;
 };
 
 export function LevelBakery({ navigation }: LevelBakeryProps) {
-  const [items, setItems] = useState<string[]>([]);
-  const [activeId, setActiveId] = useState();
-  const [activeColor, setActiveColor] = useState();
-  const [win, setWin] = useState<boolean>(false);
-  const [removeLevel, setRemoveLevel] = useState<boolean>(false);
+  const {
+    setActiveColor,
+    setActiveId,
+    activeId,
+    activeColor,
+    setItems,
+    swapArrays,
+    handleWin,
+    win,
+    reset,
+    removeLevel,
+    items,
+  } = useLevelBakery();
 
   const { sensors } = useMueveleTantitoSensors();
 
   const putItemSound = new Audio(putItem);
 
-  useEffect(() => {
-    const shuffledConchas = shuffleArray(initialConchas);
-    setItems(shuffledConchas);
-  }, [setItems]);
+  const style = {
+    background:
+      "radial-gradient(circle, rgba(255,220,69,1) 0%, rgba(252,199,19,1) 100%)",
+  };
 
   function handleDragStart(event) {
     const { active } = event;
@@ -51,57 +49,20 @@ export function LevelBakery({ navigation }: LevelBakeryProps) {
   async function handleDragEnd(event) {
     const { active, over } = event;
     const { id: overId } = over;
-    let win = false;
 
     if (activeId === overId) {
       return;
     }
 
     setItems((items) => {
-      const newItems = [...items];
-
-      const activeItem = items.find((x) => x === active.id)!;
-      const activeIdx = items.indexOf(activeItem);
-
-      const overItem = items.find((x) => x === over.id)!;
-      const overIdx = items.indexOf(overItem);
-      //Yes, I know I could have used findIndex
-      [newItems[activeIdx], newItems[overIdx]] = [
-        newItems[overIdx],
-        newItems[activeIdx],
-      ];
-
-      win = oneLineColorCondition(newItems);
-      if (!win) {
-        win = twoVerticalLinesColorsCondition(newItems);
-      }
-
-      if (win) {
-        setTimeout(() => {
-          setRemoveLevel(true);
-        }, 1000);
-        setTimeout(() => {
-          setWin(win);
-        }, 2000);
-      }
+      const newItems = swapArrays(items, active, over);
+      handleWin(newItems);
 
       setActiveId(null);
       putItemSound.play();
       return newItems;
     });
   }
-
-  const reset = () => {
-    const shuffledConchas = shuffleArray(initialConchas);
-    setItems(shuffledConchas);
-    setRemoveLevel(false);
-    setWin(false);
-  };
-
-  const style = {
-    background:
-      "radial-gradient(circle, rgba(255,220,69,1) 0%, rgba(252,199,19,1) 100%)",
-  };
 
   return (
     <>

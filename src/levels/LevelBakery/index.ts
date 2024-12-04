@@ -12,4 +12,5 @@ export * from "@LevelBakery/components/SortableConcha";
 export * from "@LevelBakery/mocks";
 export * from "@LevelBakery/win-conditions";
 export * from "@LevelBakery/LevelBakery";
+export * from "@LevelBakery/useLevelBakery";
 
