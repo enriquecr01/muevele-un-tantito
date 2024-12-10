@@ -10,10 +10,7 @@ import {
   CantaritoRack,
   OllaRack,
   PlatoRack,
-  initialCantaritos,
-  initialOllas,
-  initialPlatos,
-  verifyWin,
+  useLevelClayCraft,
 } from "@LevelClayCraft/index";
 
 type LevelClayCraftProps = {
@@ -21,50 +18,11 @@ type LevelClayCraftProps = {
 };
 
 export function LevelClayCraft({ navigation }: LevelClayCraftProps) {
-  const [win, setWin] = useState<boolean>(false);
-  const [removeLevel, setRemoveLevel] = useState<boolean>(false);
-  let cantaritosArray = shuffleAndVerifyArraysAreNotSorted(initialCantaritos);
-  let ollasArray = shuffleAndVerifyArraysAreNotSorted(initialOllas);
-  let platosArray = shuffleAndVerifyArraysAreNotSorted(initialPlatos);
-
-  const handleSetCantaritos = (cantaritos) => {
-    cantaritosArray = cantaritos;
-    handleVerifyWin();
-  };
-
-  const handleSetOllas = (ollas) => {
-    ollasArray = ollas;
-    handleVerifyWin();
-  };
-
-  const handleSetPlatos = (platos) => {
-    platosArray = platos;
-    handleVerifyWin();
-  };
-
-  const handleVerifyWin = () => {
-    const win = verifyWin(cantaritosArray, ollasArray, platosArray);
-    if (win) {
-      setTimeout(() => {
-        setRemoveLevel(true);
-      }, 1000);
-      setTimeout(() => {
-        setWin(win);
-      }, 2000);
-    }
-  };
-
+  const { win, reset, removeLevel, platos, cantaritos, ollas, setByType } =
+    useLevelClayCraft();
   const style = {
     background:
       "radial-gradient(circle, rgba(248,197,167,1) 0%, rgba(200,152,123,1) 84%, rgba(153,109,82,1) 100%)",
-  };
-
-  const reset = () => {
-    cantaritosArray = shuffleAndVerifyArraysAreNotSorted(initialCantaritos);
-    ollasArray = shuffleAndVerifyArraysAreNotSorted(initialOllas);
-    platosArray = shuffleAndVerifyArraysAreNotSorted(initialPlatos);
-    setRemoveLevel(false);
-    setWin(false);
   };
 
   return (
@@ -93,17 +51,11 @@ export function LevelClayCraft({ navigation }: LevelClayCraftProps) {
           >
             <div className="flex flex-col justify-start border-black border-2 rounded max-w-screen-xl">
               <div className="flex flex-row">
-                <CantaritoRack
-                  callback={handleSetCantaritos}
-                  cantaritosArray={initialCantaritos}
-                />
-                <PlatoRack
-                  callback={handleSetPlatos}
-                  platosArray={initialPlatos}
-                />
+                <CantaritoRack cantaritos={cantaritos} setByType={setByType} />
+                <PlatoRack platos={platos} setByType={setByType} />
               </div>
               <div>
-                <OllaRack callback={handleSetOllas} ollasArray={initialOllas} />
+                <OllaRack ollas={ollas} setByType={setByType} />
               </div>
             </div>
           </div>

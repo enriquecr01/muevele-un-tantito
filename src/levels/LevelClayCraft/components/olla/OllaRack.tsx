@@ -5,16 +5,13 @@ import "animate.css";
 import { OllaContainer, Olla } from "@LevelClayCraft/index";
 import { useMueveleTantitoSensors } from "@utils/index";
 
-type OllaRackProps = {
-  ollasArray: number[];
-  callback: (param: number[]) => void;
+type OllasRackProps = {
+  ollas: number[];
+  setByType(type: string, active: any, over: any): void;
 };
-
-export function OllaRack({ ollasArray, callback }: OllaRackProps) {
-  const [ollas, setOllas] = useState<number[]>(ollasArray);
-  const [activeId, setActiveId] = useState();
-
+export function OllaRack({ ollas, setByType }: OllasRackProps) {
   const { sensors } = useMueveleTantitoSensors();
+  const [activeId, setActiveId] = useState();
 
   const putItemSound = new Audio(putItem);
 
@@ -33,26 +30,9 @@ export function OllaRack({ ollasArray, callback }: OllaRackProps) {
       return;
     }
 
-    setOllas((items) => {
-      const newItems = [...items];
-
-      const activeItem = items.find((x) => x === active.id)!;
-      const activeIdx = items.indexOf(activeItem);
-
-      const overItem = items.find((x) => x === over.id)!;
-      const overIdx = items.indexOf(overItem);
-      //Yes, I know I could have used findIndex
-      [newItems[activeIdx], newItems[overIdx]] = [
-        newItems[overIdx],
-        newItems[activeIdx],
-      ];
-
-      callback(newItems);
-
-      setActiveId(null);
-      putItemSound.play();
-      return newItems;
-    });
+    setByType("ollas", active, over);
+    setActiveId(null);
+    putItemSound.play();
   }
 
   return (

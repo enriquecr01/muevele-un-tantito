@@ -6,18 +6,13 @@ import { CantaritoContainer, Cantarito } from "@LevelClayCraft/index";
 import { useMueveleTantitoSensors } from "@utils/index";
 
 type CantaritoRackProps = {
-  cantaritosArray: number[];
-  callback: (param: number[]) => void;
+  cantaritos: number[];
+  setByType(type: string, active: any, over: any): void;
 };
 
-export function CantaritoRack({
-  cantaritosArray,
-  callback,
-}: CantaritoRackProps) {
-  const [cantaritos, setCantaritos] = useState<number[]>(cantaritosArray);
-  const [activeId, setActiveId] = useState();
-
+export function CantaritoRack({ cantaritos, setByType }: CantaritoRackProps) {
   const { sensors } = useMueveleTantitoSensors();
+  const [activeId, setActiveId] = useState();
 
   const putItemSound = new Audio(putItem);
 
@@ -36,26 +31,9 @@ export function CantaritoRack({
       return;
     }
 
-    setCantaritos((items) => {
-      const newItems = [...items];
-
-      const activeItem = items.find((x) => x === active.id)!;
-      const activeIdx = items.indexOf(activeItem);
-
-      const overItem = items.find((x) => x === over.id)!;
-      const overIdx = items.indexOf(overItem);
-      //Yes, I know I could have used findIndex
-      [newItems[activeIdx], newItems[overIdx]] = [
-        newItems[overIdx],
-        newItems[activeIdx],
-      ];
-
-      callback(newItems);
-
-      setActiveId(null);
-      putItemSound.play();
-      return newItems;
-    });
+    setByType("cantaritos", active, over);
+    setActiveId(null);
+    putItemSound.play();
   }
 
   return (

@@ -6,14 +6,12 @@ import { Plato, PlatosContainer } from "@LevelClayCraft/index";
 import { useMueveleTantitoSensors } from "@utils/index";
 
 type PlatoRackProps = {
-  platosArray: number[];
-  callback: (param: number[]) => void;
+  platos: number[];
+  setByType(type: string, active: any, over: any): void;
 };
 
-export function PlatoRack({ platosArray, callback }: PlatoRackProps) {
-  const [platos, setPlatos] = useState<number[]>(platosArray);
+export function PlatoRack({ platos, setByType }: PlatoRackProps) {
   const [activeId, setActiveId] = useState();
-
   const { sensors } = useMueveleTantitoSensors();
 
   const putItemSound = new Audio(putItem);
@@ -33,25 +31,9 @@ export function PlatoRack({ platosArray, callback }: PlatoRackProps) {
       return;
     }
 
-    setPlatos((items) => {
-      const newItems = [...items];
-
-      const activeItem = items.find((x) => x === active.id)!;
-      const activeIdx = items.indexOf(activeItem);
-
-      const overItem = items.find((x) => x === over.id)!;
-      const overIdx = items.indexOf(overItem);
-      //Yes, I know I could have used findIndex
-      [newItems[activeIdx], newItems[overIdx]] = [
-        newItems[overIdx],
-        newItems[activeIdx],
-      ];
-      callback(newItems);
-
-      setActiveId(null);
-      putItemSound.play();
-      return newItems;
-    });
+    setByType("platos", active, over);
+    setActiveId(null);
+    putItemSound.play();
   }
 
   return (

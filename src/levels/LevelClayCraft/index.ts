@@ -43,3 +43,4 @@ export * from "@LevelClayCraft/components/plato/SortablePlatos";
 export * from "@LevelClayCraft/mocks";
 export * from "@LevelClayCraft/win-conditions";
 export * from "@LevelClayCraft/LevelClayCraft";
+export * from "@LevelClayCraft/useLevelClayCraft";
