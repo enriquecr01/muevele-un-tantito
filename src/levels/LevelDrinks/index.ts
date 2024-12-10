@@ -20,3 +20,4 @@ export * from "@LevelDrinks/components/SortableDrink";
 export * from "@LevelDrinks/mocks";
 export * from "@LevelDrinks/win-conditions";
 export * from "@LevelDrinks/LevelDrinks";
+export * from "@LevelDrinks/useLevelDrinks";

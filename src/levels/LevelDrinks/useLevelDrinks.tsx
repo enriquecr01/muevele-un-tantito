@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import { shuffleAndVerifyArraysAreNotSorted } from "@utils/index";
-import { verifyWin, initialLevels } from "@LevelAltarDeMuertos/index";
+import { shuffleArray } from "@utils/index";
+import { verifyWin, initialDrinks } from "@LevelDrinks/index";
 
-export const useLevelAltarDeMuertos = () => {
-  const [items, setItems] = useState<number[]>([1, 2, 3, 4, 5, 6, 7]);
+export const useLevelDrinks = () => {
+  const [items, setItems] = useState<string[]>([]);
   const [activeId, setActiveId] = useState();
   const [win, setWin] = useState<boolean>(false);
   const [removeLevel, setRemoveLevel] = useState<boolean>(false);
 
   useEffect(() => {
-    const shuffledLevels = shuffleAndVerifyArraysAreNotSorted(initialLevels);
-    setItems(shuffledLevels);
+    const shuffledDrinks = shuffleArrayAndVerify(initialDrinks);
+    setItems(shuffledDrinks);
   }, [setItems]);
 
   function swapArrays(items, active, over) {
@@ -30,6 +30,14 @@ export const useLevelAltarDeMuertos = () => {
     return newItems;
   }
 
+  function shuffleArrayAndVerify(array) {
+    const arrayShuffled = shuffleArray(array);
+
+    if (verifyWin(arrayShuffled)) shuffleArrayAndVerify(array);
+
+    return arrayShuffled;
+  }
+
   function handleWin(items) {
     const win = verifyWin(items);
 
@@ -44,8 +52,8 @@ export const useLevelAltarDeMuertos = () => {
   }
 
   const reset = () => {
-    const shuffledConchas = shuffleAndVerifyArraysAreNotSorted(initialLevels);
-    setItems(shuffledConchas);
+    const shuffledDrinks = shuffleArrayAndVerify(initialDrinks);
+    setItems(shuffledDrinks);
     setRemoveLevel(false);
     setWin(false);
   };
