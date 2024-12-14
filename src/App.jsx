@@ -29,9 +29,9 @@ function App() {
       {/* <LevelMariachiInstruments></LevelMariachiInstruments> */}
       {/* <LevelCandy></LevelCandy> */}
       {/* <LevelAltarDeMuertos></LevelAltarDeMuertos> */}
-      <LevelDrinks></LevelDrinks>
+      {/* <LevelDrinks></LevelDrinks> */}
       {/* <LevelTalavera></LevelTalavera> */}
-      {/* <LevelFood></LevelFood> */}
+      <LevelFood></LevelFood>
       {/* <LevelAlebrijes></LevelAlebrijes> */}
       {/* <LevelFruits></LevelFruits> */}
       {/* <MainFlow></MainFlow> */}

@@ -16,5 +16,6 @@ export * from "@LevelFood/components/TacosBox";
 export * from "@LevelFood/components/TamalesBox";
 export * from "@LevelFood/mocks";
 export * from "@LevelFood/win-conditions";
-export * from "@LevelFood/LevelFood";
 export * from "@LevelFood/models/IFood";
+export * from "@LevelFood/LevelFood";
+export * from "@LevelFood/useLevelFood";
