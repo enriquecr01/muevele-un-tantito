@@ -19,3 +19,4 @@ export * from "@LevelFruits/mocks";
 export * from "@LevelFruits/win-conditions";
 export * from "@LevelFruits/models/IFruit";
 export * from "@LevelFruits/LevelFruits";
+export * from "@LevelFruits/useLevelFruits";

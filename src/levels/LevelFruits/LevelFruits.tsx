@@ -11,16 +11,13 @@ import { ScreenWin } from "pages/index";
 import "animate.css";
 import {
   NavigationHelper,
-  shuffleArray,
   useMueveleTantitoSensors,
 } from "@utils/index";
 import {
   Fruit,
-  IFruit,
   FruitDroppable,
-  initialFruits,
   EmptySpaceDroppable,
-  verifyWin,
+  useLevelFruits,
 } from "@LevelFruits/index";
 
 type LevelFruitProps = {
@@ -28,24 +25,26 @@ type LevelFruitProps = {
 };
 
 export function LevelFruits({ navigation }: LevelFruitProps) {
-  const [activeId, setActiveId] = useState<IFruit>();
-  const [win, setWin] = useState<boolean>(false);
-  const [removeLevel, setRemoveLevel] = useState<boolean>(false);
-
-  const [fruitDefault, setFruitsDefault] = useState<IFruit[]>([]);
-  const [aguacate, setAguacate] = useState<IFruit>();
-  const [papaya, setPapaya] = useState<IFruit>();
-  const [pitaya, setPitaya] = useState<IFruit>();
-
+  const {
+    setActiveId,
+    addToBox,
+    win,
+    reset,
+    removeLevel,
+    aguacate,
+    papaya,
+    pitaya,
+    fruitDefault,
+    activeId,
+  } = useLevelFruits();
   const { sensors } = useMueveleTantitoSensors();
-
   const putItemSound = new Audio(putItem);
 
   const handleDragStart = (event: DragStartEvent) => {
     setActiveId(event.active.data.current.data);
   };
 
-  const addToBox = (e: DragEndEvent) => {
+  async function handleDragEnd(e: DragEndEvent) {
     const newItem = { ...e.active.data.current.data };
     const { active, over } = e;
     if (
@@ -62,129 +61,9 @@ export function LevelFruits({ navigation }: LevelFruitProps) {
 
     if (currentBox === overBox) return;
 
-    let currentArray = [];
-    let tempArray = [];
-
-    switch (currentBox) {
-      case "default-box":
-        currentArray = [...fruitDefault];
-        break;
-      case "aguacate":
-        currentArray = aguacate ? [aguacate] : [];
-        break;
-      case "papaya":
-        currentArray = papaya ? [papaya] : [];
-        break;
-      case "pitaya":
-        currentArray = pitaya ? [pitaya] : [];
-        break;
-    }
-
-    switch (overBox) {
-      case "default-box":
-        tempArray = [...fruitDefault];
-        break;
-      case "aguacate":
-        tempArray = aguacate ? [aguacate] : [];
-        break;
-      case "papaya":
-        tempArray = papaya ? [papaya] : [];
-        break;
-      case "pitaya":
-        tempArray = pitaya ? [pitaya] : [];
-        break;
-    }
-
-    console.log(currentBox, currentArray);
-
-    if (
-      (overBox === "aguacate" ||
-        overBox === "papaya" ||
-        overBox === "pitaya") &&
-      tempArray.length > 0
-    ) {
-      return false;
-    }
-    const index = currentArray.findIndex((candy) => candy.id === active.id);
-    newItem.currentBox = overBox;
-
-    currentArray.splice(index, 1);
-    tempArray.push(newItem);
-
-    switch (currentBox) {
-      case "default-box":
-        setFruitsDefault(currentArray);
-        break;
-      case "aguacate":
-        setAguacate(currentArray[0]);
-        break;
-      case "papaya":
-        setPapaya(currentArray[0]);
-        break;
-      case "pitaya":
-        setPitaya(currentArray[0]);
-        break;
-    }
-
-    switch (overBox) {
-      case "default-box":
-        setFruitsDefault(tempArray);
-        break;
-      case "aguacate":
-        setAguacate(tempArray[0]);
-        break;
-      case "papaya":
-        setPapaya(tempArray[0]);
-        break;
-      case "pitaya":
-        setPitaya(tempArray[0]);
-        break;
-    }
-
+    addToBox(currentBox, overBox, active, newItem);
     putItemSound.play();
-  };
-
-  const verifyWinCandy = (aguacate: IFruit, papaya: IFruit, pitaya: IFruit) => {
-    const win = verifyWin(aguacate, papaya, pitaya);
-
-    if (win) {
-      setTimeout(() => {
-        setRemoveLevel(true);
-      }, 1000);
-      setTimeout(() => {
-        setWin(win);
-      }, 2000);
-    }
-  };
-
-  useEffect(() => {
-    const candiesDefaultArrays: IFruit[] = [...initialFruits];
-    const shuffledCandies = shuffleArray(candiesDefaultArrays);
-    setFruitsDefault(shuffledCandies);
-  }, []);
-
-  useEffect(() => {
-    verifyWinCandy(aguacate, papaya, pitaya);
-  }, [
-    aguacate,
-    papaya,
-    pitaya,
-    setAguacate,
-    setPapaya,
-    setPitaya,
-    setFruitsDefault,
-  ]);
-
-  const reset = () => {
-    const candiesDefaultArrays: IFruit[] = [...initialFruits];
-    const shuffledCandies = shuffleArray(candiesDefaultArrays);
-    setFruitsDefault(shuffledCandies);
-    setAguacate(null);
-    setPapaya(null);
-    setPitaya(null);
-    setRemoveLevel(false);
-    setWin(false);
-  };
+  }
 
   const style = {
     background:
@@ -216,7 +95,7 @@ export function LevelFruits({ navigation }: LevelFruitProps) {
         >
           <DndContext
             onDragStart={handleDragStart}
-            onDragEnd={addToBox}
+            onDragEnd={handleDragEnd}
             sensors={sensors}
           >
             <main className="flex flex-col items-center md:gap-16 md:p-4 w-full">

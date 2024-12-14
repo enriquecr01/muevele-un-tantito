@@ -31,9 +31,9 @@ function App() {
       {/* <LevelAltarDeMuertos></LevelAltarDeMuertos> */}
       {/* <LevelDrinks></LevelDrinks> */}
       {/* <LevelTalavera></LevelTalavera> */}
-      <LevelFood></LevelFood>
+      {/* <LevelFood></LevelFood> */}
       {/* <LevelAlebrijes></LevelAlebrijes> */}
-      {/* <LevelFruits></LevelFruits> */}
+      <LevelFruits></LevelFruits>
       {/* <MainFlow></MainFlow> */}
       {/* <Wachar></Wachar> */}
 
