@@ -1,42 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { closestCorners, DndContext, DragOverlay } from "@dnd-kit/core";
 import putItem from "@sounds/putitem.mp3";
 import { Helmet } from "react-helmet";
 import { ScreenWin } from "pages/index";
 import "animate.css";
-import {
-  shuffleArray,
-  NavigationHelper,
-  useMueveleTantitoSensors,
-} from "@utils/index";
-import { Container, Tile, verifyWin, initialTiles } from "@LevelTalavera/index";
+import { NavigationHelper, useMueveleTantitoSensors } from "@utils/index";
+import { Container, Tile, useLevelTalavera } from "@LevelTalavera/index";
 
 type LevelTalaveraProps = {
   navigation?: NavigationHelper;
 };
 
 export function LevelTalavera({ navigation }: LevelTalaveraProps) {
-  const [items, setItems] = useState<string[]>([]);
-  const [activeId, setActiveId] = useState();
-  const [win, setWin] = useState<boolean>(false);
-  const [removeLevel, setRemoveLevel] = useState<boolean>(false);
-
+  const {
+    activeId,
+    setActiveId,
+    setItems,
+    swapArrays,
+    handleWin,
+    win,
+    reset,
+    removeLevel,
+    items,
+  } = useLevelTalavera();
   const { sensors } = useMueveleTantitoSensors();
 
   const putItemSound = new Audio(putItem);
-
-  function shuffleArrayAndVerify(array) {
-    const arrayShuffled = shuffleArray(array);
-
-    if (verifyWin(arrayShuffled)) shuffleArrayAndVerify(array);
-
-    return arrayShuffled;
-  }
-
-  useEffect(() => {
-    const shuffledDrinks = shuffleArrayAndVerify(initialTiles);
-    setItems(shuffledDrinks);
-  }, [setItems]);
 
   function handleDragStart(event) {
     const { active } = event;
@@ -55,29 +44,8 @@ export function LevelTalavera({ navigation }: LevelTalaveraProps) {
     }
 
     setItems((items) => {
-      const newItems = [...items];
-
-      const activeItem = items.find((x) => x === active.id)!;
-      const activeIdx = items.indexOf(activeItem);
-
-      const overItem = items.find((x) => x === over.id)!;
-      const overIdx = items.indexOf(overItem);
-      //Yes, I know I could have used findIndex
-      [newItems[activeIdx], newItems[overIdx]] = [
-        newItems[overIdx],
-        newItems[activeIdx],
-      ];
-
-      win = verifyWin(newItems);
-
-      if (win) {
-        setTimeout(() => {
-          setRemoveLevel(true);
-        }, 1000);
-        setTimeout(() => {
-          setWin(win);
-        }, 2000);
-      }
+      const newItems = swapArrays(items, active, over);
+      handleWin(newItems);
 
       setActiveId(null);
       putItemSound.play();
@@ -88,13 +56,6 @@ export function LevelTalavera({ navigation }: LevelTalaveraProps) {
   const style = {
     background:
       "radial-gradient(circle, rgba(250,241,202,1) 0%, rgba(255,247,214,1) 100%)",
-  };
-
-  const reset = () => {
-    const shuffledTiles = shuffleArrayAndVerify(initialTiles);
-    setItems(shuffledTiles);
-    setRemoveLevel(false);
-    setWin(false);
   };
 
   return (

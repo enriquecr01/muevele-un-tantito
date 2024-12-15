@@ -1,20 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { closestCorners, DndContext, DragOverlay } from "@dnd-kit/core";
 import putItem from "@sounds/putitem.mp3";
 import { Helmet } from "react-helmet";
 import { ScreenWin } from "pages/index";
 import "animate.css";
-import {
-  NavigationHelper,
-  shuffleArray,
-  useMueveleTantitoSensors,
-} from "@utils/index";
-import {
-  Container,
-  Instrument,
-  verifyWin,
-  initialInstruments,
-} from "@LevelMariachiInstruments/index";
+import { NavigationHelper, useMueveleTantitoSensors } from "@utils/index";
+import { Container, Instrument } from "@LevelMariachiInstruments/index";
 import { useLevelMariachiInstruments } from "./useLevelMariachiInstruments";
 
 type LevelMariachiInstrumentsProps = {

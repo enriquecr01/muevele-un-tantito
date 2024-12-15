@@ -28,7 +28,7 @@ export function Tile(props) {
 
   return (
     <div
-      className={`w-full flex items-center justify-center my-2 touch-none`}
+      className={`w-full flex items-center justify-center my-2 touch-none select-none`}
       style={style}
     >
       <img

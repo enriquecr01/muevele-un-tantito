@@ -16,3 +16,4 @@ export * from "@LevelTalavera/components/Tile";
 export * from "@LevelTalavera/mocks";
 export * from "@LevelTalavera/win-conditions";
 export * from "@LevelTalavera/LevelTalavera";
+export * from "@LevelTalavera/useLevelTalavera";
