@@ -15,6 +15,7 @@ import {
   verifyWin,
   initialInstruments,
 } from "@LevelMariachiInstruments/index";
+import { useLevelMariachiInstruments } from "./useLevelMariachiInstruments";
 
 type LevelMariachiInstrumentsProps = {
   navigation?: NavigationHelper;
@@ -23,27 +24,19 @@ type LevelMariachiInstrumentsProps = {
 export function LevelMariachiInstruments({
   navigation,
 }: LevelMariachiInstrumentsProps) {
-  const [items, setItems] = useState<string[]>([]);
-  const [activeId, setActiveId] = useState();
-  const [win, setWin] = useState<boolean>(false);
-  const [removeLevel, setRemoveLevel] = useState<boolean>(false);
-
+  const {
+    activeId,
+    setActiveId,
+    setItems,
+    swapArrays,
+    handleWin,
+    win,
+    reset,
+    removeLevel,
+    items,
+  } = useLevelMariachiInstruments();
   const { sensors } = useMueveleTantitoSensors();
-
   const putItemSound = new Audio(putItem);
-
-  function shuffleArrayAndVerify(array) {
-    const arrayShuffled = shuffleArray(array);
-
-    if (verifyWin(arrayShuffled)) shuffleArrayAndVerify(array);
-
-    return arrayShuffled;
-  }
-
-  useEffect(() => {
-    const shuffledConchas = shuffleArrayAndVerify(initialInstruments);
-    setItems(shuffledConchas);
-  }, [setItems]);
 
   function handleDragStart(event) {
     const { active } = event;
@@ -55,36 +48,14 @@ export function LevelMariachiInstruments({
   async function handleDragEnd(event) {
     const { active, over } = event;
     const { id: overId } = over;
-    let win = false;
 
     if (activeId === overId) {
       return;
     }
 
     setItems((items) => {
-      const newItems = [...items];
-
-      const activeItem = items.find((x) => x === active.id)!;
-      const activeIdx = items.indexOf(activeItem);
-
-      const overItem = items.find((x) => x === over.id)!;
-      const overIdx = items.indexOf(overItem);
-      //Yes, I know I could have used findIndex
-      [newItems[activeIdx], newItems[overIdx]] = [
-        newItems[overIdx],
-        newItems[activeIdx],
-      ];
-
-      win = verifyWin(newItems);
-
-      if (win) {
-        setTimeout(() => {
-          setRemoveLevel(true);
-        }, 1000);
-        setTimeout(() => {
-          setWin(win);
-        }, 2000);
-      }
+      const newItems = swapArrays(items, active, over);
+      handleWin(newItems);
 
       setActiveId(null);
       putItemSound.play();
@@ -95,13 +66,6 @@ export function LevelMariachiInstruments({
   const style = {
     background:
       "radial-gradient(circle, rgba(0,165,255,1) 0%, rgba(0,141,255,1) 89%, rgba(0,104,255,1) 100%)",
-  };
-
-  const reset = () => {
-    const shuffledConchas = shuffleArrayAndVerify(initialInstruments);
-    setItems(shuffledConchas);
-    setRemoveLevel(false);
-    setWin(false);
   };
 
   return (

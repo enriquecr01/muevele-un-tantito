@@ -26,14 +26,14 @@ function App() {
       {/* <MainMenu></MainMenu> */}
       {/* <LevelBakery></LevelBakery> */}
       {/* <LevelClayCraft></LevelClayCraft> */}
-      {/* <LevelMariachiInstruments></LevelMariachiInstruments> */}
+      <LevelMariachiInstruments></LevelMariachiInstruments>
       {/* <LevelCandy></LevelCandy> */}
       {/* <LevelAltarDeMuertos></LevelAltarDeMuertos> */}
       {/* <LevelDrinks></LevelDrinks> */}
       {/* <LevelTalavera></LevelTalavera> */}
       {/* <LevelFood></LevelFood> */}
       {/* <LevelAlebrijes></LevelAlebrijes> */}
-      <LevelFruits></LevelFruits>
+      {/* <LevelFruits></LevelFruits> */}
       {/* <MainFlow></MainFlow> */}
       {/* <Wachar></Wachar> */}
 
