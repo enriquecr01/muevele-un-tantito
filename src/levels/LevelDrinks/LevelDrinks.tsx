@@ -4,7 +4,11 @@ import putItem from "@sounds/putitem.mp3";
 import { Helmet } from "react-helmet";
 import { ScreenWin } from "pages/index";
 import "animate.css";
-import { NavigationHelper, useMueveleTantitoSensors } from "@utils/index";
+import {
+  NavigationHelper,
+  useMueveleTantitoSensors,
+  swapArrays,
+} from "@utils/index";
 import { Container, Drink, useLevelDrinks } from "@LevelDrinks/index";
 
 type LevelDrinksProps = {
@@ -19,7 +23,6 @@ export function LevelDrinks({ navigation }: LevelDrinksProps) {
     items,
     win,
     removeLevel,
-    swapArrays,
     handleWin,
     reset,
   } = useLevelDrinks();

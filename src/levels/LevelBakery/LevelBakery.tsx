@@ -4,7 +4,11 @@ import putItem from "@sounds/putitem.mp3";
 import { Helmet } from "react-helmet";
 import { ScreenWin } from "pages/index";
 import "animate.css";
-import { NavigationHelper, useMueveleTantitoSensors } from "@utils/index";
+import {
+  NavigationHelper,
+  useMueveleTantitoSensors,
+  swapArrays,
+} from "@utils/index";
 import { Container, Concha, useLevelBakery } from "@LevelBakery/index";
 
 type LevelBakeryProps = {
@@ -18,7 +22,6 @@ export function LevelBakery({ navigation }: LevelBakeryProps) {
     activeId,
     activeColor,
     setItems,
-    swapArrays,
     handleWin,
     win,
     reset,

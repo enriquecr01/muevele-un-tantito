@@ -4,7 +4,11 @@ import putItem from "@sounds/putitem.mp3";
 import { Helmet } from "react-helmet";
 import { ScreenWin } from "pages/index";
 import "animate.css";
-import { NavigationHelper, useMueveleTantitoSensors } from "@utils/index";
+import {
+  NavigationHelper,
+  useMueveleTantitoSensors,
+  swapArrays,
+} from "@utils/index";
 import { Container, Tile, useLevelTalavera } from "@LevelTalavera/index";
 
 type LevelTalaveraProps = {
@@ -16,7 +20,6 @@ export function LevelTalavera({ navigation }: LevelTalaveraProps) {
     activeId,
     setActiveId,
     setItems,
-    swapArrays,
     handleWin,
     win,
     reset,

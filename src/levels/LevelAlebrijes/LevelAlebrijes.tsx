@@ -4,7 +4,11 @@ import putItem from "@sounds/putitem.mp3";
 import { Helmet } from "react-helmet";
 import { ScreenWin } from "pages/index";
 import "animate.css";
-import { NavigationHelper, useMueveleTantitoSensors } from "@utils/index";
+import {
+  NavigationHelper,
+  useMueveleTantitoSensors,
+  swapArrays,
+} from "@utils/index";
 import { Container, Alebrije, useLevelAlebrijes } from "@LevelAlebrijes/index";
 
 type LevelAlebrijesProps = {
@@ -15,7 +19,6 @@ export function LevelAlebrijes({ navigation }: LevelAlebrijesProps) {
   const {
     activeId,
     setActiveId,
-    swapArrays,
     handleWin,
     setItems,
     win,

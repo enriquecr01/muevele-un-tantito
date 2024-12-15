@@ -34,3 +34,19 @@ export function shuffleAndVerifyArraysAreNotSorted(array) {
 
     return arrayShuffled;
 }
+
+export function swapArrays(items, active, over) {
+    const newItems = [...items];
+
+    const activeItem = items.find((x) => x === active.id)!;
+    const activeIdx = items.indexOf(activeItem);
+
+    const overItem = items.find((x) => x === over.id)!;
+    const overIdx = items.indexOf(overItem);
+    //Yes, I know I could have used findIndex
+    [newItems[activeIdx], newItems[overIdx]] = [
+        newItems[overIdx],
+        newItems[activeIdx],
+    ];
+    return newItems;
+}
