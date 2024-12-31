@@ -24,21 +24,38 @@ export const MainMenu = ({ navigation }: MainMenuProps) => {
               ¡MUÉVELE TANTITO!
             </h1>
             <div className="flex flex-col items-center w-full gap-1.5">
-              <button
-                className="bg-transparent hover:bg-neutral-950/20 text-white py-2 px-4 w-1/2 focus:border-neutral-950/20 hover:ring-orange-600 hover:border-neutral-950/20 active:border-neutral-950/20"
-                onClick={goFirstLevel}
-              >
-                <span className="drop-shadow-[0_2px_2px_rgba(255,255,255,0.9)] text-2xl">
+              <button className="bg-transparent m-2" onClick={goFirstLevel}>
+                <span className="drop-shadow-[0_2px_2px_rgba(255,255,255,0.9)] text-2xl ease-in duration-200 hover:text-4xl">
                   Jugar
                 </span>
               </button>
               <button
-                className="bg-transparent hover:bg-neutral-950/20 text-white py-2 px-4 w-1/2 focus:border-neutral-950/20 hover:ring-orange-600 hover:border-neutral-950/20 active:border-neutral-950/20"
+                className="bg-transparent m-2"
                 onClick={() => {
                   window.close();
                 }}
               >
-                <span className="drop-shadow-[0_2px_2px_rgba(255,255,255,0.9)] text-2xl">
+                <span className="drop-shadow-[0_2px_2px_rgba(255,255,255,0.9)] text-2xl ease-in duration-100 hover:text-4xl">
+                  ¿Que es esto?
+                </span>
+              </button>
+              <button
+                className="bg-transparent m-2"
+                onClick={() => {
+                  window.close();
+                }}
+              >
+                <span className="drop-shadow-[0_2px_2px_rgba(255,255,255,0.9)] text-2xl ease-in duration-100 hover:text-4xl">
+                  Logros
+                </span>
+              </button>
+              <button
+                className="bg-transparent m-2"
+                onClick={() => {
+                  window.close();
+                }}
+              >
+                <span className="drop-shadow-[0_2px_2px_rgba(255,255,255,0.9)] text-2xl ease-in duration-100 hover:text-4xl">
                   Salir
                 </span>
               </button>
