@@ -42,7 +42,7 @@ export const MainMenu = ({ navigation }: MainMenuProps) => {
               <button
                 className="bg-transparent m-2"
                 onClick={() => {
-                  window.close();
+                  navigation.navigate("Achievements");
                 }}
               >
                 <span className="drop-shadow-[0_2px_2px_rgba(255,255,255,0.9)] text-2xl ease-in duration-100 hover:text-4xl">
